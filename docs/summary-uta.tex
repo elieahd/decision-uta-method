@@ -1,13 +1,83 @@
 \documentclass{report}
+\usepackage{amsmath} 
 
-\title{Summary UTA Method}
+\title{UTA Method}
 \author{Elie Daher}
 
 \begin{document}
 \pagenumbering{gobble}
-
 \maketitle
+\abstract
+This report contains the summary of the chapter \textbf{UTA Methods} from the Book : Multiple Criteria Decision Analysis. This doucment was made during my internship at LAMSADE in the summer of 2017.
 \tableofcontents{}
 \pagenumbering{arabic}
+
+\chapter{Introduction}
+
+In 1982,  E. Jacquet-Lagrèze and J. Siskos proposed a decision mehtod called UTA. This method is proposed by the Multi-Attribute Utility Theory (MAUT) that build a utility function based on the DM\footnote{Decision Maker} preferences.\\ 
+Assuming that the decision is given, the UTA method will find the rational basis for the decision being made. Or how can we use the DM's prefernece leading to the exact same or "similar" decision. \\  
+
+The UTA method is used to solve of multi-criteria problems. It build a utility function based on the preferences of the DM. This method consist in solving a linear program.\\
+
+UTA methods adpot the aggregation-disaggregation principles. The aggregation is where the model is known and the preferneces are unknown, while the disaggregation is where the model is based on a given preferences
+
+\chapter{Method}
+\section{Principles and Notation}
+\subsection{Weighted form}
+A weighted form of the UTA Method has the following form: 
+\begin{equation}
+u(g) = \sum_{i=1}^{n} p_i u_i (g_i)\\
+\end{equation}
+subject to normalization constraints:\\
+\begin{equation}
+  \left\{
+      \begin{aligned}
+      \sum_{i=1}^{n} p_i = 1 \\
+      u_i(g_{i*}) = 0, u_i(g_{i*}) = 1,  \forall i = 1, 2, ..., n\\
+      \end{aligned}
+    \right.
+\end{equation}
+where $ u_i, i = 1,2,...,n$ are non decreasing real valued functions, and $p_i$ is the weight of $u_i$.\\
+
+\subsection{Unweighted form}
+An unweighted form of the UTA Method has the following form: 
+\begin{equation}
+      u(g) = \sum_{i=1}^{n} u_i (g_i)
+\end{equation}
+subject to normalization constraints:\\
+\begin{equation}
+  \left\{
+      \begin{aligned}
+      \sum_{i=1}^{n} u_i(g_{i*}) = 1\\
+       u_i(g_{i*}) = 0,  \forall i = 1, 2, ..., n\\
+      \end{aligned}
+    \right.
+\end{equation}
+
+\section{Development}
+The value of each alternative $a \in A_R $ may be written as:
+\begin{equation}
+u^{'} [g(a)] = \sum_{i=1}^{n} u_i [g_i (a)] + \sigma (a)   \forall a \in A_R
+\end{equation}
+where $\sigma (a)$ is a potential error relative to $u^{'} [g(a)]$.\\
+
+We use the linear interpolation to estimate the marginal value function. For each criteria, the interval $[g_{i*}, g_i^{*}]$ is cut into $(\alpha _i -1)$ equals interval, and the end points $g_i^{j}$ are given by the formula:
+\begin{equation}
+g_i^{j}= g_{i*} + \frac{j-1}{\alpha _i -1} (g_i^{*} - g_{i*})  \forall j = 1,2, ..., \alpha _i
+\end{equation}
+
+\section{UTASTAR}
+
+\section{Analysis}
+
+\chapter{Variants}
+
+\chapter{Applications and UTA-Based DSS}
+
+\begin{thebibliography}{9}
+\bibitem{latexcompanion} 
+Salvatore Greco, Matthias Ehrgott, Jose Rui Figueira \textit{Multiple Criteria Decision Analysis}. 
+State of the Art Surveys.
+\end{thebibliography}
 
 \end{document}
