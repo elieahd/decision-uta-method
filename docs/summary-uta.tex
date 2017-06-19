@@ -1,6 +1,7 @@
 \documentclass{report}
 \usepackage{amsmath} 
 \usepackage{hyperref}
+
 \title{UTA Method}
 \author{Elie Daher}
 
@@ -26,14 +27,14 @@ UTA methods adpot the aggregation-disaggregation principles. The aggregation is 
 \subsection{Weighted form}
 A weighted form of the UTA Method has the following form: 
 \begin{equation}
-u(g) = \sum_{i=1}^{n} p_i u_i (g_i)\\
+	u(g) = \sum_{i=1}^{n} p_i u_i (g_i)\\
 \end{equation}
 subject to normalization constraints:\\
 \begin{equation}
   \left\{
       \begin{aligned}
-      \sum_{i=1}^{n} p_i = 1 \\
-      u_i(g_{i*}) = 0, u_i(g_{i*}) = 1,  \forall i = 1, 2, ..., n\\
+      	\sum_{i=1}^{n} p_i = 1 \\
+      	u_i(g_{i*}) = 0, u_i(g_{i*}) = 1,  \forall i = 1, 2, ..., n\\
       \end{aligned}
     \right.
 \end{equation}
@@ -48,8 +49,8 @@ subject to normalization constraints:\\
 \begin{equation}\label{eq2}
   \left\{
       \begin{aligned}
-      \sum_{i=1}^{n} u_i(g_{i*}) = 1\\
-       u_i(g_{i*}) = 0,  \forall i = 1, 2, ..., n\\
+      	\sum_{i=1}^{n} u_i(g_{i*}) = 1\\
+       	u_i(g_{i*}) = 0,  \forall i = 1, 2, ..., n\\
       \end{aligned}
     \right.
 \end{equation}
@@ -57,26 +58,26 @@ subject to normalization constraints:\\
 \section{Development}
 The value of each alternative $a \in A_R $ may be written as:
 \begin{equation}
-u^{'} [g(a)] = \sum_{i=1}^{n} u_i [g_i (a)] + \sigma (a)   \forall a \in A_R
+	u^{'} [g(a)] = \sum_{i=1}^{n} u_i [g_i (a)] + \sigma (a)   \forall a \in A_R
 \end{equation}
 where $\sigma (a)$ is a potential error relative to $u^{'} [g(a)]$.\\
 
 We use the linear interpolation to estimate the marginal value function. For each criteria, the interval $[g_{i*}, g_i^{*}]$ is cut into $(\alpha _i -1)$ equals interval, and the end points $g_i^{j}$ are given by the formula:
 \begin{equation}
-g_i^{j}= g_{i*} + \frac{j-1}{\alpha _i -1} (g_i^{*} - g_{i*})  \forall j = 1,2, ..., \alpha _i
+	g_i^{j}= g_{i*} + \frac{j-1}{\alpha _i -1} (g_i^{*} - g_{i*})  \forall j = 1,2, ..., \alpha _i
 \end{equation}
 
 The marginal value of an action $a$ is calculated by a linear interpolation
 \begin{equation}
-u_i [g_i (a)] = u_i (g_i^{j}) + \frac{g_i (a) - g_i^{j}}{ g_i^{j+1} - g_i^{j}} [u_i (g_i^{j+1}) - u_i (g_i^{j}) ] 
+	u_i [g_i (a)] = u_i (g_i^{j}) + \frac{g_i (a) - g_i^{j}}{ g_i^{j+1} - g_i^{j}} [u_i (g_i^{j+1}) - u_i (g_i^{j}) ] 
 \end{equation}
 
 The set of reference action $ A_R = a_1, a_2, ... , a_m$ is arranged where $a_1$ is the best action and $a_m$ is the worst action. Which means : 
 \begin{equation}\label{eq3}
   \left\{
       \begin{aligned}
-      \Delta (a_k, a_{k+1} ) \geq \delta\\
-       \Delta (a_k, a_{k+1} ) = 0 \\
+      	\Delta (a_k, a_{k+1} ) \geq \delta\\
+       	\Delta (a_k, a_{k+1} ) = 0 \\
       \end{aligned}
     \right.
 \end{equation}
@@ -84,7 +85,7 @@ where $\Delta (a_k, a_{k+1} ) = u^{'} [g(a_k)] - u^{'} [g(a_{k+1})]$ and $\delta
 
 The marginal value $u_i (g_i)$ must satisfy these constraints: 
 \begin{equation}\label{eq4}
-u_i (g_i^{j+1}) - u_(g_i^{j}) \geq s_i \forall j = 1,2, ..., \alpha _i  - 1, i = 1,2, ..., n 
+	u_i (g_i^{j+1}) - u_(g_i^{j}) \geq s_i \forall j = 1,2, ..., \alpha _i  - 1, i = 1,2, ..., n 
 \end{equation}
 where $s_i \geq 0$ and being indifference for each criteria.  \\
 
@@ -94,26 +95,78 @@ subject to : \\
 \begin{equation}
   \left\{
       \begin{aligned}
-      \Delta (a_k, a_{k+1} ) \geq \delta \quad or \quad \Delta (a_k, a_{k+1} ) = 0 \\
-       u_i (g_i^{j+1}) - u_(g_i^{j}) \geq 0 \quad \forall \quad i \quad and \quad j\\
-       \sum_{i=1}^{n} u_i(g_{i}^{*}) = 1\\
-u_i (g_i^{*}) = 0 \quad  u_i(g_i^{j}) \geq 0 \quad  \sigma(a) \geq 0 \quad  \forall a \in A_R\quad  \forall i and j\\
+      	\Delta (a_k, a_{k+1} ) \geq \delta \quad or \quad \Delta (a_k, a_{k+1} ) = 0 \\
+       	u_i (g_i^{j+1}) - u_(g_i^{j}) \geq 0 \quad \forall \quad i \quad and \quad j\\
+       	\sum_{i=1}^{n} u_i(g_{i}^{*}) = 1\\
+	u_i (g_i^{*}) = 0 \quad  u_i(g_i^{j}) \geq 0 \quad  \sigma(a) \geq 0 \quad  \forall a \in A_R\quad  \forall i and j\\
       \end{aligned}
     \right.
 \end{equation}
 The analysis found by this LP is a post-optimality analysis. 
 
 \section{UTASTAR}
-The UTASTAR is an improved version of the UTA.
+The UTASTAR is an improved version of the UTA. 
+\subsection{Principles and Notations}
+In UTA we used a single error $\sigma(a)$ in UTASTAR we use a double positive error function : 
+\begin{equation}
+	u^{'} [g(a)] = \sum_{i=1}^{n} u_i [g_i (a)] - \sigma ^{+} (a)+ \sigma ^{-} (a) \quad  \forall a \in A_R
+\end{equation}
+where $\sigma ^{+} (a)$ and $\sigma ^{-} (a)$ are the underestimation and overstimation of the error function.\\ 
 
+So, the UTASTAR algorithm has the following steps :\\ 
+\begin{enumerate}
+\item Find the value of reference actions $u[g(a_k)]$ in terms of marginal values  $u_i(g_i)$ and in terms of variables  $w_{ij}$
+\begin{equation}
+  \left\{
+      \begin{aligned}
+     	u_i(g_i^1) = 0 \quad \forall i = 1,2,...,n \\
+	u_i(g_i^j) =	  \sum_{t=1}^{j-1} w_{it} \quad \forall i = 1,2,...,n \quad and \quad j = 2,3,...,\alpha _i -1 \\
+      \end{aligned}
+    \right.
+\end{equation}
+\item Write for each pair of consecutive action by including the errors function $\sigma ^{+} (a)$ and $\sigma ^{-} (a)$
+\begin{equation}
+	\Delta (a_k , a_{k+1}) = u[g(a_k)] - \sigma ^{+} (a_k) + \sigma ^{-} (a_k) -  u[g(a_{k+1})] + \sigma ^{+} (a_{k+1}) - \sigma ^{-} (a_{k+1})
+\end{equation}
+\item Solve the Linear Program
+$$ [min]z = \sum_{k=1}^{m} [ \sigma ^{+} (a_k) + \sigma ^{-} (a_k)]  $$
+subject to : \\
+\begin{equation}
+  \left\{
+      \begin{aligned}\label{eq5}
+      	\Delta (a_k, a_{k+1} ) \geq \delta \quad or \quad \Delta (a_k, a_{k+1} ) = 0 \\
+      	\sum_{i=1}^{n} \sum_{j=1}^{\alpha_i -1} w_{ij} = 1\\
+       	w_{ij} \geq 0, \quad \sigma^{+}(a_k) \geq 0, \quad \sigma^{-}(a_k) \geq 0, \quad  \forall i, j  and  k\\
+      \end{aligned}
+    \right.
+\end{equation}
+\item Test the exitence of the optimal solution of the LP. You can find the mean additive value fuction of the optimal solutions which maximise the objective functions (in case of multiple optimal solutions) : 
+\begin{equation}
+	u_i(g_i^{*}) = \sum_{j=1}^{\alpha_i - 1} w_{ij} \quad \forall i = 1,2,...,n
+\end{equation}
+With the additional constraint of \eqref{eq5}, we add the following constaint : 
+\begin{equation}
+	\sum_{k=1}^{m} [ \sigma^{+} (\alpha _k) + \sigma ^{-}(\alpha _k)]  \geq z^{*} + \varepsilon 
+\end{equation}
+where $z^{*}$ is the optimal value of the LP found in step 3 and $\varepsilon$ is a very small positive value
+\end{enumerate}
+\subsection{Comparison}
+The UTASTAR has been considered a better algorithm than UTA. Better result were found using the UTASTAR algorithm.
 \chapter{Variants}
 
 \chapter{Applications and UTA-Based DSS}
+
+\chapter{Conclusion}
+The UTA method build a utility function based on the preferences of the DM and it consist in solving a linear program (LP) to solve a multi-criteria problem.\\
+
+This method will elaborate a model of preferences which is as similiar as possible to the DM's preferences.
 
 \begin{thebibliography}{9}
 \bibitem{latexcompanion} 
 Salvatore Greco, Matthias Ehrgott, Jose Rui Figueira \textit{Multiple Criteria Decision Analysis}. 
 State of the Art Surveys.
+\bibitem{utastar}
+Siskos, Yannacopoulos \textit{UTASTAR: an ordinal regression method for building additive value functions}
 \end{thebibliography}
 
 \end{document}
