@@ -1,6 +1,6 @@
 \documentclass{report}
 \usepackage{amsmath} 
-
+\usepackage{hyperref}
 \title{UTA Method}
 \author{Elie Daher}
 
@@ -8,16 +8,16 @@
 \pagenumbering{gobble}
 \maketitle
 \abstract
-This report contains the summary of the chapter \textbf{UTA Methods} from the Book : Multiple Criteria Decision Analysis. This doucment was made during my internship at LAMSADE in the summer of 2017.
+This report contains the summary of the chapter \textbf{UTA Methods} from the Book : Multiple Criteria Decision Analysis. This document was made during my internship at LAMSADE in the summer of 2017.
 \tableofcontents{}
 \pagenumbering{arabic}
 
 \chapter{Introduction}
 
 In 1982,  E. Jacquet-Lagrèze and J. Siskos proposed a decision mehtod called UTA. This method is proposed by the Multi-Attribute Utility Theory (MAUT) that build a utility function based on the DM\footnote{Decision Maker} preferences.\\ 
-Assuming that the decision is given, the UTA method will find the rational basis for the decision being made. Or how can we use the DM's prefernece leading to the exact same or "similar" decision. \\  
+Assuming that the decision is given, the UTA method will find the rational basis for the decision being made. Or how can we use the DM's preference leading to the exact same or "similar" decision. \\  
 
-The UTA method is used to solve of multi-criteria problems. It build a utility function based on the preferences of the DM. This method consist in solving a linear program.\\
+The UTA method is used to solve a multi-criteria problem. It build a utility function based on the preferences of the DM and it consist in solving a linear program (LP).\\
 
 UTA methods adpot the aggregation-disaggregation principles. The aggregation is where the model is known and the preferneces are unknown, while the disaggregation is where the model is based on a given preferences
 
@@ -41,11 +41,11 @@ where $ u_i, i = 1,2,...,n$ are non decreasing real valued functions, and $p_i$ 
 
 \subsection{Unweighted form}
 An unweighted form of the UTA Method has the following form: 
-\begin{equation}
+\begin{equation}\label{eq1}
       u(g) = \sum_{i=1}^{n} u_i (g_i)
 \end{equation}
 subject to normalization constraints:\\
-\begin{equation}
+\begin{equation}\label{eq2}
   \left\{
       \begin{aligned}
       \sum_{i=1}^{n} u_i(g_{i*}) = 1\\
@@ -66,9 +66,45 @@ We use the linear interpolation to estimate the marginal value function. For eac
 g_i^{j}= g_{i*} + \frac{j-1}{\alpha _i -1} (g_i^{*} - g_{i*})  \forall j = 1,2, ..., \alpha _i
 \end{equation}
 
-\section{UTASTAR}
+The marginal value of an action $a$ is calculated by a linear interpolation
+\begin{equation}
+u_i [g_i (a)] = u_i (g_i^{j}) + \frac{g_i (a) - g_i^{j}}{ g_i^{j+1} - g_i^{j}} [u_i (g_i^{j+1}) - u_i (g_i^{j}) ] 
+\end{equation}
 
-\section{Analysis}
+The set of reference action $ A_R = a_1, a_2, ... , a_m$ is arranged where $a_1$ is the best action and $a_m$ is the worst action. Which means : 
+\begin{equation}\label{eq3}
+  \left\{
+      \begin{aligned}
+      \Delta (a_k, a_{k+1} ) \geq \delta\\
+       \Delta (a_k, a_{k+1} ) = 0 \\
+      \end{aligned}
+    \right.
+\end{equation}
+where $\Delta (a_k, a_{k+1} ) = u^{'} [g(a_k)] - u^{'} [g(a_{k+1})]$ and $\delta$ is a small positive number. \\
+
+The marginal value $u_i (g_i)$ must satisfy these constraints: 
+\begin{equation}\label{eq4}
+u_i (g_i^{j+1}) - u_(g_i^{j}) \geq s_i \forall j = 1,2, ..., \alpha _i  - 1, i = 1,2, ..., n 
+\end{equation}
+where $s_i \geq 0$ and being indifference for each criteria.  \\
+
+The marginal value functions are estimated by means of the Linear Programm with \eqref{eq1}, \eqref{eq2}, \eqref{eq3}, \eqref{eq4} as constraints, and an objective function depending on the $\sigma(a)$: 
+$$ [min]F = \sum_{a \in A_R} \sigma(a)  $$
+subject to : \\
+\begin{equation}
+  \left\{
+      \begin{aligned}
+      \Delta (a_k, a_{k+1} ) \geq \delta \quad or \quad \Delta (a_k, a_{k+1} ) = 0 \\
+       u_i (g_i^{j+1}) - u_(g_i^{j}) \geq 0 \quad \forall \quad i \quad and \quad j\\
+       \sum_{i=1}^{n} u_i(g_{i}^{*}) = 1\\
+u_i (g_i^{*}) = 0 \quad  u_i(g_i^{j}) \geq 0 \quad  \sigma(a) \geq 0 \quad  \forall a \in A_R\quad  \forall i and j\\
+      \end{aligned}
+    \right.
+\end{equation}
+The analysis found by this LP is a post-optimality analysis. 
+
+\section{UTASTAR}
+The UTASTAR is an improved version of the UTA.
 
 \chapter{Variants}
 
