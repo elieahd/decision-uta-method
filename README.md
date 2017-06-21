@@ -5,3 +5,6 @@ A repository containing the doc and the work done during my research about UTA m
 The UTA method is used to solve a multi-criteria problem. It build a utility function based on the preferences of the DM and it consist in solving a linear program (LP).
 
 An improved version of the UTA is the UTASTAR. In UTA we used a single error in UTASTAR we use a double positive error function. The updated version has performed better than the regular method. 
+
+
+The research done in this repository are in progress. No document has been finalized.
