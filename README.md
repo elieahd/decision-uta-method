@@ -14,9 +14,9 @@ decision-uta-method/
   README           <- This file
   
 # src
-src/
-  lib/             <- directory containing libraries and jar files.
-  objs/            <- directory containing Java compiled class (*.class)
+src/ <br/>
+  lib/             <- directory containing libraries and jar files. <br/>
+  objs/            <- directory containing Java compiled class (*.class) <br/>
 
 Running the examples will involve compiling them, then running them:
 
