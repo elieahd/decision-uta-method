@@ -15,7 +15,9 @@ decision-uta-method/
   docs             <- directory containing all of the docs produced
   README           <- This file
   
-##########################  src  ###########################
+----------------------
+SRC
+----------------------
 src/
   lib/             <- directory containing libraries and jar files.
   objs/            <- directory containing Java compiled class (*.class)
@@ -23,8 +25,9 @@ src/
 Running the examples will involve compiling them, then running them.
 
 - on unix:
-javac -d objs -cp lib/com.google.ortools.jar:lib/protobuf.jar LinearProgramming.java
-java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.google.ortools.samples.LinearProgramming
+    -b - Count frequencies using an unbalanced binary search tree 
+    javac -d objs -cp lib/com.google.ortools.jar:lib/protobuf.jar LinearProgramming.java
+    java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.google.ortools.samples.LinearProgramming
 
   - on windows:
 javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar LinearProgramming.java
