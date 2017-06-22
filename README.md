@@ -22,15 +22,14 @@ src/
   lib/             <- directory containing libraries and jar files.
   objs/            <- directory containing Java compiled class (*.class)
 
-Running the examples will involve compiling them, then running them.
-
-# on unix
+Running the examples will involve compiling them, then running them:
+### on unix
 ```bash
 javac -d objs -cp lib/com.google.ortools.jar:lib/protobuf.jar LinearProgramming.java
 java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.google.ortools.samples.LinearProgramming
 ```
 
-# on windows
+###on windows
 ```bash
 javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar LinearProgramming.java
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.google.ortools.samples.LinearProgramming
