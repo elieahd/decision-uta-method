@@ -1,14 +1,18 @@
 # decision-uta-method
-A repository containing the doc and the work done during my research about UTA method.
+A repository containing the work done during my research about UTA method (Internship at LAMSADE - Dauphine).
 
 Upon decompressing the archive, you will get the following structure:
 ```
 .decision-uta-method
- |-- src              <- directory containing Java projects
- |   `-- lib          <- directory containing libraries and jar files
- |   `-- objs         <- directory containing Java compiled class (*.class)
- |-- docs             <- directory containing all of the docs produced
- |-- README           <- this file
+ |-- src                      <- directory containing Java projects
+ |   `-- examples             <- directory containing examples made
+ |   `-- lib                  <- directory containing libraries and jar files
+ |   `-- objs                 <- directory containing Java compiled class (*.class)
+ |-- docs                     <- directory containing all of the docs produced
+ |   `-- reports              <- directory containing all of the reports made
+ |   `-- summary-uta.pdf      <- pdf file explaining the UTA method created in LaTeX
+ |   `-- summary-uta.tex      <- LaTeX file that generated the summary-uta.pdf file 
+ |-- README                   <- this file
 ```
 
 # UTA
@@ -21,13 +25,13 @@ Running the examples will involve compiling them, then running them:
 
 #### on unix
 ```bash
-javac -d objs -cp lib/com.google.ortools.jar:lib/protobuf.jar LinearProgramming.java
+javac -d objs -cp lib/com.google.ortools.jar:lib/protobuf.jar examples/LinearProgramming.java
 java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.google.ortools.samples.LinearProgramming
 ```
 
 #### on windows
 ```bash
-javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar LinearProgramming.java
+javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/LinearProgramming.java
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.google.ortools.samples.LinearProgramming
 ```
 
