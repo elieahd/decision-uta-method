@@ -35,4 +35,4 @@ javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/LinearPro
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.google.ortools.samples.LinearProgramming
 ```
 
-Work in progress.
+###### N.B. Work in progress.
