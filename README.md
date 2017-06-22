@@ -8,10 +8,19 @@ An improved version of the UTA is the UTASTAR. In UTA we used a single error in 
 
 Upon decompressing the archive, you will get the following structure:
 
-decision-uta-method/<return>
-  src              <- directory containing Java projects done <return>
-  docs             <- directory containing all of the docs produced <return>
-  README           <- This file <return>
+```
+.decision-uta-method
+ |-- src              <- directory containing Java projects
+ |   `-- lib          <- directory containing libraries and jar files
+ |   `-- objs         <- directory containing Java compiled class (*.class)
+ |-- docs             <- directory containing all of the docs produced
+ |-- README           <- this file
+```
+
+decision-uta-method/<br/>
+  src              <- directory containing Java projects done <br/>
+  docs             <- directory containing all of the docs produced <br/>
+  README           <- This file <br/>
   
 # src
 src/ <br/>
