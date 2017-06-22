@@ -1,6 +1,8 @@
 # decision-uta-method
 A repository containing the work done during my research about UTA method (Internship at LAMSADE - Dauphine).
 
+###### N.B. Work in progress.
+
 Upon decompressing the archive, you will get the following structure:
 ```
 .decision-uta-method
@@ -34,5 +36,3 @@ java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.google.orto
 javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/LinearProgramming.java
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.google.ortools.samples.LinearProgramming
 ```
-
-###### N.B. Work in progress.
