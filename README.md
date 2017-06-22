@@ -24,6 +24,18 @@ src/
 
 Running the examples will involve compiling them, then running them.
 
+```bash
+javac -d objs -cp lib/com.google.ortools.jar:lib/protobuf.jar LinearProgramming.java
+java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.google.ortools.samples.LinearProgramming
+
+'''bash
+javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar LinearProgramming.java
+java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.google.ortools.samples.LinearProgramming
+
+
+# Clone this repository
+$ git clone https://github.com/amitmerchant1990/electron-markdownify
+
 - on unix:
 javac -d objs -cp lib/com.google.ortools.jar:lib/protobuf.jar LinearProgramming.java
 java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.google.ortools.samples.LinearProgramming
