@@ -34,5 +34,5 @@ java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.google.orto
 #### on windows
 ```bash
 javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/LinearProgramming.java
-java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.google.ortools.samples.LinearProgramming
+java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.LinearProgramming
 ```

@@ -1,7 +1,7 @@
 \documentclass{report}
 \usepackage{amsmath} 
 \usepackage{hyperref}
-\usepackage[a4paper, total={6in, 8in}]{geometry}
+
 
 \title{UTA Method}
 \author{Elie Daher}
@@ -14,16 +14,23 @@
 \pagenumbering{arabic}
 
 \chapter{Introduction}
-In 1982,  E. Jacquet-Lagrèze and J. Siskos proposed a decision mehtod called UTA. This method is proposed by the Multi-Attribute Utility Theory (MAUT) that build a utility function based on the DM\footnote{Decision Maker} preferences.\\ 
-Assuming that the decision is given, the UTA method will find the rational basis for the decision being made. Or how can we use the DM's preference leading to the exact same or "similar" decision. \\  
+In decision theory a basic problem involving several criterias, concerns the way that the final decision should be made. However, this problem is posed in the opposite way: assuming that the decision is given, how is it possible to find the rational basis for the decision being made? Or how is it possible to assess the model leading to exactly the same decision as the actual one or the most "similar" decision.\\
 
-The UTA method is used to solve a multi-criteria problem. It build a utility function based on the preferences of the DM and it consist in solving a linear program (LP).\\
-
-UTA methods adpot the aggregation-disaggregation principles. The aggregation is where the model is known and the preferneces are unknown, while the disaggregation is where the model is based on a given preferences.\\
+One of the multi-criteria decision analysis methods is the UTA method, which was proposed by E. Jacquet-Lagrèze and J. Siskos in 1982. This method is proposed by the Multi-Attribute Utility Theory (MAUT) that build a utility function based on the DM\footnote{Decision Maker} preferences.\\
+ 
+The UTA method is used to solve a multi-criteria problem by building a utility function based on the preferences of the DM and solving a linear program (LP). It adopt the aggregation-disaggregation principles : where the model is based on a given preferences.\\
 
 In this document, you will find the principle and notation of the UTA method, the new version of UTA and example that illustrate this method. 
 
 \chapter{Method}
+Those steps represent the methodology of decision-making problems : 
+\begin{enumerate}
+\item Object of the decision, definition of the set of potential actions and the determination of a problem statement
+\item Modeling a consistent family of criteria
+\item Defining a global preference model
+\item Decision-aid or decision support
+\end{enumerate}
+
 \section{Principles and Notation}
 At the begining of the problem, the DM should present the following information : 
 \begin{itemize}

@@ -8,8 +8,16 @@ import com.google.ortools.linearsolver.MPVariable;
 public class LinearProgramming {
   static { System.loadLibrary("jniortools"); }
 
+  private static MPSolver createSolver (String solverType) {
+    try {
+      return new MPSolver("LinearProgrammingExample", MPSolver.OptimizationProblemType.valueOf(solverType));
+    } catch (java.lang.IllegalArgumentException e) {
+      return null;
+    }
+  }
+
   private static void runLinearProgrammingExample(String solverType, boolean printModel) {
-    MPSolver solver = new MPSolver("LinearProgrammingExample", MPSolver.OptimizationProblemType.valueOf(solverType));
+    MPSolver solver = createSolver(solverType);
     if (solver == null) {
       System.out.println("Could not create solver " + solverType);
       return;
@@ -80,7 +88,7 @@ public class LinearProgramming {
     System.out.println("x1 = " + x1.solutionValue());
     System.out.println("x2 = " + x2.solutionValue());
     System.out.println("x3 = " + x3.solutionValue());
-    /*
+
     final double[] activities = solver.computeConstraintActivities();
 
     System.out.println("Advanced usage:");
@@ -94,11 +102,15 @@ public class LinearProgramming {
     System.out.println("    activity = " + activities[c1.index()]);
     System.out.println("c2: dual value = " + c2.dualValue());
     System.out.println("    activity = " + activities[c2.index()]);
-  	*/
   }
 
   public static void main(String[] args) throws Exception {
+    System.out.println("---- Linear programming example with GLOP (recommended) ----");
     runLinearProgrammingExample("GLOP_LINEAR_PROGRAMMING", true);
+    System.out.println("---- Linear programming example with CLP ----");
+    runLinearProgrammingExample("CLP_LINEAR_PROGRAMMING", false);
+    System.out.println("---- Linear programming example with GLPK ----");
+    runLinearProgrammingExample("GLPK_LINEAR_PROGRAMMING", false);
   }
 
 }
