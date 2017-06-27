@@ -12,6 +12,7 @@ Upon decompressing the archive, you will get the following structure:
  |   `-- objs                 <- directory containing Java compiled class (*.class)
  |-- docs                     <- directory containing all of the docs produced
  |   `-- reports              <- directory containing all of the reports made
+ |   `-- images               <- directory containing all of the images used in the summary-uta document
  |   `-- summary-uta.pdf      <- pdf file explaining the UTA method created in LaTeX
  |   `-- summary-uta.tex      <- LaTeX file that generated the summary-uta.pdf file 
  |-- README                   <- this file
@@ -23,16 +24,32 @@ The UTA method is used to solve a multi-criteria problem. It build a utility fun
 An improved version of the UTA is the UTASTAR. In UTA we used a single error in UTASTAR we use a double positive error function. The updated version has performed better than the regular method. 
   
 # src
-Running the examples will involve compiling them, then running them:
+Running the examples will involve compiling them, then running them. 
+
+For the LinearProgramming example, you should run the following commands : 
 
 #### on unix
 ```bash
 javac -d objs -cp lib/com.google.ortools.jar:lib/protobuf.jar examples/LinearProgramming.java
-java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.google.ortools.samples.LinearProgramming
+java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.lamsade.lp.LinearProgramming
 ```
 
 #### on windows
 ```bash
 javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/LinearProgramming.java
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.LinearProgramming
+```
+
+For the ChoiceTransportation exercice, you should run the following commands : 
+
+#### on unix
+```bash
+javac -d objs -cp lib/com.google.ortools.jar:lib/protobuf.jar examples/ChoiceTransportation.java
+java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.lamsade.lp.ChoiceTransportation
+```
+
+#### on windows
+```bash
+javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/ChoiceTransportation.java
+java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.ChoiceTransportation
 ```
