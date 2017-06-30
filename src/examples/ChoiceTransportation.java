@@ -92,6 +92,7 @@ public class ChoiceTransportation {
     c4.setCoefficient(errors.get("eTAXI+"), 1);
     c4.setCoefficient(errors.get("eTAXI-"), -1);
     
+     // Delta(BUS,TAXI) = w11 + w12 + w21 + w22 + w23 + w31 + w32 + w33 = 1
     MPConstraint c5 = solver.makeConstraint(1, 1);
     for (Map.Entry<String, MPVariable> entry : variables.entrySet()){
        c5.setCoefficient(entry.getValue(), 1);

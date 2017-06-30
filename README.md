@@ -53,3 +53,17 @@ java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.lamsade.lp.
 javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/ChoiceTransportation.java
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.ChoiceTransportation
 ```
+
+Let's say we want to generate random x doubles that will have the sum of 1, you should run the following commands : 
+
+#### on unix
+```bash
+javac -d objs -cp examples/Utils.java
+java -cp objs: com.lamsade.utils.Utils
+```
+
+#### on windows
+```bash
+javac -d objs examples/Utils.java
+java -cp objs; com.lamsade.utils.Utils 4 2 // Generate 4 numbers with 2 decimal digits 
+```
