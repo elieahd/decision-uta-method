@@ -6,16 +6,24 @@ A repository containing the work done during my research about UTA method (Inter
 Upon decompressing the archive, you will get the following structure:
 ```
 .decision-uta-method
- |-- src                      <- directory containing Java projects
- |   `-- examples             <- directory containing examples made
- |   `-- lib                  <- directory containing libraries and jar files
- |   `-- objs                 <- directory containing Java compiled class (*.class)
- |-- docs                     <- directory containing all of the docs produced
- |   `-- reports              <- directory containing all of the reports made
- |   `-- images               <- directory containing all of the images used in the summary-uta document
- |   `-- summary-uta.pdf      <- pdf file explaining the UTA method created in LaTeX
- |   `-- summary-uta.tex      <- LaTeX file that generated the summary-uta.pdf file 
- |-- README                   <- this file
+ |-- src                      			<- directory containing Java projects
+ |   `-- alternative-criteria			<- directory containing alternative-criteria project
+ |   	`-- Alternative					<- java class representing the Alternative model
+ |   	`-- Criteria					<- java class representing the Criteria model
+ |   	`-- Main						<- java class for testing the project
+ |   `-- examples             			<- directory containing examples made
+ |   	`-- ChoiceTransportation		<- java class representing the LinearProgram solution for the Choice of Transportation exercices
+ |   	`-- LinearProgramming			<- java class representing a LP example
+ |   	`-- Utils						<- java class to generate a list of doubles that have a sum
+ |   `-- lib                  			<- directory containing libraries and jar files
+ |   `-- objs                 			<- directory containing Java compiled class (*.class)
+ |-- docs                     			<- directory containing all of the docs produced
+ |   `-- reports              			<- directory containing all of the reports made
+ |   `-- images               			<- directory containing all of the images used in the summary-uta document
+ |   `-- summary-uta.pdf      			<- pdf file explaining the UTA method created in LaTeX
+ |   `-- summary-uta.tex      			<- LaTeX file that generated the summary-uta.pdf file 
+ |-- .gitignore               			<- ignoring file
+ |-- README                   			<- this file
 ```
 
 # UTA
