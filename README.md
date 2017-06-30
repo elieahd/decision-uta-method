@@ -23,7 +23,7 @@ The UTA method is used to solve a multi-criteria problem. It build a utility fun
 
 An improved version of the UTA is the UTASTAR. In UTA we used a single error in UTASTAR we use a double positive error function. The updated version has performed better than the regular method. 
   
-# src
+# Examples
 Running the examples will involve compiling them, then running them. 
 
 For the LinearProgramming example, you should run the following commands : 
@@ -54,16 +54,19 @@ javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/ChoiceTra
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.ChoiceTransportation
 ```
 
+# Utils
 Let's say we want to generate random x doubles that will have the sum of 1, you should run the following commands : 
-
-#### on unix
-```bash
-javac -d objs -cp examples/Utils.java
-java -cp objs: com.lamsade.utils.Utils
-```
 
 #### on windows
 ```bash
 javac -d objs examples/Utils.java
 java -cp objs; com.lamsade.utils.Utils 4 2 // Generate 4 numbers with 2 decimal digits 
+```
+
+# Alternative - Criteria
+
+#### on windows
+```bash
+javac -d objs alternative-criteria/Alternative.java alternative-criteria/Criteria.java alternative-criteria/Main.java 
+java -cp objs; com.lamsade.alternativecriteria.Main 4 10 // Generate 4 criterias and 10 alternatives
 ```
