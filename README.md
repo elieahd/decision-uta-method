@@ -85,7 +85,9 @@ java -cp objs; com.lamsade.utils.Utils 4 10
 ```
 
 We will have the following result : 
-![Alt text](/docs/images/integers.PNG?raw=true "Example result")
+<p align="center">
+  <img src="/docs/images/integers.PNG?raw=true" alt="Example result"/>
+</p>
 
 If we want to generate 4 numbers with 2 digits precision that have the sum of 1 we should execute the following command : 
 #### on windows
