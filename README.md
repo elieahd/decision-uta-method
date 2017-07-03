@@ -68,7 +68,7 @@ This class will alow to generate numbers (doubles or integer) that have a target
 To build the class Utils, you should execute the following command: 
 #### on windows
 ```bash
-javac -d objs examples/Utils.java 
+javac -d objs utils/GenerateNumbers.java 
 ```
 
 When running the program, you can insert 3 arguments : 
@@ -81,7 +81,7 @@ int digitsDecimal; // precision digits (leave empty or put 0 if you want only in
 For example if we want to generate 4 numbers with 0 digits precision that have the sum of 10 we should execute the following command : 
 #### on windows
 ```bash
-java -cp objs; com.lamsade.utils.Utils 4 10  
+java -cp objs; com.lamsade.utils.GenerateNumbers 4 10  
 ```
 
 We will have the following result : 
@@ -94,7 +94,7 @@ We will have the following result :
 If we want to generate 4 numbers with 2 digits precision that have the sum of 1 we should execute the following command : 
 #### on windows
 ```bash
-java -cp objs; com.lamsade.utils.Utils 4 1 2
+java -cp objs; com.lamsade.utils.GenerateNumbers 4 1 2
 ```
 
 We will have the following result : 
