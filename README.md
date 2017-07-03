@@ -63,12 +63,31 @@ java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.
 ```
 
 # Utils
-Let's say we want to generate random x doubles that will have the sum of 1, you should run the following commands : 
+This class will alow to generate numbers (doubles or integer) that have a target Sum. 
 
+To build the class Utils, you should execute the following command: 
 #### on windows
 ```bash
-javac -d objs examples/Utils.java
-java -cp objs; com.lamsade.utils.Utils 4 2 // Generate 4 numbers with 2 decimal digits 
+javac -d objs examples/Utils.java 
+```
+
+When running the program, you can insert 3 arguments : 
+```java
+int counter; 
+int targetSum;
+int digitsDecimal; // precision digits (leave empty or put 0 if you want only integers)
+```
+
+For example if we want to generate 4 numbers with 0 digits precision that have the sum of 10 we should execute the following command : 
+#### on windows
+```bash
+java -cp objs; com.lamsade.utils.Utils 4 10  
+```
+
+If we want to generate 4 numbers with 2 digits precision that have the sum of 1 we should execute the following command : 
+#### on windows
+```bash
+java -cp objs; com.lamsade.utils.Utils 4 1 2
 ```
 
 # Alternative - Criteria
