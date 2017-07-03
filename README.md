@@ -84,13 +84,17 @@ For example if we want to generate 4 numbers with 0 digits precision that have t
 java -cp objs; com.lamsade.utils.Utils 4 10  
 ```
 
-![Alt text](/docs/images/integers.PNG?raw=true "Optional Title")
+We will have the following result : 
+![Alt text](/docs/images/integers.PNG?raw=true "Example result")
 
 If we want to generate 4 numbers with 2 digits precision that have the sum of 1 we should execute the following command : 
 #### on windows
 ```bash
 java -cp objs; com.lamsade.utils.Utils 4 1 2
 ```
+
+We will have the following result : 
+![Alt text](/docs/images/doubles.PNG?raw=true "Example result")
 
 # Alternative - Criteria
 
