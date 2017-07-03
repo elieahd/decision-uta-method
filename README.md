@@ -11,10 +11,11 @@ Upon decompressing the archive, you will get the following structure:
  |   	`-- Alternative				<- java class representing the Alternative model
  |   	`-- Criteria				<- java class representing the Criteria model
  |   	`-- Main				<- java class for testing the project
+ |   `-- utils             				<- directory containing all utils created
+ |   	`-- GenerateNumbers				<- java class that will generate numbers with a targetSum
  |   `-- examples             			<- directory containing examples made
  |   	`-- ChoiceTransportation		<- java class representing the LP of the Choice of Transportation
  |   	`-- LinearProgramming			<- java class representing a LP example
- |   	`-- Utils				<- java class to generate a list of doubles that have a sum
  |   `-- lib                  			<- directory containing libraries and jar files
  |   `-- objs                 			<- directory containing Java compiled class (*.class)
  |-- docs                     			<- directory containing all of the docs produced
