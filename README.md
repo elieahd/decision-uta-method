@@ -8,13 +8,13 @@ Upon decompressing the archive, you will get the following structure:
 .decision-uta-method
  |-- src                      			<- directory containing Java projects
  |   `-- alternative-criteria			<- directory containing alternative-criteria project
- |   	`-- Alternative					<- java class representing the Alternative model
- |   	`-- Criteria					<- java class representing the Criteria model
- |   	`-- Main						<- java class for testing the project
+ |   	`-- Alternative				<- java class representing the Alternative model
+ |   	`-- Criteria				<- java class representing the Criteria model
+ |   	`-- Main				<- java class for testing the project
  |   `-- examples             			<- directory containing examples made
  |   	`-- ChoiceTransportation		<- java class representing the LinearProgram solution for the Choice of Transportation exercices
  |   	`-- LinearProgramming			<- java class representing a LP example
- |   	`-- Utils						<- java class to generate a list of doubles that have a sum
+ |   	`-- Utils				<- java class to generate a list of doubles that have a sum
  |   `-- lib                  			<- directory containing libraries and jar files
  |   `-- objs                 			<- directory containing Java compiled class (*.class)
  |-- docs                     			<- directory containing all of the docs produced
