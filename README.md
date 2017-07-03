@@ -17,7 +17,6 @@ Upon decompressing the archive, you will get the following structure:
  |   	`-- ChoiceTransportation		<- java class representing the LP of the Choice of Transportation
  |   	`-- LinearProgramming			<- java class representing a LP example
  |   `-- lib                  			<- directory containing libraries and jar files
- |   `-- objs                 			<- directory containing Java compiled class (*.class)
  |-- docs                     			<- directory containing all of the docs produced
  |   `-- reports              			<- directory containing all of the reports made
  |   `-- images               			<- directory containing all of the images used in this repo
@@ -32,6 +31,72 @@ The UTA method is used to solve a multi-criteria problem. It build a utility fun
 
 An improved version of the UTA is the UTASTAR. In UTA we used a single error in UTASTAR we use a double positive error function. The updated version has performed better than the regular method. 
   
+# Utils - Generate Numbers
+This class will alow to generate numbers (doubles or integer) that have a target Sum. 
+
+To build the class Utils, you should execute the following command: 
+#### on windows
+```bash
+javac -d objs utils/GenerateNumbers.java 
+```
+
+When running the program, you can insert 3 arguments : 
+```java
+int counter; // default value : 4 
+int targetSum; // default value : 10
+int digitsDecimal; // precision digits. default value : 0  
+```
+
+For example if we want to generate 4 numbers with 0 digits precision that have the sum of 10, you should execute the following command : 
+#### on windows
+```bash
+java -cp objs; com.lamsade.utils.GenerateNumbers 4 10  
+```
+
+You will have the following result : 
+<p align="center">
+  <img src="/docs/images/integers.PNG?raw=true" alt="Example result"/>
+</p>
+
+<br />
+
+If we want to generate 4 numbers with 2 digits precision that have the sum of 1, you should execute the following command : 
+#### on windows
+```bash
+java -cp objs; com.lamsade.utils.GenerateNumbers 4 1 2
+```
+
+You will have the following result : 
+<p align="center">
+  <img src="/docs/images/doubles.PNG?raw=true" alt="Example result"/>
+</p>
+
+
+# Alternative - Criteria
+
+To build the class Utils, you should execute the following command: 
+#### on windows
+```bash
+javac -d objs alternative-criteria/Alternative.java alternative-criteria/Criteria.java alternative-criteria/Main.java 
+```
+
+When running the program, you can insert 2 arguments : 
+```java
+int numCriteria; // default value : 3 
+int numAlternative; // default value : 10
+```
+
+If we want to generate 4 criterias and 9 alternatives, you should execute the following command : 
+#### on windows
+```bash
+java -cp objs; com.lamsade.alternativecriteria.Main 4 9 
+```
+
+You will have the following result : 
+<p align="center">
+  <img src="/docs/images/alternative-criteria.PNG?raw=true" alt="Alternative criteria result"/>
+</p>
+
 # Examples
 Running the examples will involve compiling them, then running them. 
 
@@ -61,53 +126,4 @@ java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.lamsade.lp.
 ```bash
 javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/ChoiceTransportation.java
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.ChoiceTransportation
-```
-
-# Utils
-This class will alow to generate numbers (doubles or integer) that have a target Sum. 
-
-To build the class Utils, you should execute the following command: 
-#### on windows
-```bash
-javac -d objs utils/GenerateNumbers.java 
-```
-
-When running the program, you can insert 3 arguments : 
-```java
-int counter; // default value : 4 
-int targetSum; // default value : 10
-int digitsDecimal; // precision digits. default value : 0  
-```
-
-For example if we want to generate 4 numbers with 0 digits precision that have the sum of 10 we should execute the following command : 
-#### on windows
-```bash
-java -cp objs; com.lamsade.utils.GenerateNumbers 4 10  
-```
-
-We will have the following result : 
-<p align="center">
-  <img src="/docs/images/integers.PNG?raw=true" alt="Example result"/>
-</p>
-
-<br />
-
-If we want to generate 4 numbers with 2 digits precision that have the sum of 1 we should execute the following command : 
-#### on windows
-```bash
-java -cp objs; com.lamsade.utils.GenerateNumbers 4 1 2
-```
-
-We will have the following result : 
-<p align="center">
-  <img src="/docs/images/doubles.PNG?raw=true" alt="Example result"/>
-</p>
-
-
-# Alternative - Criteria
-
-#### on windows
-```bash
-javac -d objs alternative-criteria/Alternative.java alternative-criteria/Criteria.java alternative-criteria/Main.java 
-java -cp objs; com.lamsade.alternativecriteria.Main 4 10 // Generate 4 criterias and 10 alternatives
 ```

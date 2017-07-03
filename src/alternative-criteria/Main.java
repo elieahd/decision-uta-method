@@ -7,9 +7,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		int numCriteria = Integer.parseInt(args[0]);
-		int numAlternative = Integer.parseInt(args[1]);
-
+		int numCriteria, numAlternative;
+		try{numCriteria = Integer.parseInt(args[0]);}catch(Exception e) {numCriteria = 3;}
+		try{numAlternative = Integer.parseInt(args[1]);}catch(Exception e) {numAlternative = 10;}
+		
 		//Initialize criterias
 		List<Criteria> criterias = new ArrayList<>();
 		for (int i = 0; i < numCriteria; i++){
