@@ -73,6 +73,10 @@ You will have the following result :
 
 
 # Alternative - Criteria
+This a the class diagram of this project : 
+<p align="center">
+  <img src="/docs/images/alternative-criteria class diagram.png?raw=true" alt="Example result"/>
+</p>
 
 To build the class Utils, you should execute the following command: 
 #### on windows
