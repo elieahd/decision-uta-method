@@ -10,7 +10,7 @@ public class GenerateNumbers{
 		int counter, digitsDecimal, targetSum;
 		
 		try{counter = Integer.parseInt(args[0]);}catch(Exception e){counter = 4;}
-		try{targetSum = Integer.parseInt(args[1]);}catch(Exception e){targetSum = 1;}
+		try{targetSum = Integer.parseInt(args[1]);}catch(Exception e){targetSum = 10;}
 		try{digitsDecimal = Integer.parseInt(args[2]);}catch(Exception e){digitsDecimal = 0;}
 		
 		String result = "";

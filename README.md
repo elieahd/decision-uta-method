@@ -73,8 +73,8 @@ javac -d objs utils/GenerateNumbers.java
 
 When running the program, you can insert 3 arguments : 
 ```java
-int counter; 
-int targetSum;
+int counter; // default value : 4 
+int targetSum; // default value : 10
 int digitsDecimal; // precision digits (leave empty or put 0 if you want only integers)
 ```
 
