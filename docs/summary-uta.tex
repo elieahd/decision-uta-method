@@ -10,22 +10,22 @@
 \begin{document}
 \pagenumbering{gobble}
 \maketitle
-\abstract This report contains the summary of the chapter \textbf{UTA Methods} from the Book : Multiple Criteria Decision Analysis. This document was made during my internship at LAMSADE in the summer of 2017.
+\abstract This report contains the summary of the chapter \textbf{UTA Methods} from the Book: Multiple Criteria Decision Analysis. This document was made during my internship at LAMSADE in the summer of 2017.
 \tableofcontents{}
 \pagenumbering{arabic}
 
 \chapter{Introduction}
 In decision theory a basic problem involving several criterias, concerns the way that the final decision should be made. However, this problem is posed in the opposite way: assuming that the decision is given, how is it possible to find the rational basis for the decision being made? Or how is it possible to assess the model leading to exactly the same decision as the actual one or the most "similar" decision.\\
 
-Those steps represent the methodology of decision-making problems : 
+The following steps represent the methodology of decision-making problems: 
 \begin{enumerate}
-\item Object of the decision, definition of the set of potential actions and the determination of a problem statement
-\item Modeling a consistent family of criteria
-\item Defining a global preference model
-\item Decision-aid or decision support
+\item object of the decision, definition of the set of potential actions and the determination of a problem statement
+\item modeling a consistent family of criteria
+\item defining a global preference model
+\item decision-aid or decision support
 \end{enumerate}
 
-\underline{Example : Buying a new car} \\
+\underline{Example: Buying a new car} \\
 
 Let's consider we are trying to figure out which car to buy. Using the methodology represented above, we state that the objective of this problem is \textbf{buying a new car}. After stating the objective, we can list the potential of actions that represent the list of cars that we may buy: 
 \begin{itemize}
@@ -34,13 +34,13 @@ Let's consider we are trying to figure out which car to buy. Using the methodolo
 \item Citroen C4
 \item Peugeot 308 berline
 \end{itemize}
-After listing the list of potential cars, we can define a list of criteria that we will base our decision on. When defining the list of criteria you should always remember that the potential actions should be evaluated by those criterias, so the criteria must be easy to evaluate and should be logical. Let's say we will base our purchase on the following criteria :
+After listing the list of potential cars, we can define a list of criteria that we will base our decision on. When defining the list of criteria you should always remember that the potential actions should be evaluated by those criterias, so the criteria must be easy to evaluate and should be logical. Let's say we will base our purchase on the following criteria:
 \begin{itemize}
 \item price (in Euro)
 \item comfort (0, +, ++, +++) \textit{0 being not comfortable and +++ very comfortable}
 \item safety (1, 2, 3, 4, 5) \textit{1 being not safety and 5 safe}
 \end{itemize}
-During the decision process, we will determinate the global preferences of the potential actions :
+During the decision process, we will determinate the global preferences of the potential actions:
 \begin{enumerate}
 \item Citroen C4
 \item Peugeot 208 GTi
@@ -49,81 +49,77 @@ During the decision process, we will determinate the global preferences of the p
 \end{enumerate}
 Once the global preference is defined, we can start the decision support.\\
 
-In this document, we will study a multi-criteria decision analysis mehtods UTA, a method proposed in 1982 that build a utility function based on the preference of the DM. More precisely we will conduct our research over the new version of UTA : UTASTAR. The method is illustrated on an example.
+In this document, we will study a multi-criteria decision analysis mehtods UTA, a method proposed in 1982 that build a utility function based on the preference of the DM. More precisely we will conduct our research over the new version of UTA: UTASTAR. The method is illustrated on an example.
 
 \chapter{UTA Method}
 One of the multi-criteria decision analysis methods is the UTA method, which was proposed by E. Jacquet-Lagrèze and J. Siskos in 1982. This method is proposed by the Multi-Attribute Utility Theory (MAUT) that build a utility function based on the DM\footnote{Decision Maker} preferences.\\
  
-The UTA method is used to solve a multi-criteria problem by building a utility function based on the preferences of the DM and solving a linear program (LP). It adopt the aggregation-disaggregation principles : where the model is based on a given preferences.\\
+The UTA method is used to solve a multi-criteria problem by building a utility function based on the preferences of the DM and solving a linear program (LP). It adopt the aggregation-disaggregation principles: where the model is based on a given preferences.\\
 
 The UTASTAR has been considered a better algorithm than UTA. Better result were found using the UTASTAR algorithm. So this is why we will focus on this method rather than the UTA method.\\
 
 At the begining of the problem, the DM should present the following information 
 \begin{itemize}
-\item Rank of the actions
-\item Give the criteria he want to base his decision on 
-\item Evaluate the action compared to the criterion
+\item rank of the actions
+\item give the criteria he want to base his decision on 
+\item evaluate the action compared to the criterion
 \end{itemize}
-Once those information are presented, the UTA algorithm can be executed. 
+Once those information are presented, the UTASTAR algorithm can be executed. 
 
 \newpage
 \section{Principles and Notation}
-Let's call $A={a,b,c,...}$ the set of potential actions and $g_1, g_2, g_3, ..., g_n$ the family of criteria. Where $g_i(a)$ represent the evaluation of an action $a$ on the criteria $g_i$. Having the following values : 
-\begin{itemize}
-\item Least prefered criteria : $g_{i*} = min (g_i)$
-\item Most prefered criteria : $g_i^{*} = max (g_i)$ 
-\end{itemize}
-So the interval for each criteria $g_i$ is : $[g_{i*} , g_i^{*}]$.\\
-If we want to evaluate two actions, for example a and b, on only one criteria $g_i$ we have the following relations : 
+Let's call $A={a,b,c,...}$ the set of potential actions and $g_1, g_2, g_3, ..., g_n$ the family of criteria. Where $g_i(a)$ represent the funtion of an action(alternative)$a$ on the criteria $g_i$ with $a \in A_R$. \\
+
+We define $g_{i*}$ as the least preferred criteria: $g_{i*} = min_{a \in A} g_i (a)$ and $g_i^{*}$ as the most preferred criteria: $g_i^{*} = max_{a \in A} g_i (a)$. So the interval for each criteria $g_i$ is: $[g_{i*} , g_i^{*}]$.\\
+
+If we want to evaluate two actions, for example $a$ and $b$, on only one criteria $g_i$ we have the following relations: 
 \begin{equation}
       \begin{cases}
       	a \succ b\Leftrightarrow g_i(a) > g_i(b) \quad preference\\
       	a\sim b \Leftrightarrow g_i(a) = g_i(b) \quad indifference \\
       \end{cases}
 \end{equation}
-The criteria aggregation model in UTA has the following form :
+The criteria aggregation model in UTA has the following form:
 \begin{equation}\label{eq1}
-      u(g) = \sum_{i=1}^{n} u_i (g_i)
+      v(g(a)) = \sum_{i=1}^{n} v_i (g_i (a))
 \end{equation}
 subject to normalization constraints:\\
 \begin{equation}\label{eq2}
       \begin{cases}
-      	\sum_{i=1}^{n} u_i(g_{i}^{*}) = 1\\
-       	u_i(g_{i*})= u_i(g_i^1)  = 0,  \forall i = 1, 2, ..., n\\
+      	\sum_{i=1}^{n} v_i(g_{i}^{*}) = 1\\
+       	v_i(g_{i*})= v_i(g_i^1)  = 0,  \forall i = 1, 2, ..., n\\
       \end{cases}
 \end{equation}
-where $ u_i, i = 1,2,...,n$ are non decreasing real valued function.\\
+where $ v_i, i = 1,2,...,n$ are non decreasing real valued function.\\
 
-In UTASTAR we can write : 
+In UTASTAR we have 
 \begin{equation}
-	u_i(g_i^j) =	  \sum_{t=1}^{j-1} w_{it} \quad \forall i = 1,2,...,n \quad and \quad j = 2,3,...,\alpha _i -1 \\
+	w_{ij} = v_i(g_i^{j+1}) - v_i(g_i^{j}) \geq 0 \quad \forall i \quad j 
 \end{equation}
-with $w_{ij} = u_i(g_i^{j+1}) - u_i(g_i^{j}) \geq 0 \quad \forall i \quad j $ \\
 
-With the evaluation of an action a $g(a) = [g_1(a) ,  g_2(a) , ... , g_n(a)] $, we have the following relation :
+Which will allow us to write: 
+\begin{equation}
+	v_i(g_i^j) =	  \sum_{t=1}^{j-1} w_{it} \quad \forall i = 1,2,...,n \quad and \quad j = 2,3,...,\alpha _i -1 \\
+\end{equation}
+
+With the evaluation of an action a $g(a) = [g_1(a) ,  g_2(a) , ... , g_n(a)] $, we have the following relation:
 \begin{equation}
       \begin{cases}
-      	u[g(a)] > u[g(b)] \Leftrightarrow a \succ b\\
-      	u[g(a)] \sim u[g(b)] \Leftrightarrow a = b\\
+      	v[g(a)] > v[g(b)] \Leftrightarrow a \succ b\\
+      	v[g(a)] \sim v[g(b)] \Leftrightarrow a = b\\
       \end{cases}
 \end{equation}
+
 \newpage
 \section{Development} 
-In UTA we have only one error function $\sigma (a)$ where $\sigma (a) \geq 0$. This error function represent the estimated difference between the utility $u[g(a)]$ and the utility that should be attributed to the action $a$. So the value of each alternative $a \in A_R$ can be written : \\
+The updated version of UTA, UTASTAR, propose a double error function for each action: $\sigma ^{+} (a)$ and $\sigma ^{-} (a)$.  So the value of each alternative $a \in A_R$ can be written: \\
 \begin{equation}
-	u^{'} [g(a)] = \sum_{i=1}^{n} u_i [g_i (a)] + \sigma (a)   \forall a \in A_R
-\end{equation}
-\begin{center}
-\includegraphics{error-function-uta} 
-\end{center}
-The updated version of UTA, UTASTAR, propose a double error function for each action : $\sigma ^{+} (a)$ and $\sigma ^{-} (a)$.  So the value of each alternative $a \in A_R$ can be written : \\
-\begin{equation}
-	u^{'} [g(a)] = \sum_{i=1}^{n} u_i [g_i (a)] - \sigma ^{+} (a)+ \sigma ^{-} (a) \quad  \forall a \in A_R
+	v^{'} [g(a)] = \sum_{i=1}^{n} v_i [g_i (a)] - \sigma ^{+} (a)+ \sigma ^{-} (a) \quad  \forall a \in A_R
 \end{equation}
 \begin{center}
 \includegraphics{error-function-utastar}
 \end{center}
-\newpage
+
 For each criteria, the interval $[g_{i*}, g_i^{*}]$ is cut into $(\alpha _i -1)$ equals interval, and the end points $g_i^{j}$ are given by the formula:
 \begin{equation}
 	g_i^{j}= g_{i*} + \frac{j-1}{\alpha _i -1} (g_i^{*} - g_{i*})  \forall j = 1,2, ..., \alpha _i
@@ -131,16 +127,16 @@ For each criteria, the interval $[g_{i*}, g_i^{*}]$ is cut into $(\alpha _i -1)$
 
 The marginal value of an action $a$ is calculated by a linear interpolation
 \begin{equation}
-	u_i [g_i (a)] = u_i (g_i^{j}) + \frac{g_i (a) - g_i^{j}}{ g_i^{j+1} - g_i^{j}} [u_i (g_i^{j+1}) - u_i (g_i^{j}) ] 
+	v_i [g_i (a)] = v_i (g_i^{j}) + \frac{g_i (a) - g_i^{j}}{ g_i^{j+1} - g_i^{j}} [v_i (g_i^{j+1}) - v_i (g_i^{j}) ] 
 \end{equation}
 
-The set of reference action $ A_R = a_1, a_2, ... , a_m$ is arranged where $a_1$ is the best action and $a_m$ is the worst action. Which indicate that we have two possible situations  :
+The set of reference action $ A_R = a_1, a_2, ... , a_m$ is arranged where $a_1$ is the best action and $a_m$ is the worst action. Which indicate that we have two possible situations:
 \begin{itemize}
 \item $a_k  \succ a_{k+1} \quad $ preference 
 \item $a_k \sim a_{k+1} \quad $ indifference
 \end{itemize} 
 
-So if we have that $\Delta (a_k, a_{k+1} ) = u^{'} [g(a_k)] - u^{'} [g(a_{k+1})]$ and $\delta$ is a small positive number we will obtain the following relations : 
+So if we have that $\Delta (a_k, a_{k+1} ) = v^{'} [g(a_k)] - v^{'} [g(a_{k+1})]$ and $\delta$ is a small positive number we will obtain the following relations: 
 \begin{equation}\label{eq3}
       \begin{cases}
       	\Delta (a_k, a_{k+1} ) \geq \delta\\
@@ -149,7 +145,7 @@ So if we have that $\Delta (a_k, a_{k+1} ) = u^{'} [g(a_k)] - u^{'} [g(a_{k+1})]
 \end{equation}
 The marginal value functions are estimated by means of the Linear Programm with \eqref{eq1}, \eqref{eq2}, \eqref{eq3} as constraints, and an objective function depending on the $ \sigma^{+}$ and $\sigma^{-} $: 
 $$ [min]z = \sum_{k=1}^{m} [ \sigma ^{+} (a_k) + \sigma ^{-} (a_k)]  $$
-subject to : 
+subject to: 
 \begin{equation}\label{eq5}
       \begin{cases}
       	\Delta (a_k, a_{k+1} ) \geq \delta \quad or \quad \Delta (a_k, a_{k+1} ) = 0 \\
@@ -157,171 +153,21 @@ subject to :
        	w_{ij} \geq 0, \quad \sigma^{+}(a_k) \geq 0, \quad \sigma^{-}(a_k) \geq 0, \quad  \forall i, j  and  k\\
       \end{cases}
 \end{equation}
-The analysis found by this LP is a post-optimality analysis. 
 
-\chapter{Examples}
-\section{ Analyzing the choice of transportation}
-\subsection{Problem}
-A DM wants to analyse the choice of transportation. The DM is interstered in the following criteria 
-\begin{enumerate}
-\item price
-\item time (min)
-\item comfort (possibility to have a seat)
-\end{enumerate}\leavevmode
-
-The evaluation of the previous criteria :
-\begin{center}
-\begin{tabular}{ |c|c|c|c|c| } 
-\hline
-Means of transportation & Price & Time & Comfort & Ranking of the DM \\
-\hline
-RER & 3 & 10 & + & 1 \\
-METRO (1) & 4 & 20 & ++ & 2 \\
-METRO (2) & 2 & 20 & 0 & 2 \\
-BUS & 6 & 40 & 0 & 3 \\
-TAXI & 30 & 30 & +++ & 4 \\
-\hline
-\end{tabular}
-\end{center}
-
-DM's preferences : $ RER \succ  Metro1 \approx Metro2  \succ  Bus \succ  Taxi$\\
-\newpage
-\subsection{Solution}
-\subsubsection{Scale for each criteria}
-For each criteria, the interval $[g_i^{*}, g_{i*}]$ is cut into $(\alpha _i -1)$ equal intervals. So in this case we have : 
-\begin{itemize}
-\item Price  $\quad \rightarrow \quad [30, 16, 2]$
-\item Time  $\quad \rightarrow \quad [40, 30, 20, 10]$
-\item Comfort  $\quad \rightarrow \quad [0, +, ++, +++]$
-\end{itemize}
-
-\subsubsection{Marginal value by linear interpolation}
-The marginal value is calculated by a linear interpolation. In this case we have: 
-\begin{itemize}
-\item $u[g(RER)]= 0.07  u_1 (16) + 0.93 u_1(2)  + u_2(10) + u_3(+)$
-\item $u[g(METRO1)]= 0.14  u_1 (16) + 0.86 u_1(2) + u_2(20) + u3(++)$
-\item $u[g(METRO2)]= u_1 (2) + u_2(20) + u3(0) =  u_1 (2) + u_2(20) $
-\item $u[g(BUS)]= 0.29  u_1 (16) + 0.71 u_1(2) + u_2(40) + u3(0) = 0.29  u_1 (16) + 0.71 u_1(2)$
-\item $[u[g(TAXI)]= u_1 (30) + u_2(30) + u3(+++) = u_2(30) + u3(+++)$
-\end{itemize}
-
-\subsubsection{Replace $u_i$ with $w_{ij} $}
-\begin{itemize}
-\item $u[g(RER)]= w_{11} + 0.93 w_{12} + w_{21} + w_{22} + w{23} + w_{31}$
-\item $u[g(METRO1)]=w_{11} + 0.86 w_{12} + w_{21} + w_{22} + w_{31} + w_{32}$
-\item $u[g(METRO2)]= w_{11} + w_{12} + w_{21} + w_{22} $
-\item $u[g(BUS)]= w_{11} + 0.71 w_{12}$
-\item $[u[g(TAXI)]= w_{21} + w_{31} + w_{32} + w_{33}$
-\end{itemize}
-
-\subsubsection{Difference between each pair of consecutive actions}
-\begin{itemize}
-\item $\Delta (RER, METRO1) = 0.07 w_{12} + w_{23} - w_{32} + \sigma_{RER} - \sigma_{METRO1} \geq \delta$
-\item $\Delta (METRO1, METRO2) = -0.14 w_{12} + w_{31} + w_{32} + \sigma_{METRO1}- \sigma_{METRO2} = 0$
-\item $\Delta (METRO2, BUS) = 0.29 w_{12} + w_{21} + w_{22} + \sigma_{METRO2} - \sigma_{BUS} \geq \delta$
-\item $\Delta (BUS, TAXI) = w_{11} + 0.71w_{12} - w_{21} - w_{31} - w_{32} - w_{33} + \sigma_{BUS} - \sigma_{TAXI} \geq \delta$
-\end{itemize}
-
-\subsubsection{Linear Program}
-With $[min]F = \sum_{a \in A_R} \sigma(a) $ as the main objectif, we have the following linear program to solve: 
- 
-\begin{center}
-\begin{tabular}{ |c|c|c|c|c|c|c|c|c|c| } 
-\hline Desc & $w_{11}$ & $w_{12}$ & $w_{21}$ & $w_{22}$  & $w_{23}$ & $w_{31}$ & $w_{32}$ & $w_{33}$ & Result  \\ \hline
-$\Delta (RER, METRO1)\geq \delta$     & 0 & 0.07  & 0  & 0 & 1 & 0  & -1 & 0 & $\geq \delta$\\
-$\Delta (METRO1, METRO2) = 0$         & 0 & -0.14 & 0  & 0 & 0 & 1  & 1  & 0 & $= 0$\\
-$\Delta (METRO2, BUS)\geq \delta$     & 0 & 0.29  & 1  & 1 & 0 & 0  & 0   & 0 & $\geq \delta$\\
-$\Delta (BUS, TAXI) \geq \delta$          & 1 & 0.71  & -1 & 0 & 0 & -1 & -1 & -1 & $\geq \delta$\\
-$\sum_{i=1}^{n} u_i(g_{i}^{*}) = 1$ & 1 & 1       & 1   & 1 & 1 & 1  & 1  & 1 & $= 1$ \\
-\hline
-\end{tabular}
-\end{center}
-
-\section{Analyzing the choice of transportation}
-\subsection{Problem}
-A country is in need of a new location for the placement of a recycling center. The locations has been studied on the following criteria: 
-\begin{itemize}
-\item Technical
-\item Economical activity  
-\item Environmental
-\item Socio-Demographic
-\item Financial
-\end{itemize}
-
-A specialized team has selected 6 possible locations. The following table contains the evaluations of those locations on the previous criterias :
-\begin{center}
-\begin{tabular}{ |c|c|c|c|c|c|c| } 
-\hline
-Location & Technical & Economical activity & Environmental & Socio-Demographic & Financial & Ranking \\
-\hline
-L1 & 3 & 3 & 3 & 1 & 3 & 6 \\
-L2 & 3 & 3 & 3 & 2 & 4 & 4 \\
-L3  & 3 & 4 & 3 & 3 & 3 & 2 \\
-L4 & 2 & 2 & 3 & 2 & 4 & 5 \\
-L5 & 5 & 3 & 4 & 4 & 3 & 1 \\
-L6 & 4 & 1 & 3 & 4 & 4 & 3 \\
-\hline
-\end{tabular}
-\end{center}
-
-DM's preferences : $ L5 \succ L3\succ L6\succ L2 \succ L4 \succ L1$\\
-
-\newpage
-\subsection{Solution}
-\subsubsection{Scale for each criteria}
-For each criteria, the interval $[g_i^{*}, g_{i*}]$ is cut into $(\alpha _i -1)$ equal intervals. So in this case we have : 
-\begin{itemize}
-\item Technical  $\quad \rightarrow \quad [1, 2, 3, 4, 5]$
-\item Economical activity   $\quad \rightarrow \quad [1, 2, 3, 4, 5]$
-\item Environmental  $\quad \rightarrow \quad [1, 2, 3, 4, 5]$
-\item Socio-Demographic  $\quad \rightarrow \quad [1, 2, 3, 4, 5]$
-\item Financial  $\quad \rightarrow \quad [1, 2, 3, 4, 5]$
-\end{itemize}
-
-\subsubsection{Marginal value by linear interpolation}
-The marginal value is calculated by a linear interpolation. In this case we have: 
-\begin{itemize}
-\item $u[g(L1)]= $
-\item $u[g(L2)]= $
-\item $u[g(L3)]= $
-\item $u[g(L4)]= $
-\item $u[g(L5)]= $
-\item $u[g(L6)]= $
-\end{itemize}
-
-\subsubsection{Replace $u_i$ with $w_{ij} $}
-\begin{itemize}
-\item $u[g(L1)]= $
-\item $u[g(L2)]= $
-\item $u[g(L3)]= $
-\item $u[g(L4)]= $
-\item $u[g(L5)]= $
-\item $u[g(L6)]= $
-\end{itemize}
-
-\subsubsection{Difference between each pair of consecutive actions}
-\begin{itemize}
-\item $\Delta (L1, L2) =  \geq \delta$
-\item $\Delta (L2, L3) = \geq \delta$
-\item $\Delta (L3, L4) = \geq \delta$
-\item $\Delta (L4, L5) = \geq \delta$
-\item $\Delta (L5, L6) = \geq \delta$
-\end{itemize}
-
-\subsubsection{Linear Program}
-
+\chapter{Example}
+working on it
 
 \chapter{Conclusion}
 The UTA method build a utility function based on the preferences of the DM and it consist in solving a linear program (LP) to solve a multi-criteria problem.\\
 
 This method will elaborate a model of preferences which is as similiar as possible to the DM's preferences.\\
 
-An improved version of the UTA is the UTASTAR. In UTA we used a single error $\sigma(a)$ in UTASTAR we use a double positive error function. The updated version has performed better than the regular method. 
+An improved version of the UTA is the UTASTAR. In UTA we used a single error $\sigma(a)$ in UTASTAR we use a double positive error function. The updated version has performed better than the regular method.
 
 \begin{thebibliography}{9}
 \bibitem{latexcompanion} Salvatore Greco, Matthias Ehrgott, Jose Rui Figueira \textit{Multiple Criteria Decision Analysis}. State of the Art Surveys, 2004.
 \bibitem{utastar} Siskos, Yannacopoulos \textit{UTASTAR: an ordinal regression method for building additive value functions}
-\bibitem{cahier24} Siskos \textit{Cahier du LAMSADE : Les programmes UTA}, 1979
+\bibitem{cahier24} Siskos \textit{Cahier du LAMSADE: Les programmes UTA}, 1979
 \bibitem{theseAHammami} Abdelkader Hammami, These du grade Philosophiae Doctor PHD de la Faculte des Sciences et de Genie \textit{Modelisation Technico-Economique d'une chaine logistique dans une entreprise reseau}, 2003
 \end{thebibliography}
 
