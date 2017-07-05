@@ -81,7 +81,7 @@ This a the class diagram of this project :
 To build the class Utils, you should execute the following command: 
 #### on windows
 ```bash
-javac -d objs alternative-criteria/Alternative.java alternative-criteria/Criteria.java alternative-criteria/Main.java 
+javac -d objs alternative-criteria/Alternative.java alternative-criteria/Criteria.java alternative-criteria/GenerateNumbers.java alternative-criteria/Main.java 
 ```
 
 When running the program, you can insert 2 arguments : 
