@@ -1,9 +1,5 @@
 package com.lamsade.alternativecriteria;
 
-
-import java.util.List;
-import java.util.Map;
-
 public class Criteria {
 	
 	//Attributes
@@ -12,7 +8,6 @@ public class Criteria {
 	private int minValue, maxValue;
 	private double a, b;// y = ax + b
 	private double w;
-	private double vr;
 	
 	//Constructors
 	public Criteria(){
@@ -52,10 +47,6 @@ public class Criteria {
 		return b;
 	}
 	
-	public double getVr() {
-		return vr;
-	}
-
 	public String getFunction(){
 		return "y = " + a + "x + " + b;
 	}
@@ -72,18 +63,5 @@ public class Criteria {
 		
 		//y = ax + b
 	}
-	
-	public void calculateVr(List<Alternative> alternatives){
-		double sumWp = 0.0;
-		for(Alternative alternative : alternatives){
-			for (Map.Entry<Criteria,Double> entry : alternative.getCriteriaWp().entrySet()) {
-				if(entry.getKey().getId().equals(this.getId())){
-					sumWp += entry.getValue();
-					break;
-				}
-			}
-		}
-		this.vr = sumWp;
-	}
-		
+			
 }

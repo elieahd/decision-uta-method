@@ -12,6 +12,7 @@ public class Alternative {
 	private static int counter = 0;
 	private Map<Criteria, Integer> criteriaEvaluation;
 	private Map<Criteria, Double> criteriaWp;
+	private double vr;
 
 	//Constructors
 	public Alternative(List<Criteria> criterias){
@@ -30,9 +31,13 @@ public class Alternative {
 	public Map<Criteria, Integer> getCriteriaEvaluation() {
 		return criteriaEvaluation;
 	}
-	
+
 	public Map<Criteria, Double> getCriteriaWp() {
 		return criteriaWp;
+	}
+
+	public double getVr() {
+		return vr;
 	}
 
 	//Methods
@@ -43,7 +48,6 @@ public class Alternative {
 		}
 	}
 
-	
 	public void calculateWp(List<Criteria> criterias) {
 		this.criteriaWp = new HashMap<>();
 		for(Criteria criteria : criterias){
@@ -51,5 +55,13 @@ public class Alternative {
 			this.criteriaWp.put(criteria,wp);
 		}
 	}
-	
+
+	public void calculateVr(){
+		double sumWp = 0.0;
+		for (Map.Entry<Criteria,Double> entry : criteriaWp.entrySet()) {
+			sumWp += entry.getValue();
+		}
+		this.vr = sumWp;
+	}
+
 }
