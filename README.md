@@ -3,6 +3,7 @@ A repository containing the work done during my research about UTA method (Inter
 > Work in progress 
 
 Upon decompressing the archive, you will get the following structure:
+```
 .decision-uta-method
 ├── src 							<- directory containing Java projects
 │   ├── alternative-criteria		<- directory containing alternative-criteria project
@@ -18,6 +19,7 @@ Upon decompressing the archive, you will get the following structure:
 │   └── exercices                	<- directory containing exercices made
 ├── .gitignore 						<- ignoring file
 └── README 							<- this file
+```
 
 # UTA
 The UTA method is used to solve a multi-criteria problem. It build a utility function based on the preferences of the DM and it consist in solving a linear program (LP).
