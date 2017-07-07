@@ -75,10 +75,10 @@ You will have the following result :
 # Alternative - Criteria
 This a the class diagram of this project : 
 <p align="center">
-  <img src="/docs/images/alternative-criteria class diagram.png?raw=true" alt="Example result"/>
+  <img src="/docs/images/alternative-criteria class diagram.png?raw=true" alt="Alternative Criteria Class Diagram"/>
 </p>
 
-To build the class Utils, you should execute the following command: 
+To build the class of this program, you should execute the following command: 
 #### on windows
 ```bash
 javac -d objs alternative-criteria/Alternative.java alternative-criteria/Criteria.java alternative-criteria/GenerateNumbers.java alternative-criteria/Main.java 
@@ -101,7 +101,7 @@ You will have the following result :
   <img src="/docs/images/alternative-criteria.PNG?raw=true" alt="Alternative criteria result"/>
 </p>
 
-# Examples
+# Examples of a simple Linear Program
 Running the examples will involve compiling them, then running them. 
 
 For the LinearProgramming example, you should run the following commands : 
@@ -118,6 +118,7 @@ javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/LinearPro
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.LinearProgramming
 ```
 
+# Examples of the Linear Program of the Choice of Tranportation UTA
 For the ChoiceTransportation exercice, you should run the following commands : 
 
 #### on unix
