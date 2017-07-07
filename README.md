@@ -89,7 +89,7 @@ int numCriteria; // default value : 3
 int numAlternative; // default value : 10
 ```
 
-If we want to generate 4 criterias and 9 alternatives, you should execute the following command : 
+If we want to generate 3 criterias and 4 alternatives, you should execute the following command : 
 #### on windows
 ```bash
 java -cp objs; com.lamsade.alternativecriteria.Main 3 4 

@@ -50,16 +50,11 @@ public class Alternative {
 
 	public void calculateWp(List<Criteria> criterias) {
 		this.criteriaWp = new HashMap<>();
+		double sumWp = 0.0;
 		for(Criteria criteria : criterias){
 			double wp = criteria.getA() * this.criteriaEvaluation.get(criteria) + criteria.getB();
 			this.criteriaWp.put(criteria,wp);
-		}
-	}
-
-	public void calculateVr(){
-		double sumWp = 0.0;
-		for (Map.Entry<Criteria,Double> entry : criteriaWp.entrySet()) {
-			sumWp += entry.getValue();
+			sumWp += wp;
 		}
 		this.vr = sumWp;
 	}
