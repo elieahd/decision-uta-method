@@ -1,7 +1,7 @@
 # decision-uta-method
 A repository containing the work done during my research about UTA method (Internship at LAMSADE - Dauphine).
 
-###### N.B. Work in progress.
+###### Work in progress.
 
 Upon decompressing the archive, you will get the following structure:
 ```
@@ -81,7 +81,10 @@ This a the class diagram of this project :
 To build the class of this program, you should execute the following command: 
 #### on windows
 ```bash
-javac -d objs alternative-criteria/Alternative.java alternative-criteria/Criteria.java alternative-criteria/GenerateNumbers.java alternative-criteria/Main.java 
+javac -d objs alternative-criteria/Alternative.java
+javac -d objs alternative-criteria/Criteria.java
+javac -d objs alternative-criteria/GenerateNumbers.java
+javac -d objs alternative-criteria/Main.java    
 ```
 
 When running the program, you can insert 2 arguments : 
@@ -118,7 +121,7 @@ javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/LinearPro
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.LinearProgramming
 ```
 
-# Examples of the Linear Program of the Choice of Tranportation UTA
+# Examples of the Linear Program for the Choice of Tranportation exercice [UTA]
 For the ChoiceTransportation exercice, you should run the following commands : 
 
 #### on unix
