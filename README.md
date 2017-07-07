@@ -5,11 +5,11 @@ A repository containing the work done during my research about UTA method (Inter
 Upon decompressing the archive, you will get the following structure:
 ```
 .decision-uta-method
-├── src 							<- directory containing Java projects
-│   ├── alternative-criteria		<- directory containing alternative-criteria project
-│   ├── examples 					<- directory containing all of the examples made
-│   ├── lib 						<- directory containing libraries and jar files
-│   └── utils 						<- directory containing all utils created
+├── src                             <- directory containing Java projects
+│   ├── alternative-criteria        <- directory containing alternative-criteria project
+│   ├── examples                    <- directory containing all of the examples made
+│   ├── lib                         <- directory containing libraries and jar files
+│   └── utils                       <- directory containing all utils created
 ├── docs 							<- directory containing all of the docs produced
 │   ├── images 						<- directory containing all of the images used in this repo
 │   ├── litterature					<- directory containing all of the literatures found
