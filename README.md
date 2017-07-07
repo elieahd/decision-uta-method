@@ -100,8 +100,8 @@ You will have the following result :
   <img src="/docs/images/alternative-criteria.PNG?raw=true" alt="Alternative criteria result"/>
 </p>
 
-# Examples of a simple Linear Program
-An example of LP problem: 
+# Example of a java class that will solve a Linear Program
+An example of a LP problem: 
 <p align="center">
   <img src="/docs/images/example-lp.PNG?raw=true" alt="Alternative criteria result"/>
 </p>
@@ -125,7 +125,7 @@ You will have the following result :
   <img src="/docs/images/example-result-lp.PNG?raw=true" alt="LP result"/>
 </p>
 
-# Examples of the Linear Program for the Choice of Tranportation exercice [UTA]
+# Linear Program for the Choice of Tranportation exercice [UTA]
 For the ChoiceTransportation exercice, you should run the following commands : 
 
 #### on unix
@@ -139,3 +139,9 @@ java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.lamsade.lp.
 javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/ChoiceTransportation.java
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.ChoiceTransportation
 ```
+
+Once you run the program, you will have the following result : 
+<p align="center">
+  <img src="/docs/images/example_choicetransportation_lp-result.PNG?raw=true" alt="LP result"/>
+</p>
+
