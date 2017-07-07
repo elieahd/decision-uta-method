@@ -47,7 +47,7 @@ int targetSum; // default value : 10
 int digitsDecimal; // precision digits. default value : 0  
 ```
 
-For example if we want to generate 4 numbers with 0 digits precision that have the sum of 10, you should execute the following command : 
+For example, let's generate 4 numbers with 0 digits precision that have the sum of 10: 
 #### on windows
 ```bash
 java -cp objs; com.lamsade.utils.GenerateNumbers 4 10  
@@ -60,7 +60,7 @@ You will have the following result :
 
 <br />
 
-If we want to generate 4 numbers with 2 digits precision that have the sum of 1, you should execute the following command : 
+Let's say you want to generate 4 numbers with 2 digits precision that have the sum of 1, you should execute the following command : 
 #### on windows
 ```bash
 java -cp objs; com.lamsade.utils.GenerateNumbers 4 1 2
