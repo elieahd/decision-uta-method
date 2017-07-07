@@ -3,27 +3,21 @@ A repository containing the work done during my research about UTA method (Inter
 > Work in progress 
 
 Upon decompressing the archive, you will get the following structure:
-```
 .decision-uta-method
- |-- src                      			<- directory containing Java projects
- |   `-- alternative-criteria			<- directory containing alternative-criteria project
- |   	`-- Alternative				<- java class representing the Alternative model
- |   	`-- Criteria				<- java class representing the Criteria model
- |   	`-- Main				<- java class for testing the project
- |   `-- utils             			<- directory containing all utils created
- |   	`-- GenerateNumbers			<- java class that will generate numbers with a targetSum
- |   `-- examples             			<- directory containing examples made
- |   	`-- ChoiceTransportation		<- java class representing the LP of the Choice of Transportation
- |   	`-- LinearProgramming			<- java class representing a LP example
- |   `-- lib                  			<- directory containing libraries and jar files
- |-- docs                     			<- directory containing all of the docs produced
- |   `-- reports              			<- directory containing all of the reports made
- |   `-- images               			<- directory containing all of the images used in this repo
- |   `-- summary-uta.pdf      			<- pdf file explaining the UTA method created in LaTeX
- |   `-- summary-uta.tex      			<- LaTeX file that generated the summary-uta.pdf file 
- |-- .gitignore               			<- ignoring file
- |-- README                   			<- this file
-```
+├── src 							<- directory containing Java projects
+│   ├── alternative-criteria		<- directory containing alternative-criteria project
+│   ├── examples 					<- directory containing all of the examples made
+│   ├── lib 						<- directory containing libraries and jar files
+│   └── utils 						<- directory containing all utils created
+├── docs 							<- directory containing all of the docs produced
+│   ├── images 						<- directory containing all of the images used in this repo
+│   ├── litterature					<- directory containing all of the literatures found
+│   ├── reports						<- directory containing all of the reports made
+│   ├── summary-uta.pdf 			<- pdf file explaining the UTA method created in LaTeX
+│   ├── summary-uta.tex 			<- LaTeX file that generated the summary-uta.pdf file
+│   └── exercices                	<- directory containing exercices made
+├── .gitignore 						<- ignoring file
+└── README 							<- this file
 
 # UTA
 The UTA method is used to solve a multi-criteria problem. It build a utility function based on the preferences of the DM and it consist in solving a linear program (LP).
