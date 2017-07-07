@@ -1,7 +1,6 @@
 # decision-uta-method
 A repository containing the work done during my research about UTA method (Internship at LAMSADE - Dauphine).
-
-###### Work in progress.
+> Work in progress 
 
 Upon decompressing the archive, you will get the following structure:
 ```
