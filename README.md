@@ -120,6 +120,11 @@ javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/LinearPro
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.LinearProgramming
 ```
 
+You will have the following result : 
+<p align="center">
+  <img src="/docs/images/example-result-lp.PNG?raw=true" alt="LP result"/>
+</p>
+
 # Examples of the Linear Program for the Choice of Tranportation exercice [UTA]
 For the ChoiceTransportation exercice, you should run the following commands : 
 
