@@ -101,9 +101,12 @@ You will have the following result :
 </p>
 
 # Examples of a simple Linear Program
-Running the examples will involve compiling them, then running them. 
+An example of LP problem: 
+<p align="center">
+  <img src="/docs/images/example-lp.PNG?raw=true" alt="Alternative criteria result"/>
+</p>
 
-For the LinearProgramming example, you should run the following commands : 
+Running the examples will involve compiling them, then running them. 
 
 #### on unix
 ```bash
