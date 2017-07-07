@@ -1,4 +1,5 @@
 package com.lamsade.alternativecriteria;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		int numCriteria, numAlternative;
-		try{numCriteria = Integer.parseInt(args[0]);}catch(Exception e) {numCriteria = 2;}
+		try{numCriteria = Integer.parseInt(args[0]);}catch(Exception e) {numCriteria = 5;}
 		try{numAlternative = Integer.parseInt(args[1]);}catch(Exception e) {numAlternative = 3;}
 
 		//Initialize criterias
@@ -28,18 +29,14 @@ public class Main {
 			criterias.get(i).setW(randomDoubles.get(i));
 		}
 		
-		//Calculate Wpartial for each alternative
+		//Calculate Wpartial and V^R for each alternative
 		for(Alternative alternative : alternatives){
 			alternative.calculateWp(criterias);
-		}
-		
-		//Calculate V^R
-		for(Alternative alternative : alternatives){
-			alternative.calculateVr();
 		}
 
 		//Display
 		display(alternatives, criterias);
+		
 	}
 
 	private static void display(List<Alternative> alternatives, List<Criteria> criterias) {
@@ -84,11 +81,11 @@ public class Main {
 			System.out.println();
 		}
 		
-		System.out.println();
 		System.out.println("Calculating the V^R for each alternative");
 		for(Alternative  alternative : alternatives){
 			System.out.println(alternative.getId() + "'s V^R = " + alternative.getVr());
 		}
+		
 	}
 	
 }

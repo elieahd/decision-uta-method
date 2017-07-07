@@ -71,7 +71,6 @@ You will have the following result :
   <img src="/docs/images/doubles.PNG?raw=true" alt="Example result"/>
 </p>
 
-
 # Alternative - Criteria
 This a the class diagram of this project : 
 <p align="center">
@@ -81,10 +80,7 @@ This a the class diagram of this project :
 To build the class of this program, you should execute the following command: 
 #### on windows
 ```bash
-javac -d objs alternative-criteria/Alternative.java
-javac -d objs alternative-criteria/Criteria.java
-javac -d objs alternative-criteria/GenerateNumbers.java
-javac -d objs alternative-criteria/Main.java    
+javac -d objs alternative-criteria/Alternative.java alternative-criteria/Criteria.java alternative-criteria/GenerateNumbers.java alternative-criteria/Main.java    
 ```
 
 When running the program, you can insert 2 arguments : 
@@ -96,7 +92,7 @@ int numAlternative; // default value : 10
 If we want to generate 4 criterias and 9 alternatives, you should execute the following command : 
 #### on windows
 ```bash
-java -cp objs; com.lamsade.alternativecriteria.Main 4 9 
+java -cp objs; com.lamsade.alternativecriteria.Main 3 4 
 ```
 
 You will have the following result : 
