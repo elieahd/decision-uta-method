@@ -56,7 +56,9 @@ One of the multi-criteria decision analysis methods is the UTA method, which was
  
 The UTA method is used to solve a multi-criteria problem by building a utility function based on the preferences of the DM and solving a linear program (LP). It adopt the aggregation-disaggregation principles: where the model is based on a given preferences.\\
 
-The UTASTAR has been considered a better algorithm than UTA. Better result were found using the UTASTAR algorithm. So this is why we will focus on this method rather than the UTA method.\\
+The UTASTAR, a variant of the UTA method, has been considered a better algorithm than UTA. Better result were found using the UTASTAR algorithm. So this is why we will focus on this method rather than the UTA method.\\
+
+The aim of the UTASTAR method is to estimate a set of additive utility functions which are as consistent as possible with the decision maker's preferences.\\
 
 At the begining of the problem, the DM should present the following information 
 \begin{itemize}
@@ -79,7 +81,7 @@ If we want to evaluate two actions, for example $a$ and $b$, on only one criteri
       	a\sim b \Leftrightarrow g_i(a) = g_i(b) \quad indifference \\
       \end{cases}
 \end{equation}
-The criteria aggregation model in UTA has the following form:
+The criteria aggregation model in UTASTAR has the following form:
 \begin{equation}\label{eq1}
       v(g(a)) = \sum_{i=1}^{n} v_i (g_i (a))
 \end{equation}
@@ -155,7 +157,72 @@ subject to:
 \end{equation}
 
 \chapter{Example}
-working on it
+The implementation of UTASTAR algorithm is illustrated by the example from the Introduction chapter : \textbf{buying a new car}.\\ The DM is interested only int eh following criteria:
+\begin{itemize}
+\item price (in Euro)
+\item comfort ($0$, +, ++, +++) \textit{0 being not comfortable and +++ very comfortable}
+\item safety ($1, 2, 3, 4, 5$) \textit{1 being not safety and 5 safe}
+\end{itemize}
+The evaluation of the previous criteria is presented in the following table: 
+\begin{center}
+ \begin{tabular}{|c | c c c c|} 
+ \hline
+ Cars & Price & Comfort & Safety & Ranking of the DM \\ [0.5ex] 
+ \hline
+ Citroen C4 (c4) & 15\,000& ++ & 2 & 1\\ 
+ \hline
+ Peugeot 208 GT (p208) & 25\,000 & + & 3 & 2\\
+ \hline
+ Peugeot 308 berline (p308)& 18\,500 & 0 & 3 & 3\\
+ \hline
+ Nissan Sentra (ns) & 17\,000 & +++ & 4 & 4 \\ 
+ \hline
+\end{tabular}
+\end{center}
+First of all, we should specify the scale \footnote{the interval $[g_{i*}, g_{i}^{*}]$ is cut into equal intervals} for each criteria.
+\begin{itemize}
+\item Price $\quad \Rightarrow \quad [g_{1*}, g_{1}^{*}] = [25\,000, 20\,000, 15\,000]$
+\item Comfort $\quad \Rightarrow \quad [g_{2*}, g_{2}^{*}] = [0, +, ++, +++]$
+\item Safety $\quad \Rightarrow \quad [g_{3*}, g_{3}^{*}] = [1, 3, 5]$
+\end{itemize}
+According to this formula: $v(g(a)) = \sum_{i=1}^{n} v_i (g_i (a))$ , the value of each alternative may be written: 
+\begin{itemize}
+\item $v(g(c4)) = v_1(15\,000) + v_2(++) + 0.5 v_3(1) + 0.5v_3(3) = v_1(15\,000) + v_2(++) + 0.5v_3(3)$
+\item $v(g(p208)) = v_1(25\,000) + v_2(+) + v_3(3) = v_2(+) + v_3(3) $
+\item $v(g(p308)) = 0.3v_1(15\,000) +  0.7v_1(20\,000) + v_2(0) + v_3(3) = 0.3v_1(15\,000) +  0.7v_1(20\,000) + v_3(3)$
+\item $v(g(ns)) =  0.4v_1(15\,000) +  0.6v_1(20\,000) + v_2(+++) + 0.5v_3(3) + 0.5v_3(5)  $
+\end{itemize}
+We have that $v_1(25\,000) = v_2(0) = v_3(1) = 0$. \\
+Since the marginal value $u_i(g_i)$ can be expressed in terms of variables $w_{ij}$: $u_i(g_i^{j}) = \sum _{t=1}^{j-1} w_{it}$ , the value of each alternatie can be written: 
+\begin{itemize}
+\item $v(g(c4)) = w_{11} + w_{12} + w_{21} + w_{22} + 0.5w_{31}$
+\item $v(g(p208)) = w_{21} + w_{31} $
+\item $v(g(p308)) = w_{11} + 0.3w_{12} + w_{31}$
+\item $v(g(ns)) = w_{11} + 0.4w_{12} + w_{21} + w_{22} + w_{23} + w_{31} + 0.5w_{32}$
+\end{itemize}
+For each pair of consecutive alternatives, we express the difference between them: 
+\begin{itemize}
+\item $\Delta (c4, p208) = w_{11} + w_{12} + w_{22} - 0.5w_{31} -\sigma _{c4}^{+} +\sigma _{c4}^{-} +\sigma _{p208}^{+} - \sigma _{p208}^{-} $
+\item $\Delta (p208, p308) =w_{21} - w_{11} - 0.3w_{12} -\sigma _{p208}^{+} +\sigma _{p208}^{-} +\sigma _{p308}^{+} - \sigma _{p308}^{-} $
+\item $\Delta (p308, ns) = - 0.1w_{12} - w_{21} - w_{22} - w_{23} - 0.5w_{32} -\sigma _{p308}^{+} +\sigma _{p308}^{-} +\sigma _{ns}^{+} - \sigma _{ns}^{-} $
+\end{itemize}
+Having $\delta = 0.05$, we can solve the following LP:\\
+
+Objective:  
+\begin{equation}
+	Minimize \quad \sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-}
+\end{equation}
+
+Subject to: \\
+\begin{equation}
+	\begin{cases}
+		w_{11} + w_{12} + w_{22} - 0.5w_{31} -\sigma _{c4}^{+} +\sigma _{c4}^{-} +\sigma _{p208}^{+} - \sigma _{p208}^{-}  \geq 0.05\\
+		w_{21} - w_{11} - 0.3w_{12} -\sigma _{p208}^{+} +\sigma _{p208}^{-} +\sigma _{p308}^{+} - \sigma _{p308}^{-}  \geq 0.05 \\
+		- 0.1w_{12} - w_{21} - w_{22} - w_{23} - 0.5w_{32} -\sigma _{p308}^{+} +\sigma _{p308}^{-} +\sigma _{ns}^{+} - \sigma _{ns}^{-}  \geq 0.05 \\
+		w_{11} + w_{12} + w_{21} + w_{22} + w_{23} + w_{31} + w_{32} = 1
+	\end{cases}
+\end{equation}
+An optimal solution is $w_{12} = 0.318$, $w_{21} = 0.146$, $w_{31} = 0.536$ with $\sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} = 0.227$ with $\sigma _{ns}^{+} = 0.227$.\\
 
 \chapter{Conclusion}
 The UTA method build a utility function based on the preferences of the DM and it consist in solving a linear program (LP) to solve a multi-criteria problem.\\
@@ -165,10 +232,15 @@ This method will elaborate a model of preferences which is as similiar as possib
 An improved version of the UTA is the UTASTAR. In UTA we used a single error $\sigma(a)$ in UTASTAR we use a double positive error function. The updated version has performed better than the regular method.
 
 \begin{thebibliography}{9}
-\bibitem{latexcompanion} Salvatore Greco, Matthias Ehrgott, Jose Rui Figueira \textit{Multiple Criteria Decision Analysis}. State of the Art Surveys, 2004.
-\bibitem{utastar} Siskos, Yannacopoulos \textit{UTASTAR: an ordinal regression method for building additive value functions}
-\bibitem{cahier24} Siskos \textit{Cahier du LAMSADE: Les programmes UTA}, 1979
-\bibitem{theseAHammami} Abdelkader Hammami, These du grade Philosophiae Doctor PHD de la Faculte des Sciences et de Genie \textit{Modelisation Technico-Economique d'une chaine logistique dans une entreprise reseau}, 2003
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibitem{multiple-criteria-decision-analysis} GRECO S., EHRGOTT M., RUI FIGUEIRA J., 2004, \textit{Multiple Criteria Decision Analysis}
+\bibitem{cahier-lamsade-24} SISKOS J., 1979, \textit{Cahier du LAMSADE n24 : Les programmes UTA}
+\bibitem{cahier-lamsade-49} SISKOS J., YANNACOPOULOS D., 1982, \textit{Cahier du LAMSADE n49 : Amélioration de la méthode UTA par introduction d’une double fonction d’erreurs}
+\bibitem{these-hammami} HAMMAMI A., 2003, \textit{Thèse : Modélisation technico-économique d’une chaîne logistique dans une entreprise reseau}
+\bibitem{study-stock-ranking} LUO H., SUN Z., 2014, \textit{A study on Stock Ranking and Selection Strategy Based on UTA Method under the Condition of Inconsistence}
+\bibitem{multicriteria-decision-aid-methodology} ZOPOUNIDIS C., DOUMPOS M., 1997, \textit{A multicriteria decision aid methodology for the assessment of country risk}
+\bibitem{development-utastar-method-fuzzy} EHSANIFAR M., ESHLAGHI A., KERAMATI M., NAZEMI J., 2013, \textit{The Development of UTASTAR Method in Fuzzy Environment for Supplier Selection}
+\bibitem{application-methode-uta} SISKOS J., 1983, \textit{Application de la méthode UTA à un problème de sélection de points de vente mettant en jeu des critères multiples}
 \end{thebibliography}
 
 \end{document}
