@@ -135,7 +135,7 @@ Once you run the program, you will have the following result :
 </p>
 
 # Linear Program for the exercice Buying New Car [UTA]
-For the ChoiceTransportation exercice, you should run the following commands : 
+For the exercice Buying New Car, you should run the following commands : 
 
 #### on windows
 ```bash
