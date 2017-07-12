@@ -120,14 +120,8 @@ You will have the following result :
   <img src="/docs/images/example-result-lp.PNG?raw=true" alt="LP result"/>
 </p>
 
-# Linear Program for the Choice of Tranportation exercice [UTA]
+# Linear Program for the exercice Choice of Tranportation [UTA]
 For the ChoiceTransportation exercice, you should run the following commands : 
-
-#### on unix
-```bash
-javac -d objs -cp lib/com.google.ortools.jar:lib/protobuf.jar examples/ChoiceTransportation.java
-java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.lamsade.lp.ChoiceTransportation
-```
 
 #### on windows
 ```bash
@@ -140,3 +134,16 @@ Once you run the program, you will have the following result :
   <img src="/docs/images/example_choicetransportation_lp-result.PNG?raw=true" alt="LP result"/>
 </p>
 
+# Linear Program for the exercice Buying New Car [UTA]
+For the ChoiceTransportation exercice, you should run the following commands : 
+
+#### on windows
+```bash
+javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/BuyingNewCar.java
+java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.BuyingNewCar
+```
+
+Once you run the program, you will have the following result : 
+<p align="center">
+  <img src="/docs/images/example_buyingnewcar_lp-result.PNG?raw=true" alt="LP result"/>
+</p>

@@ -9,8 +9,49 @@
 
 \begin{document}
 \pagenumbering{gobble}
-\maketitle
-\abstract This report contains the summary of the chapter \textbf{UTA Methods} from the Book: Multiple Criteria Decision Analysis. This document was made during my internship at LAMSADE in the summer of 2017.
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\center
+
+\textsc{\LARGE LAMSADE}\\[1.5cm] 
+\textsc{\Large M1 MIAGE}\\[0.5cm]
+\textsc{\large Internship}\\[0.5cm] 
+
+\HRule \\[0.4cm]
+{ \huge \bfseries UTA Method} 
+\HRule \\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Student:}\\
+Elie \textsc{Abi Hanna Daher}
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+Olivier \textsc{Cailloux} \\
+\end{flushright}
+\end{minipage}\\[2cm]
+
+{\large \today}\\[2cm]
+
+\begin{figure}[h]
+\makebox[\textwidth]{
+\includegraphics[width=0.40\textwidth]{dauphine.png}
+\hfill    
+\includegraphics[width=0.40\textwidth]{lamsade.png}
+}\\[0.5cm]
+\end{figure}
+
+\vfill
+
+\end{titlepage}
+
+\abstract This report contains a summary about the variant of the UTA Method, UTASTAR. This document was made during my internship at LAMSADE in the summer of 2017.
 \tableofcontents{}
 \pagenumbering{arabic}
 
@@ -157,7 +198,7 @@ subject to:
 \end{equation}
 
 \chapter{Example}
-The implementation of UTASTAR algorithm is illustrated by the example from the Introduction chapter : \textbf{buying a new car}.\\ The DM is interested only int eh following criteria:
+The implementation of UTASTAR algorithm is illustrated by the example from the Introduction chapter : \textbf{buying a new car}.\\ The DM is interested only in the following criteria:
 \begin{itemize}
 \item price (in Euro)
 \item comfort ($0$, +, ++, +++) \textit{0 being not comfortable and +++ very comfortable}
@@ -169,13 +210,13 @@ The evaluation of the previous criteria is presented in the following table:
  \hline
  Cars & Price & Comfort & Safety & Ranking of the DM \\ [0.5ex] 
  \hline
- Citroen C4 (c4) & 15\,000& ++ & 2 & 1\\ 
+ Nissan Sentra (ns) & 17\,000 & +++ & 4 & 1 \\ 
  \hline
- Peugeot 208 GT (p208) & 25\,000 & + & 3 & 2\\
+ Citroen C4 (c4) & 15\,000& ++ & 2 & 2\\ 
  \hline
- Peugeot 308 berline (p308)& 18\,500 & 0 & 3 & 3\\
+ Peugeot 208 GT (p208) & 25\,000 & + & 3 & 3\\
  \hline
- Nissan Sentra (ns) & 17\,000 & +++ & 4 & 4 \\ 
+ Peugeot 308 berline (p308)& 18\,500 & 0 & 3 & 4\\
  \hline
 \end{tabular}
 \end{center}
@@ -187,24 +228,24 @@ First of all, we should specify the scale \footnote{the interval $[g_{i*}, g_{i}
 \end{itemize}
 According to this formula: $v(g(a)) = \sum_{i=1}^{n} v_i (g_i (a))$ , the value of each alternative may be written: 
 \begin{itemize}
+\item $v(g(ns)) =  0.4v_1(15\,000) +  0.6v_1(20\,000) + v_2(+++) + 0.5v_3(3) + 0.5v_3(5)  $
 \item $v(g(c4)) = v_1(15\,000) + v_2(++) + 0.5 v_3(1) + 0.5v_3(3) = v_1(15\,000) + v_2(++) + 0.5v_3(3)$
 \item $v(g(p208)) = v_1(25\,000) + v_2(+) + v_3(3) = v_2(+) + v_3(3) $
 \item $v(g(p308)) = 0.3v_1(15\,000) +  0.7v_1(20\,000) + v_2(0) + v_3(3) = 0.3v_1(15\,000) +  0.7v_1(20\,000) + v_3(3)$
-\item $v(g(ns)) =  0.4v_1(15\,000) +  0.6v_1(20\,000) + v_2(+++) + 0.5v_3(3) + 0.5v_3(5)  $
 \end{itemize}
 We have that $v_1(25\,000) = v_2(0) = v_3(1) = 0$. \\
 Since the marginal value $u_i(g_i)$ can be expressed in terms of variables $w_{ij}$: $u_i(g_i^{j}) = \sum _{t=1}^{j-1} w_{it}$ , the value of each alternatie can be written: 
 \begin{itemize}
+\item $v(g(ns)) = w_{11} + 0.4w_{12} + w_{21} + w_{22} + w_{23} + w_{31} + 0.5w_{32}$
 \item $v(g(c4)) = w_{11} + w_{12} + w_{21} + w_{22} + 0.5w_{31}$
 \item $v(g(p208)) = w_{21} + w_{31} $
 \item $v(g(p308)) = w_{11} + 0.3w_{12} + w_{31}$
-\item $v(g(ns)) = w_{11} + 0.4w_{12} + w_{21} + w_{22} + w_{23} + w_{31} + 0.5w_{32}$
 \end{itemize}
 For each pair of consecutive alternatives, we express the difference between them: 
 \begin{itemize}
+\item $\Delta (ns,c4) =  -0.6w_{12} + w_{23} + 0.5w_{31} +  0.5w_{32}  -\sigma _{ns}^{+} +\sigma _{ns}^{-} +\sigma _{c4}^{+} - \sigma _{c4}^{-} $
 \item $\Delta (c4, p208) = w_{11} + w_{12} + w_{22} - 0.5w_{31} -\sigma _{c4}^{+} +\sigma _{c4}^{-} +\sigma _{p208}^{+} - \sigma _{p208}^{-} $
 \item $\Delta (p208, p308) =w_{21} - w_{11} - 0.3w_{12} -\sigma _{p208}^{+} +\sigma _{p208}^{-} +\sigma _{p308}^{+} - \sigma _{p308}^{-} $
-\item $\Delta (p308, ns) = - 0.1w_{12} - w_{21} - w_{22} - w_{23} - 0.5w_{32} -\sigma _{p308}^{+} +\sigma _{p308}^{-} +\sigma _{ns}^{+} - \sigma _{ns}^{-} $
 \end{itemize}
 Having $\delta = 0.05$, we can solve the following LP:\\
 
@@ -216,14 +257,20 @@ Objective:
 Subject to: \\
 \begin{equation}
 	\begin{cases}
-		w_{11} + w_{12} + w_{22} - 0.5w_{31} -\sigma _{c4}^{+} +\sigma _{c4}^{-} +\sigma _{p208}^{+} - \sigma _{p208}^{-}  \geq 0.05\\
+		 -0.6w_{12} + w_{23} + 0.5w_{31} + 0.5w_{32}  -\sigma _{ns}^{+} +\sigma _{ns}^{-} +\sigma _{c4}^{+} - \sigma _{c4}^{-}   \geq 0.05\\
 		w_{21} - w_{11} - 0.3w_{12} -\sigma _{p208}^{+} +\sigma _{p208}^{-} +\sigma _{p308}^{+} - \sigma _{p308}^{-}  \geq 0.05 \\
 		- 0.1w_{12} - w_{21} - w_{22} - w_{23} - 0.5w_{32} -\sigma _{p308}^{+} +\sigma _{p308}^{-} +\sigma _{ns}^{+} - \sigma _{ns}^{-}  \geq 0.05 \\
 		w_{11} + w_{12} + w_{21} + w_{22} + w_{23} + w_{31} + w_{32} = 1
 	\end{cases}
 \end{equation}
-An optimal solution is $w_{12} = 0.318$, $w_{21} = 0.146$, $w_{31} = 0.536$ with $\sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} = 0.227$ with $\sigma _{ns}^{+} = 0.227$.\\
-
+An optimal solution is $w_{12} = 0.34$, $w_{21} = 0.152$, $w_{31} = 0.51$ with $\sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} = 0$. The utilities found for each alternative are as follows: \\ 
+\begin{itemize}
+\item $v(g(ns)) = 0.798$
+\item $v(g(c4)) = 0.747$
+\item $v(g(p208)) = 0.662 $
+\item $v(g(p308)) = 0.62 $
+\end{itemize}
+Those utilities are consistent with the DM's preference ranking. 
 \chapter{Conclusion}
 The UTA method build a utility function based on the preferences of the DM and it consist in solving a linear program (LP) to solve a multi-criteria problem.\\
 
