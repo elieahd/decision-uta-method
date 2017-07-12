@@ -145,5 +145,5 @@ java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.
 
 Once you run the program, you will have the following result : 
 <p align="center">
-  <img src="/docs/images/example_buyingnewcar_lp-result.PNG?raw=true" alt="LP result"/>
+  <img src="/docs/images/example-buyingnewcar-lp-result.png?raw=true" alt="LP result"/>
 </p>
