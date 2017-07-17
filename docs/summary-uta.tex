@@ -53,31 +53,35 @@ Olivier \textsc{Cailloux} \\
 
 \end{titlepage}
 
-\abstract This report contains a summary about the variant of the UTA Method, UTASTAR. This document was made during my internship at LAMSADE in the summer of 2017.
+\abstract 
+This report contains a summary about the variant of the UTA Method, UTASTAR. The UTA method is an ordianl regression method, proposed by E. Jacquete-Lagreze and J. Siskos, which adjust a system of additive utility function.\\
+
+This paper presents a summary of the UTASTAR method illustrated with an example. This document was made during my internship at LAMSADE in the summer of 2017.
 \tableofcontents{}
 \pagenumbering{arabic}
 
 \chapter{Introduction}
+In multicriteria decision aid methods (MCDA) 
 In decision theory a basic problem involving several criterias, concerns the way that the final decision should be made. However, this problem is posed in the opposite way: assuming that the decision is given, how is it possible to find the rational basis for the decision being made? Or how is it possible to assess the model leading to exactly the same decision as the actual one or the most "similar" decision.\\
 
-The following steps represent the methodology of decision-making problems: 
+In multicriteria decision aid methods (MCDA), the following concepts play a fundamental role in decision-making problems: 
 \begin{enumerate}
-\item object of the decision, definition of the set of potential actions and the determination of a problem statement
+\item object of the decision, definition of the set of potential actions(alternatives) and the determination of a problem statement
 \item modeling a consistent family of criteria
 \item defining a global preference model
 \item decision-aid or decision support
 \end{enumerate}
 
 \underline{Example: Buying a new car} \\
-
-Let's consider we are trying to figure out which car to buy. Using the methodology represented above, we state that the objective of this problem is \textbf{buying a new car}. After stating the objective, we can list the potential of actions that represent the list of cars that we may buy: 
+Let's consider we are trying to figure out which car to buy. Using the methodology represented above, we state that the objective of this problem is \textbf{buying a new car}. After stating the objective, we can list the potential of actions that represent the list of cars that we may buy. By potential action, we designate that which constitutes the object of the decision. An action is qualifed as potential when it is deemed possible to implement it or if it has some interest within the decision aiding process. So the following list represent the potential actions of this example: 
 \begin{itemize}
 \item Peugeot 208 GTi
 \item Nissan Sentra
 \item Citroen C4
 \item Peugeot 308 berline
 \end{itemize}
-After listing the list of potential cars, we can define a list of criteria that we will base our decision on. When defining the list of criteria you should always remember that the potential actions should be evaluated by those criterias, so the criteria must be easy to evaluate and should be logical. Let's say we will base our purchase on the following criteria:
+After listing the list of potential cars, we can define a list of criteria that we will base our decision on. A criterion is contructed to evalute and compare potential actions according to a point of view. So when defining the list of criteria you should always remember that they must be easy to evaluate (easy to convert to a scale) and should be logical.
+Let's say we will base our purchase on the following criteria:
 \begin{itemize}
 \item price (in Euro)
 \item comfort (0, +, ++, +++) \textit{0 being not comfortable and +++ very comfortable}
