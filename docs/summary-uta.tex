@@ -1,4 +1,6 @@
 \documentclass{report}
+
+\usepackage{float}
 \usepackage{amsmath} 
 \usepackage{hyperref}
 \usepackage{graphicx}
@@ -159,10 +161,11 @@ The updated version of UTA, UTASTAR, propose a double error function for each ac
 \begin{equation}
 	v^{'} [g(a)] = \sum_{i=1}^{n} v_i [g_i (a)] - \sigma ^{+} (a)+ \sigma ^{-} (a) \quad  \forall a \in A_R
 \end{equation}
-\begin{center}
-\includegraphics{error-function-utastar}
-\end{center}
-
+\begin{figure}[H]
+    	\centering
+	\includegraphics{error-function-utastar}
+	\caption{Error function in UTASTAR}
+\end{figure}
 For each criteria, the interval $[g_{i*}, g_i^{*}]$ is cut into $(\alpha _i -1)$ equals interval, and the end points $g_i^{j}$ are given by the formula:
 \begin{equation}
 	g_i^{j}= g_{i*} + \frac{j-1}{\alpha _i -1} (g_i^{*} - g_{i*})  \forall j = 1,2, ..., \alpha _i
