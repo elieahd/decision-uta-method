@@ -1,6 +1,8 @@
 package com.lamsade.alternativecriteria;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -86,6 +88,27 @@ public class Main {
 			System.out.println(alternative.getId() + "'s V^R = " + alternative.getVr());
 		}
 		
+		Collections.sort(alternatives, new Comparator<Alternative>() {
+	        public int compare(Alternative a1, Alternative a2) {
+	        	Double vr1 = a1.getVr();
+	        	Double vr2 = a2.getVr();
+	        	
+	            return vr2.compareTo(vr1);
+	        }
+	    });
+
+		System.out.println();
+		System.out.println("Preference");
+		for (int i = 0; i<alternatives.size(); i++){
+			System.out.print(alternatives.get(i).getId());
+			if(i != (alternatives.size() - 1)){
+				if(alternatives.get(i).getVr() == alternatives.get(i+1).getVr()){
+					System.out.print( " >= ");
+				}else{
+					System.out.print( " > ");
+				}
+			}
+		}
 	}
 	
 }

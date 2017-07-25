@@ -27,7 +27,7 @@ The UTA method is used to solve a multi-criteria problem. It build a utility fun
 An improved version of the UTA is the UTASTAR. In UTA we used a single error in UTASTAR we use a double positive error function. The updated version has performed better than the regular method. 
   
 # Utils - Generate Numbers
-This class will alow to generate numbers (doubles or integer) that have a target Sum. 
+This class will alow to generate numbers that have a target Sum. 
 
 To build the class Utils, you should execute the following command: 
 #### on windows
@@ -38,33 +38,14 @@ javac -d objs utils/GenerateNumbers.java
 When running the program, you can insert 3 arguments : 
 ```java
 int counter; // default value : 4 
-int targetSum; // default value : 10
-int digitsDecimal; // precision digits. default value : 0  
+double targetSum; // default value : 1.0
 ```
 
-For example, let's generate 4 numbers with 0 digits precision that have the sum of 10: 
+For example, if you want to generate 4 numbers that have the sum of 1, all you have to do is execute the following command: 
 #### on windows
 ```bash
-java -cp objs; com.lamsade.utils.GenerateNumbers 4 10  
+java -cp objs; com.lamsade.utils.GenerateNumbers 4 1.0  
 ```
-
-You will have the following result : 
-<p align="center">
-  <img src="/docs/images/integers.PNG?raw=true" alt="Example result"/>
-</p>
-
-<br />
-
-Let's say you want to generate 4 numbers with 2 digits precision that have the sum of 1, you should execute the following command : 
-#### on windows
-```bash
-java -cp objs; com.lamsade.utils.GenerateNumbers 4 1 2
-```
-
-You will have the following result : 
-<p align="center">
-  <img src="/docs/images/doubles.PNG?raw=true" alt="Example result"/>
-</p>
 
 # Alternative - Criteria
 This a the class diagram of this project : 
