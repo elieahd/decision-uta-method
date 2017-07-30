@@ -17,7 +17,7 @@ public class GenerateNumbers{
 		System.out.println(result);		
 	}
 
-	private static List<Double> generate(int counter, double targetSum){
+	public static List<Double> generate(int counter, double targetSum){
 		List<Double> result = new ArrayList<>();
 		double sum = 0;
 		for (int i = 1; i <= counter; i++) {

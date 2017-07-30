@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Map.Entry;
 
 public class Alternative {
 
@@ -12,6 +13,7 @@ public class Alternative {
 	private static int counter = 0;
 	private Map<Criteria, Integer> criteriaEvaluation;
 	private Map<Criteria, Double> criteriaWp;
+	private Map<String,Double> marginalValue;
 	private double vr;
 
 	//Constructors
@@ -20,7 +22,16 @@ public class Alternative {
 		this.id = "a"+counter; 
 		this.criteriaEvaluation = new HashMap<>();
 		this.criteriaWp = new HashMap<>();
+		this.marginalValue = new HashMap<>();
 		randomizeValue(criterias);
+	}
+
+	public Alternative(String id, Map<Criteria, Integer> criteriaEvaluation){
+		counter++;
+		this.id = id;
+		this.criteriaEvaluation = criteriaEvaluation;
+		this.criteriaWp = new HashMap<>();
+		this.marginalValue = new HashMap<>();
 	}
 
 	//Getters
@@ -38,6 +49,23 @@ public class Alternative {
 
 	public double getVr() {
 		return vr;
+	}
+
+	public Map<String, Double> getMarginalValue() {
+		return marginalValue;
+	}
+
+	public String getMarginalValueString(){
+		String result = "";
+		for(Entry<String, Double> e : getMarginalValue().entrySet()) {
+			if(result.length() > 0) {result += " + ";}
+			result += e.getValue() + " " + e.getKey();
+		}
+		return result;
+	}
+
+	public void setMarginalValueMap(Map<String,Double> marginalValue){
+		this.marginalValue = marginalValue;
 	}
 
 	//Methods

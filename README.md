@@ -12,11 +12,9 @@ Upon decompressing the archive, you will get the following structure:
 │   └── utils                           <- directory containing all utils created
 ├── docs                                <- directory containing all of the docs produced
 │   ├── images                          <- directory containing all of the images used in this repo
-│   ├── litterature                     <- directory containing all of the literatures found
 │   ├── reports                         <- directory containing all of the reports made
 │   ├── summary-uta.pdf                 <- pdf file explaining the UTA method created in LaTeX
-│   ├── summary-uta.tex                 <- LaTeX file that generated the summary-uta.pdf file
-│   └── exercices                       <- directory containing exercices made
+│   └── summary-uta.tex                 <- LaTeX file that generated the summary-uta.pdf file
 ├── .gitignore                          <- ignoring file
 └── README                              <- this file
 ```

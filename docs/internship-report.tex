@@ -7,7 +7,7 @@
  left=30mm,
  top=25mm,
  }
-
+\usepackage{hyperref}
 \usepackage[nodayofweek,level]{datetime}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -79,7 +79,7 @@ I have worked mainly on the UTA method which is an ordinal regression method, pr
 \pagenumbering{arabic}
 
 \chapter{Introduction}
-During my first year in Masters MIAGE at Paris Dauphine University, I had the opportunity to achieve an internship at LAMSADE (Laboratoire d'analyse et modélisation de systèmes pour l'aide à la décision). LAMSADE is a Paris-Dauphine research laboratory specialized in decision theoretic approaches. Decision theory aims at helping individuals who face decision problem by elaborating a study of the reasoning underlying agent's choices. \\
+I am currently completing my master's degree at Paris Dauphine University so I had the opportunity to achieve an internship at LAMSADE (Laboratoire d'analyse et modélisation de systèmes pour l'aide à la décision). LAMSADE is a Paris-Dauphine research laboratory specialized in decision theoretic approaches. Decision theory aims at helping individuals who face decision problem by elaborating a study of the reasoning underlying agent's choices. \\
 
 From \formatdate{29}{5}{2017} to \formatdate{1}{9}{2017}, I completed a research internship at LAMSADE at Paris Dauphine University. My internship was made remotely, so I had a meeting with Mr. Cailloux every week to get feedback of the work done. And I communicated with Mr. Zam via mails or calls. \\
 
@@ -95,9 +95,8 @@ In this report, I will present the context of the internship. It contains an ove
 
 \section{UTA}
 \subsection{Introduction of the aid decision}
-In decision theory a basic problem involving several criterias, concerns the way that the final decision should be made. However, this problem is posed in the opposite way: assuming that the decision is given, how is it possible to find the rational basis for the decision being made? Or how is it possible to assess the model leading to exactly the same decision as the actual one or the most "similar" decision.\\
-
-In multicriteria decision aid methods (MCDA), the following concepts play a fundamental role in decision-making problems: 
+In decision theory we elaborate a study of reasoning underlying the agent choices. Two branches can be broken from the decision theory: giving an advice on how to make the best decisions, or how existing agents actually make decisions. \\
+In multiple-criteria decision analysis (MCDA), the following concepts play a fundamental role in decision-making problems: 
 \begin{enumerate}
 \item object of the decision, definition of the set of potential actions(alternatives) and the determination of a problem statement
 \item modeling a consistent family of criteria
@@ -106,14 +105,14 @@ In multicriteria decision aid methods (MCDA), the following concepts play a fund
 \end{enumerate}
 
 \underline{Example: Buying a new car} \\
-Let's consider we are trying to figure out which car to buy. Using the methodology represented above, we state that the objective of this problem is \textbf{buying a new car}. After stating the objective, we can list the potential of actions that represent the list of cars that we may buy. By potential action, we designate that which constitutes the object of the decision. An action is qualifed as potential when it is deemed possible to implement it or if it has some interest within the decision aiding process. So the following list represent the potential actions of this example: 
+Let's consider we are trying to figure out which car to buy. Using the methodology represented above, we state that the objective of this problem is \textbf{buying a new car}. After stating the objective, we can list the potential of actions that represent the list of cars that we may buy. By potential action, we designate that which constitutes the object of the decision. An action is qualified as potential when it is deemed possible to implement it or if it has some interest within the decision aiding process. So the following list represent the potential actions of this example: 
 \begin{itemize}
 \item Peugeot 208 GTi
 \item Nissan Sentra
 \item Citroen C4
 \item Peugeot 308 berline
 \end{itemize}
-After listing the list of potential cars, we can define a list of criteria that we will base our decision on. A criterion is contructed to evalute and compare potential actions according to a point of view. So when defining the list of criteria you should always remember that they must be easy to evaluate (easy to convert to a scale) and should be logical.
+After listing the list of potential cars, we can define a list of criteria that we will base our decision on. A criterion is constructed to evaluate and compare potential actions according to a point of view. So when defining the list of criteria you should always remember that they must be easy to evaluate (easy to convert to a scale) and should be logical.
 Let's say we will base our purchase on the following criteria:
 \begin{itemize}
 \item price (in Euro)
@@ -137,7 +136,7 @@ The UTASTAR, a variant of the UTA method, has been considered a better algorithm
 
 The aim of the UTASTAR method is to estimate a set of additive utility functions which are as consistent as possible with the decision maker's preferences.\\
 
-At the begining of the problem, the DM should present the following information 
+At the beginning of the problem, the DM should present the following information 
 \begin{itemize}
 \item rank of the actions
 \item give the criteria he want to base his decision on 
@@ -170,17 +169,14 @@ subject to normalization constraints:\\
       \end{cases}
 \end{equation}
 where $ v_i, i = 1,2,...,n$ are non decreasing real valued function.\\
-
 In UTASTAR we have 
 \begin{equation}
 	w_{ij} = v_i(g_i^{j+1}) - v_i(g_i^{j}) \geq 0 \quad \forall i \quad j 
 \end{equation}
-
 Which will allow us to write: 
 \begin{equation}
 	v_i(g_i^j) =	  \sum_{t=1}^{j-1} w_{it} \quad \forall i = 1,2,...,n \quad and \quad j = 2,3,...,\alpha _i -1 \\
 \end{equation}
-
 With the evaluation of an action a $g(a) = [g_1(a) ,  g_2(a) , ... , g_n(a)] $, we have the following relation:
 \begin{equation}
       \begin{cases}
@@ -204,18 +200,15 @@ For each criteria, the interval $[g_{i*}, g_i^{*}]$ is cut into $(\alpha _i -1)$
 \begin{equation}
 	g_i^{j}= g_{i*} + \frac{j-1}{\alpha _i -1} (g_i^{*} - g_{i*})  \forall j = 1,2, ..., \alpha _i
 \end{equation}
-
 The marginal value of an action $a$ is calculated by a linear interpolation
 \begin{equation}
 	v_i [g_i (a)] = v_i (g_i^{j}) + \frac{g_i (a) - g_i^{j}}{ g_i^{j+1} - g_i^{j}} [v_i (g_i^{j+1}) - v_i (g_i^{j}) ] 
 \end{equation}
-
 The set of reference action $ A_R = a_1, a_2, ... , a_m$ is arranged where $a_1$ is the best action and $a_m$ is the worst action. Which indicate that we have two possible situations:
 \begin{itemize}
 \item $a_k  \succ a_{k+1} \quad $ preference 
 \item $a_k \sim a_{k+1} \quad $ indifference
 \end{itemize} 
-
 So if we have that $\Delta (a_k, a_{k+1} ) = v^{'} [g(a_k)] - v^{'} [g(a_{k+1})]$ and $\delta$ is a small positive number we will obtain the following relations: 
 \begin{equation}\label{eq3}
       \begin{cases}
@@ -234,8 +227,8 @@ subject to:
       \end{cases}
 \end{equation}
 
-\subsection{Example}
-The implementation of UTASTAR algorithm is illustrated by the example from the Introduction chapter : \textbf{buying a new car}.\\ The DM is interested only in the following criteria:
+\subsection{Example - Buying New Car}
+The implementation of UTASTAR algorithm is illustrated by an example I made: \textbf{buying a new car}. Another example is available in the Appendices, Choice of transportation, this example was taken from the book: Multiple Criteria Decision Analysis.\\ The DM is interested only in the following criteria:
 \begin{itemize}
 \item price (in Euro)
 \item comfort ($0$, +, ++, +++) \textit{0 being not comfortable and +++ very comfortable}
@@ -271,7 +264,7 @@ According to this formula: $v(g(a)) = \sum_{i=1}^{n} v_i (g_i (a))$ , the value 
 \item $v(g(p308)) = 0.3v_1(15\,000) +  0.7v_1(20\,000) + v_2(0) + v_3(3) = 0.3v_1(15\,000) +  0.7v_1(20\,000) + v_3(3)$
 \end{itemize}
 We have that $v_1(25\,000) = v_2(0) = v_3(1) = 0$. \\
-Since the marginal value $u_i(g_i)$ can be expressed in terms of variables $w_{ij}$: $u_i(g_i^{j}) = \sum _{t=1}^{j-1} w_{it}$ , the value of each alternatie can be written: 
+Since the marginal value $v_i(g_i)$ can be expressed in terms of variables $w_{ij}$: $v_i(g_i^{j}) = \sum _{t=1}^{j-1} w_{it}$ , the value of each alternative can be written: 
 \begin{itemize}
 \item $v(g(ns)) = w_{11} + 0.4w_{12} + w_{21} + w_{22} + w_{23} + w_{31} + 0.5w_{32}$
 \item $v(g(c4)) = w_{11} + w_{12} + w_{21} + w_{22} + 0.5w_{31}$
@@ -548,12 +541,23 @@ La prochaine réunion est prévue pour le mardi 25 juillet 2017 à 10:00
 Olivier Cailloux, Elie Daher\\
 
 \underline{Déroulement de la réunion}\\
+\begin{itemize}
+	\item Présentation du travail effectué
+	\item Explication des modifications à faire dans le programme UTA
+	\item Explication des modification à effectuer dans le document report\\
+\end{itemize}
 
 \underline{Les tâches à faire} \\
+\begin{itemize}
+	\item Ajouter les annexes des littérature dans le document
+	\item Définir l’objectif de la méthode UTA dans le document
+	\item Etablir les modifications sur le programme UTA
+	\item Elaborer des résumés pour les articles trouvés\\
+\end{itemize}
 
-La réunion a été levée à \\
+La réunion a été levée à 11:15\\
 
-La prochaine réunion est prévue pour le 2017 à 
+La prochaine réunion est prévue pour le lundi 31 juillet 2017 à 10:00
 
 \chapter{Example of UTASTAR - Analyzing the choice of transportation}
 A DM wants to analyse the choice of transportation. The DM is interstered in the following criteria 
@@ -593,7 +597,7 @@ According to this formula: $v(g(a)) = \sum_{i=1}^{n} v_i (g_i (a))$ , the value 
 \item $v[g(TAXI)]= v_1 (30) + v_2(30) + v_3(+++) = v_2(30) + v_3(+++)$
 \end{itemize}
 We have that $v_1(30) = v_2(40) = v_3(0) = 0$. \\
-Since the marginal value $u_i(g_i)$ can be expressed in terms of variables $w_{ij}$: $u_i(g_i^{j}) = \sum _{t=1}^{j-1} w_{it}$ , the value of each alternative can be written: 
+Since the marginal value $v_i(g_i)$ can be expressed in terms of variables $w_{ij}$: $v_i(g_i^{j}) = \sum _{t=1}^{j-1} w_{it}$ , the value of each alternative can be written: 
 \begin{itemize}
 \item $v[g(RER)]= w_{11} + 0.93 w_{12} + w_{21} + w_{22} + w_{23} + w_{31}$
 \item $v[g(METRO1)]=w_{11} + 0.86 w_{12} + w_{21} + w_{22} + w_{31} + w_{32}$
@@ -638,5 +642,31 @@ An optimal solution is $w_{11} = 0.5$, $w_{22} = 0.05$, $w_{23} = 0.05$, $w_{33}
 \item $v(g(TAXI)) = 0.4 $
 \end{itemize}
 Those utilities are consistent with the DM's preference ranking. \\
+
+\chapter{Literature found during research}
+\section{Literature used in the documentation}
+\begin{itemize}
+\item Multiple Criteria Decision Analysis - Salvatore Greco, Matthias Ehrgott, Jose Rui Figueira, 2004
+\item Cahier du LAMSADE n24 : Les programmes UTA - J. Siskos, Octobre 1979
+\item Cahier du LAMSADE n49 : Amélioration de la méthode UTA par introduction d’une double fonction d’erreurs - J.Siskos, D. Yannacopoulos, octobre 1983
+\item Thèse : Modélisation technico-économique d’une chaîne logistique dans une entreprise reseau - Abdelkader Hammami, 2003
+\item Assessing a set of additive utility functions for multicriteria decision-making, the UTA method
+\item Assessing non-additive utility for multicriteria decision aid
+\item Comparative analysis of UTA multicriteria methods
+\item Preference disaggregation: 20 years of MCDA experience
+\end{itemize}
+
+\section{Useful literature}
+\begin{itemize}
+\item On the expressiveness of the additive value function and the Choquet integral models
+\item ACUTA: A novel method for eliciting additive value functions on the basis of holistic preference statements
+\item Stewart - Robustness of Additive Value Function Methods in MCDM (1996)
+\item La Conception et l’implementation d’un outil d’aide a la decision multicriteres integrant les concepts de la gestion des connaissances et du cycle de vie: application de la chaine d’approvisionnement humanitaire
+\item A study on Stock Ranking and Selection Strategy Based on UTA Method under the Condition of Inconsistence - Hong-chen Luo, Zhao-xu Sun, aout 2014
+\item The Development of UTASTAR Method in Fuzzy Environment for Supplier Selection
+\item A multicriteria decision aid methodology for the assessment of country risk
+\item Application de la méthode UTA à un problème de sélection de points de vente mettant en jeu des critères multiples
+\end{itemize}
+
 \end{appendices}
 \end{document}
