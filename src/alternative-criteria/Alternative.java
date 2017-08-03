@@ -1,90 +1,47 @@
 package com.lamsade.alternativecriteria;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
-import java.util.Map.Entry;
 
 public class Alternative {
-
-	//Alternatives
-	private String id; 
-	private static int counter = 0;
-	private Map<Criteria, Integer> criteriaEvaluation;
-	private Map<Criteria, Double> criteriaWp;
-	private Map<String,Double> marginalValue;
-	private double vr;
-
+	
+	//Attributes
+	private int id;
+	private String name;
+	private Map<Criterion, Double> evaluations;
+	private Map<String, Double> marginalValue;
+	
 	//Constructors
-	public Alternative(List<Criteria> criterias){
-		counter++;
-		this.id = "a"+counter; 
-		this.criteriaEvaluation = new HashMap<>();
-		this.criteriaWp = new HashMap<>();
-		this.marginalValue = new HashMap<>();
-		randomizeValue(criterias);
-	}
-
-	public Alternative(String id, Map<Criteria, Integer> criteriaEvaluation){
-		counter++;
+	public Alternative(int id, String name, Map<Criterion,Double> evaluations){
 		this.id = id;
-		this.criteriaEvaluation = criteriaEvaluation;
-		this.criteriaWp = new HashMap<>();
+		this.name = name;
+		this.evaluations = evaluations;
 		this.marginalValue = new HashMap<>();
 	}
 
-	//Getters
-	public String getId() {
+	//Getters and Setters
+	public int getId() {
 		return id;
 	}
-
-	public Map<Criteria, Integer> getCriteriaEvaluation() {
-		return criteriaEvaluation;
+	public void setId(int id) {
+		this.id = id;
 	}
-
-	public Map<Criteria, Double> getCriteriaWp() {
-		return criteriaWp;
+	public String getName() {
+		return name;
 	}
-
-	public double getVr() {
-		return vr;
+	public void setName(String name) {
+		this.name = name;
 	}
-
+	public Map<Criterion, Double> getEvaluations() {
+		return evaluations;
+	}
+	public void setEvaluations(Map<Criterion, Double> evaluations) {
+		this.evaluations = evaluations;
+	}
 	public Map<String, Double> getMarginalValue() {
 		return marginalValue;
 	}
-
-	public String getMarginalValueString(){
-		String result = "";
-		for(Entry<String, Double> e : getMarginalValue().entrySet()) {
-			if(result.length() > 0) {result += " + ";}
-			result += e.getValue() + " " + e.getKey();
-		}
-		return result;
-	}
-
-	public void setMarginalValueMap(Map<String,Double> marginalValue){
+	public void setMarginalValue(Map<String, Double> marginalValue) {
 		this.marginalValue = marginalValue;
 	}
-
-	//Methods
-	private void randomizeValue(List<Criteria> criterias) {
-		for(Criteria criteria : criterias){
-			Random r = new Random();
-			this.criteriaEvaluation.put(criteria, r.nextInt((criteria.getMaxValue()+1) - criteria.getMinValue()) + criteria.getMinValue());
-		}
-	}
-
-	public void calculateWp(List<Criteria> criterias) {
-		this.criteriaWp = new HashMap<>();
-		double sumWp = 0.0;
-		for(Criteria criteria : criterias){
-			double wp = criteria.getA() * this.criteriaEvaluation.get(criteria) + criteria.getB();
-			this.criteriaWp.put(criteria,wp);
-			sumWp += wp;
-		}
-		this.vr = sumWp;
-	}
-
 }

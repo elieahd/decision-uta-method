@@ -128,14 +128,9 @@ During the decision process, we will determinate the global preferences of the p
 \end{enumerate}
 Once the global preference is defined, we can start the decision support.\\
 
-One of the multi-criteria decision analysis methods is the UTA method, which was proposed by E. Jacquet-Lagrèze and J. Siskos in 1982. This method is proposed by the Multi-Attribute Utility Theory (MAUT) that build a utility function based on the DM\footnote{Decision Maker} preferences.\\
- 
-The UTA method is used to solve a multi-criteria problem by building a utility function based on the preferences of the DM and solving a linear program (LP). It adopt the aggregation-disaggregation principles: where the model is based on a given preferences.\\
+One of the multi-criteria decision analysis methods is the UTA method, which was proposed by E. Jacquet-Lagrèze and J. Siskos in 1982. This method is proposed by the Multi-Attribute Utility Theory (MAUT) that build a utility function based on the DM\footnote{Decision Maker} preferences.\\ 
 
-The UTASTAR, a variant of the UTA method, has been considered a better algorithm than UTA. Better result were found using the UTASTAR algorithm. So this is why we will focus on this method rather than the UTA method.\\
-
-The aim of the UTASTAR method is to estimate a set of additive utility functions which are as consistent as possible with the decision maker's preferences.\\
-
+The UTA method is used to solve a multi-criteria problem by building a utility function based on the preferences of the DM and solving a linear program (LP). It adopt the aggregation-disaggregation principles: where the model is based on a given preferences.\\ The UTASTAR, a variant of the UTA method, has been considered a better algorithm than UTA. Better result were found using the UTASTAR algorithm. So this is why we will focus on this method rather than the UTA method.\\The aim of the UTASTAR method is to estimate a set of additive utility functions which are as consistent as possible with the decision maker's preferences.\\
 At the beginning of the problem, the DM should present the following information 
 \begin{itemize}
 \item rank of the actions
@@ -300,13 +295,11 @@ An optimal solution is $w_{12} = 0.34$, $w_{21} = 0.152$, $w_{31} = 0.51$ with $
 \item $v(g(p208)) = 0.662 $
 \item $v(g(p308)) = 0.62 $
 \end{itemize}
-Those utilities are consistent with the DM's preference ranking. 
+Those utilities are consistent with the DM's preference ranking. \\
 
 The UTA method build a utility function based on the preferences of the DM and it consist in solving a linear program (LP) to solve a multi-criteria problem.\\
-
 This method will elaborate a model of preferences which is as similiar as possible to the DM's preferences.\\
-
-An improved version of the UTA is the UTASTAR. In UTA we used a single error $\sigma(a)$ in UTASTAR we use a double positive error function. The updated version has performed better than the regular method.
+The improved version of the UTA, UTASTAR, has performed better than the regular method.
 
 \section{Linear Program Solver}
 One of the steps of the UTA algorithm is solving the Linear Program. So we can complete the UTA algorithm, I created an independant java application that has the objectif of solving the LP by finding the optimal solution.\\
@@ -376,12 +369,13 @@ x3 = 0.0\\
 \end{center}
 
 \section{Research}
-A method of multicriteria analysis is chosen depending on the circumstances of the decision making.\\
-UTA makes possible the estimation of a nonlinear additive function, which is obtained by the use of a linear program and the only information required from the decision maker are the global preferences between projects. \\
-The value $\delta$ must not be given too high an initial value. \\
+One aspect of this internship is the research. The objective of the research was to find similar studies, how to generate realistic random alternatives and studies made on UTA method.
+\subsection{Comparative analysis of UTA multicriteria methods}
+This paper written by Michel Beuthe and Giuseppe Scannella and it is mainly about the variants of UTA method. As discussed in this paper a method of multi-criteria analysis is chosen depending on the circumstances of the decision making.UTA makes possible the estimation of a nonlinear additive function, which is obtained by the use of a linear program and the only information required from the decision maker are the global preferences between projects. \\
 After the execution of the algorithm we should always be possible to converse with the decision maker in order to specify the precision of the preferences stated\\
-In the basic model, it was noted that the values given to $\delta$ were to some extent arbitrary. UTAMP1 maximize $\delta$.\\
-Variants of UTA\\
+The value $\delta$ must not be given too high an initial value. In the basic model, it was noted that the values given to $\delta$ were to some extent arbitrary. \\
+
+\underline{Variants of UTA}\\
 \begin{enumerate}
 \item UTA
 \item UTASTAR
@@ -394,14 +388,13 @@ Variants of UTA\\
 \item UTA2MIME
 \end{enumerate}
 
-Should i make a comparison table ??\\
-
 Disadvantages\\
 \begin{enumerate}
 \item We can always question the decision marker about his preferences
 \item Solution may not be the only one as in any LP we can have different solutions
 \end{enumerate}
 
+\section{Implementation - Alternative Criteria}
 
 \chapter{Conclusion}
 
@@ -558,6 +551,30 @@ Olivier Cailloux, Elie Daher\\
 La réunion a été levée à 11:15\\
 
 La prochaine réunion est prévue pour le lundi 31 juillet 2017 à 10:00
+
+\newpage
+\section{CR6 - 31 juillet 2017}
+\textbf{31 juillet 2017} / 10:00 / Café Lumière - Hôtel Scribe\\
+
+\underline{Participants} \\
+
+Olivier Cailloux, Elie Daher\\
+
+\underline{Déroulement de la réunion}\\
+\begin{itemize}
+	\item Présentation du travail effectué
+	\item Refaire l’architecture du programme
+	\item Présenter les modifications à faire\\
+\end{itemize}
+
+\underline{Les tâches à faire} \\
+\begin{itemize}
+	\item Elaborer des petits résumés pour les articles trouvés
+	\item Compléter le rapport final
+	\item Effectuer les modifications sur le programme\\
+\end{itemize}
+
+La réunion a été levée à 11:15\\
 
 \chapter{Example of UTASTAR - Analyzing the choice of transportation}
 A DM wants to analyse the choice of transportation. The DM is interstered in the following criteria 
