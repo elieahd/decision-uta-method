@@ -13,8 +13,8 @@ Upon decompressing the archive, you will get the following structure:
 ├── docs                                <- directory containing all of the docs produced
 │   ├── images                          <- directory containing all of the images used in this repo
 │   ├── reports                         <- directory containing all of the reports made
-│   ├── summary-uta.pdf                 <- pdf file explaining the UTA method created in LaTeX
-│   └── summary-uta.tex                 <- LaTeX file that generated the summary-uta.pdf file
+│   ├── internship-report.pdf           <- pdf file explaining all the stuff done during the internship
+│   └── internship-report.tex           <- LaTeX file that generated the internship-report.pdf file
 ├── .gitignore                          <- ignoring file
 └── README                              <- this file
 ```
@@ -23,17 +23,19 @@ Upon decompressing the archive, you will get the following structure:
 The UTA method is used to solve a multi-criteria problem. It build a utility function based on the preferences of the DM and it consist in solving a linear program (LP).
 
 An improved version of the UTA is the UTASTAR. In UTA we used a single error in UTASTAR we use a double positive error function. The updated version has performed better than the regular method. 
+
+In the internship-report, you will find a section that explain the UTA method, illustrated with an example. 
   
-# Utils - Generate Numbers
+# Utils - NumbersGenerator
 This class will alow to generate numbers that have a target Sum. 
 
 To build the class Utils, you should execute the following command: 
 #### on windows
 ```bash
-javac -d objs utils/GenerateNumbers.java 
+javac -d objs utils/NumbersGenerator.java 
 ```
 
-When running the program, you can insert 3 arguments : 
+When running the program, you can insert 2 arguments : 
 ```java
 int counter; // default value : 4 
 double targetSum; // default value : 1.0
@@ -42,7 +44,29 @@ double targetSum; // default value : 1.0
 For example, if you want to generate 4 numbers that have the sum of 1, all you have to do is execute the following command: 
 #### on windows
 ```bash
-java -cp objs; com.lamsade.utils.GenerateNumbers 4 1.0  
+java -cp objs; com.lamsade.alternativecriteria.NumbersGenerator 4 1.0  
+```
+
+# Utils - ScaleGenerator
+This class will alow to generate a scale, this has been used to generate a scale for a criteria. 
+
+To build the class Utils, you should execute the following command: 
+#### on windows
+```bash
+javac -d objs utils/ScaleGenerator.java 
+```
+
+When running the program, you can insert 3 arguments : 
+```java
+double minValue;// default value : 10
+double maxValue; // default value : 20 
+int cuts; // default value : 4
+```
+
+For example, if you want to generate the scale of criteria that have a minimum value of 10 and a maximum value of 20 with 4 cuts, all you have to do is execute the following command: 
+#### on windows
+```bash
+java -cp objs; com.lamsade.alternativecriteria.ScaleGenerator 10.0 20.0 4  
 ```
 
 # Alternative - Criteria
@@ -54,25 +78,12 @@ This a the class diagram of this project :
 To build the class of this program, you should execute the following command: 
 #### on windows
 ```bash
-javac -d objs alternative-criteria/Alternative.java alternative-criteria/Criteria.java alternative-criteria/GenerateNumbers.java alternative-criteria/Main.java    
+javac -d objs alternative-criteria/*.java utils/*.java
 ```
-
-When running the program, you can insert 2 arguments : 
-```java
-int numCriteria; // default value : 3 
-int numAlternative; // default value : 10
-```
-
-If we want to generate 3 criterias and 4 alternatives, you should execute the following command : 
 #### on windows
 ```bash
-java -cp objs; com.lamsade.alternativecriteria.Main 3 4 
+java -cp objs; com.lamsade.alternativecriteria.Main 
 ```
-
-You will have the following result : 
-<p align="center">
-  <img src="/docs/images/alternative-criteria.PNG?raw=true" alt="Alternative criteria result"/>
-</p>
 
 # Example of a java class that will solve a Linear Program
 An example of a LP problem: 
@@ -94,11 +105,6 @@ javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/LinearPro
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.LinearProgramming
 ```
 
-You will have the following result : 
-<p align="center">
-  <img src="/docs/images/example-result-lp.PNG?raw=true" alt="LP result"/>
-</p>
-
 # Linear Program for the exercice Choice of Tranportation [UTA]
 For the ChoiceTransportation exercice, you should run the following commands : 
 
@@ -108,11 +114,6 @@ javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/ChoiceTra
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.ChoiceTransportation
 ```
 
-Once you run the program, you will have the following result : 
-<p align="center">
-  <img src="/docs/images/example_choicetransportation_lp-result.PNG?raw=true" alt="LP result"/>
-</p>
-
 # Linear Program for the exercice Buying New Car [UTA]
 For the exercice Buying New Car, you should run the following commands : 
 
@@ -121,8 +122,3 @@ For the exercice Buying New Car, you should run the following commands :
 javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/BuyingNewCar.java
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.BuyingNewCar
 ```
-
-Once you run the program, you will have the following result : 
-<p align="center">
-  <img src="/docs/images/example-buyingnewcar-lp-result.png?raw=true" alt="LP result"/>
-</p>

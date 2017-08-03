@@ -24,11 +24,9 @@ public class ValueFunction {
 	//Methods
 	public double getValue(Alternative alternative){
 		double value = 0.0;
-		System.out.println("PVFFFF");
 		for (Map.Entry<Criterion, Double> entry : alternative.getEvaluations().entrySet()){
 			for(PartialValueFunction pvf : partialValueFunctions){
 				if(pvf.getCriterion() == entry.getKey()){
-					System.out.println(pvf.getCriterion() + " --> " + entry.getValue() + " = " + pvf.getPartialValue(entry.getValue()));
 					value += pvf.getPartialValue(entry.getValue());
 					break;
 				}

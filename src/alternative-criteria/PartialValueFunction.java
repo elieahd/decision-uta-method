@@ -14,6 +14,10 @@ public class PartialValueFunction {
 		this.criterion = criterion;
 		intervals = new ArrayList<>();
 	}
+	public PartialValueFunction(Criterion criterion, List<Point> intervals){
+		this.criterion = criterion;
+		this.intervals = intervals;
+	}
 
 	//Getters and Setters
 	public Criterion getCriterion() {
