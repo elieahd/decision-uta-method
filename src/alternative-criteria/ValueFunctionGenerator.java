@@ -33,12 +33,12 @@ public class ValueFunctionGenerator {
 	
 	//Methods
 	public ValueFunction generateValueFunction(){
-		Utils util = new Utils();
+		ScaleGenerator scaleGenerator = new ScaleGenerator();
 		NumbersGenerator generateNumbers = new NumbersGenerator();
 		List<Double> randomWeights = generateNumbers.generate(numberCriteria,1.0);
 
 		for(int j = 0; j < numberCriteria; j++){
-			Criterion criterion = new Criterion(j, "c" + j , util.generateScale(10.0, 40.0, numberCuts));
+			Criterion criterion = new Criterion(j, "c" + j , scaleGenerator.generate(10.0, 40.0, numberCuts));
 			double criterionWeight = randomWeights.get(j); //0.4
 			List<Point> intervals = new ArrayList<>();
 			List<Double> randomPartialWeights = generateNumbers.generate(numberCuts-1,criterionWeight);

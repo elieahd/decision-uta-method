@@ -17,14 +17,13 @@ public class Main {
 	}
 
 	private static ProblemGenerator generateBuyingNewCar() {
-		Utils util = new Utils();
-
+		ScaleGenerator scaleGenerator = new ScaleGenerator();
 		List<Criterion> criteria = new ArrayList<>();
-		Criterion price = new Criterion(1, "price", util.generateScale(15000.0, 25000.0, 3));
+		Criterion price = new Criterion(1, "price", scaleGenerator.generate(15000.0, 25000.0, 3));
 		criteria.add(price);
-		Criterion comfort = new Criterion(2, "comfort", util.generateScale(1.0, 4.0, 4));
+		Criterion comfort = new Criterion(2, "comfort", scaleGenerator.generate(1.0, 4.0, 4));
 		criteria.add(comfort);
-		Criterion safety = new Criterion(3, "safety", util.generateScale(1.0, 5.0, 3));
+		Criterion safety = new Criterion(3, "safety", scaleGenerator.generate(1.0, 5.0, 3));
 		criteria.add(safety);
 
 		List<Alternative> alternatives = new ArrayList<>();

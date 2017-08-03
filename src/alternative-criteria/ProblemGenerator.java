@@ -48,10 +48,10 @@ public class ProblemGenerator {
 
 	//Methods
 	public void generateCriteria(int number, double minValue, double maxValue, int cuts){
-		Utils util = new Utils();
+		ScaleGenerator scaleGenerator = new ScaleGenerator();
 		for(int i = 0; i < number; i++){
 			int id = i + 1;
-			Criterion criterion = new Criterion(id, "c" + id , util.generateScale(minValue, maxValue, cuts));
+			Criterion criterion = new Criterion(id, "c" + id , scaleGenerator.generate(minValue, maxValue, cuts));
 			criteria.add(criterion);
 		}
 	}

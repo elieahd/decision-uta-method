@@ -58,8 +58,8 @@ javac -d objs utils/ScaleGenerator.java
 
 When running the program, you can insert 3 arguments : 
 ```java
-double minValue;// default value : 10
-double maxValue; // default value : 20 
+double minValue;// default value : 10.0
+double maxValue; // default value : 20.0 
 int cuts; // default value : 4
 ```
 
