@@ -35,6 +35,7 @@ public class PartialValueFunction {
 
 	//Methods
 	public double getPartialValue(double x){
+		System.out.println("                   " + getDerivative(x) + " * " +  x + "+" + getStartSegment(x));
 		return getDerivative(x) * x + getStartSegment(x); // y = a x + b
 	}
 	public double getDerivative(double x){
@@ -95,21 +96,16 @@ public class PartialValueFunction {
 			}
 		}
 		
-		
-
-//			this.a = (y2 - y1) / (x2 - x1);
-	//		this.b = ((x2 * y1) - (x1 * y2))/(x2-x1);
-
 		return -1.0;
 	}
 	public double getWeight(){
-		double maxValue = criterion.getMaxValue();
+		double maxWeight = 0.0;
 		for(Point point : intervals){
-			if(point.getX() == maxValue){
-				return point.getY();
+			if(point.getY() > maxWeight){
+				maxWeight = point.getY();
 			}
 		}
-		return -1.0;
+		return maxWeight;
 	}
 
 }

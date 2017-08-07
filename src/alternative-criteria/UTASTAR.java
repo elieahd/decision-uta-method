@@ -133,13 +133,13 @@ public class UTASTAR {
 		
 		final MPSolver.ResultStatus resultStatus = solver.solve();
 		
-		//String model = solver.exportModelAsLpFormat(true);
-		
+		String model = solver.exportModelAsLpFormat(false);
 		if (resultStatus != MPSolver.ResultStatus.OPTIMAL) {System.err.println("The problem does not have an optimal solution!"); return null;}
 		if (!solver.verifySolution(/*tolerance=*/1e-7, /*logErrors=*/true)) {System.err.println("The solution returned by the solver violated the problem constraints by at least 1e-7"); return null;}
 
 		System.out.println("Optimal objective value = " + solver.objective().value());
 
+		System.out.println(model);
 		for (Map.Entry<String, MPVariable> entry : variables.entrySet()){
 			System.out.println(entry.getKey() + " = " + entry.getValue().solutionValue());
 		}
@@ -159,15 +159,6 @@ public class UTASTAR {
 				}
 			}
 			partialValueFunctions.add(partialValueFunction);
-			for(Point point : partialValueFunction.getIntervals()){
-				System.out.println(point);
-			}
-			System.out.println(partialValueFunction.getPartialValue(23000.0));
-			System.out.println(partialValueFunction.getDerivative(23000.0));
-			System.out.println(partialValueFunction.getStartSegment(23000.0));
-			System.out.println(partialValueFunction.getWeight());
-			System.out.println();
-
 		}
 		
 		ValueFunction valueFunction = new ValueFunction(partialValueFunctions); 

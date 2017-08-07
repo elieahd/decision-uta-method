@@ -23,15 +23,20 @@ public class ValueFunction {
 
 	//Methods
 	public double getValue(Alternative alternative){
+
+		System.out.println(alternative.getName());
 		double value = 0.0;
 		for (Map.Entry<Criterion, Double> entry : alternative.getEvaluations().entrySet()){
 			for(PartialValueFunction pvf : partialValueFunctions){
 				if(pvf.getCriterion() == entry.getKey()){
-					value += pvf.getPartialValue(entry.getValue());
+					double newValue = pvf.getPartialValue(entry.getValue());
+					System.out.println("Value : " + entry.getValue() + " --- " + pvf.getCriterion().getName() + " : " + newValue);
+					value += newValue;
 					break;
 				}
 			}
 		}
+		System.out.println();
 		return value;
 	}
 

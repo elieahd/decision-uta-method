@@ -44,4 +44,5 @@ public class Alternative {
 	public void setMarginalValue(Map<String, Double> marginalValue) {
 		this.marginalValue = marginalValue;
 	}
+	
 }

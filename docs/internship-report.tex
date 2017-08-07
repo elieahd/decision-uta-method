@@ -15,6 +15,7 @@
 \usepackage{float}
 \usepackage{import}
 \usepackage{amsmath} 
+\usepackage[]{graphics}
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -90,6 +91,7 @@ One of the objectives is to propose the UTA method as an open source software co
 In this report, I will present the context of the internship. It contains an overview of the projects realized: UTA, LinearProgramSolver, Research, DecisionCloud... Writing this report, I will also conclude by reflecting on my learning objects and goals achieved and not achieved.\\
 
 \chapter{Context of the projects}
+TODO: To be made during this week, approximately 3-4 pages.
 
 \chapter{Description of the projects}
 
@@ -283,17 +285,17 @@ Subject to: \\
 \begin{equation}
 	\begin{cases}
 		 -0.6w_{12} + w_{23} + 0.5w_{31} + 0.5w_{32}  -\sigma _{ns}^{+} +\sigma _{ns}^{-} +\sigma _{c4}^{+} - \sigma _{c4}^{-}   \geq 0.05\\
+		 w_{11} + w_{12} + w_{22} - 0.5w_{31} -\sigma _{c4}^{+} +\sigma _{c4}^{-} +\sigma _{p208}^{+} - \sigma _{p208}^{-} \geq 0.05 \\
 		w_{21} - w_{11} - 0.3w_{12} -\sigma _{p208}^{+} +\sigma _{p208}^{-} +\sigma _{p308}^{+} - \sigma _{p308}^{-}  \geq 0.05 \\
-		- 0.1w_{12} - w_{21} - w_{22} - w_{23} - 0.5w_{32} -\sigma _{p308}^{+} +\sigma _{p308}^{-} +\sigma _{ns}^{+} - \sigma _{ns}^{-}  \geq 0.05 \\
 		w_{11} + w_{12} + w_{21} + w_{22} + w_{23} + w_{31} + w_{32} = 1
 	\end{cases}
 \end{equation}
-An optimal solution is $w_{12} = 0.34$, $w_{21} = 0.152$, $w_{31} = 0.51$ with $\sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} = 0$. The utilities found for each alternative are as follows: \\ 
+An optimal solution is $w_{12} = 0.34$, $w_{21} = 0.152$, $w_{32} = 0.51$ with $\sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} = 0$. The utilities found for each alternative are as follows: \\ 
 \begin{itemize}
-\item $v(g(ns)) = 0.798$
-\item $v(g(c4)) = 0.747$
-\item $v(g(p208)) = 0.662 $
-\item $v(g(p308)) = 0.62 $
+\item $v(g(ns)) = 0.543$
+\item $v(g(c4)) = 0.492$
+\item $v(g(p208)) = 0.152 $
+\item $v(g(p308)) = 0.102 $
 \end{itemize}
 Those utilities are consistent with the DM's preference ranking. \\
 
@@ -373,9 +375,20 @@ One aspect of this internship is the research. The objective of the research was
 \subsection{Comparative analysis of UTA multicriteria methods}
 This paper written by Michel Beuthe and Giuseppe Scannella and it is mainly about the variants of UTA method. As discussed in this paper a method of multi-criteria analysis is chosen depending on the circumstances of the decision making.UTA makes possible the estimation of a nonlinear additive function, which is obtained by the use of a linear program and the only information required from the decision maker are the global preferences between projects. \\
 After the execution of the algorithm we should always be possible to converse with the decision maker in order to specify the precision of the preferences stated\\
-The value $\delta$ must not be given too high an initial value. In the basic model, it was noted that the values given to $\delta$ were to some extent arbitrary. \\
+The value $\delta$ must not be given too high an initial value. In the basic model, it was noted that the values given to $\delta$ were to some extent arbitrary. 
+\subsubsection{Simulations}
+The simulation are applied to the case of 353 road projects in Belgian Network during the period 1985-2010. The Center of Road Research (CRR) realized a multi criteria analysis  that used 29 criteria regrouped in six main themes: 
+\begin{itemize}
+\item safety on the present road
+\item projects socioeconomic aspects
+\item impact on environment
+\item current and future traffic
+\item problems of planning and urbanism
+\item wear state of the current road.
+\end{itemize}
+The 29 criteria has been established with a scale going from 1 to 5. 
 
-\underline{Variants of UTA}\\
+\subsubsection{Variants of UTA}
 \begin{enumerate}
 \item UTA
 \item UTASTAR
@@ -388,15 +401,53 @@ The value $\delta$ must not be given too high an initial value. In the basic mod
 \item UTA2MIME
 \end{enumerate}
 
-Disadvantages\\
+\subsubsection{Conclusions made}
+When there is no error in the utility function estimation, $ \sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} = 0$, the basic UTA method provides the most practical and efficient method of estimation. \\
+Even when there is interdependence between criteria, the UTA approach provides good results. \\
+In the case where the utility function estimation is positive, $ \sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} >0 0$, the UTASTAR appears more reliable.\\
+The simulations results indicate that small value of $\delta$  lead to better results in case of a positive utility function estimation. But in case of no error in the utility function estimation, larger value of $\delta$ can provide better results. The use of UTAMP1 or UTAMP2 may then be used to find the practical upper bound of the values given.  
+
+\subsection{Disadvantages of the UTA method}
 \begin{enumerate}
 \item We can always question the decision marker about his preferences
 \item Solution may not be the only one as in any LP we can have different solutions
 \end{enumerate}
 
 \section{Implementation - Alternative Criteria}
+We wanted to implement the UTASTAR method. In order to make it possible we created this java program: AlternativeCriteria. So basically we will generate a decision problem and run the UTASTAR algorithm. \\
+Another objective we were trying to achieve was to generate random alternatives and criteria, so we can generate a decision problem. \\
+After solving the problem our goal was to get the $v^{R}$ and $v^{T}$ and compare them. 
+\subsection{Architecture}
+\begin{figure}[H]
+    	\centering
+	\includegraphics[width=17cm,height=17cm,keepaspectratio]{diagram-uml.png}
+	\caption{Class Diagram}
+\end{figure}
+Other than the external libraries used in the resolution of a LP, no library is needed. \\
+
+\subsection{Functionalities}
+\begin{itemize}
+\item Program your own decision problem
+\item Generate a random decision problem
+\item Solve the decision problem by using UTASTAR algorithm
+\item Elaborate a ValueFunction from a decision problem
+\item Generate a ValueFunction
+\end{itemize}
+
+\subsection{Simulation and Comparison}
+TODO: To be made after the remarks of the program.
+
+\subsection{Future Improvements}
+This program has been done during the 3 month internship. Definitely it didn't take 3 month to make this program, but to been able to make such a program I had to make a research and learn about the UTA method. Basically we had to some cuts in order of complexity and compromise in some categories to make the implementation easier. And since the program will be available as an open source on GitHub, it has the potential to grow with some improvements. The following list is some of the improvements that could be made:\\
+\begin{enumerate}
+\item In the current version of the program, the criterion evaluation has a minimum value and maximum value, so the evaluation of a action is made in the range $[minValue, maxValue]$ with minValue being the least preferred criterion and maxValue the most preferred. But what if we want to represent a criterion that has maxValue as the least preferred criterion and minValue as the most preferred, like the criterion price. In the current version, this won't be possible. 
+\item In our program, a criterion has a minimum value and maximum value, but what if the criterion is not a quantitative item, not evaluated in numbers. For example, let's say we want to evaluate the comfort, we can have the following values: 0, +, ++, +++ or not comfortable, basic, comfortable, very comfortable. So as an improvement we can expect to be able to design all of the criterion possible.  
+\end{enumerate} 
+
+TODO: To be continued...
 
 \chapter{Conclusion}
+TODO: To be made this week...
 
 \begin{thebibliography}{9}
 \addcontentsline{toc}{chapter}{Bibliography}

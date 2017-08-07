@@ -9,11 +9,16 @@ public class Main {
 
 	public static void main(String[] args) {
 		ProblemGenerator p1 = generateBuyingNewCar();
-		generateRandom();
-		
 		UTASTAR utastar = new UTASTAR(p1.getCriteria(), p1.getAlternatives());
 		ValueFunction vf = utastar.findValueFunction();
-		System.out.println( p1.getAlternatives().get(3).getName() + " : " + vf.getValue(p1.getAlternatives().get(3)));//0.102
+
+		System.out.println("End of UTASTAR Algorithm");
+		System.out.println();
+		System.out.println("Displaying the value of the alternatives from the function valueFunction.getValue(alternative) :");
+		for(Alternative alternative : p1.getAlternatives()){
+			vf.getValue(alternative);
+			//System.out.println( alternative.getName() + " : " + vf.getValue(alternative));//0.102
+		}
 	}
 
 	private static ProblemGenerator generateBuyingNewCar() {

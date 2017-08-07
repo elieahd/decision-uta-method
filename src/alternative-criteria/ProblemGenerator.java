@@ -90,6 +90,4 @@ public class ProblemGenerator {
 		return result;
 	}
 	
-	
-
 }

@@ -5,6 +5,7 @@ A repository containing the work done during my research about UTA method (Inter
 Upon decompressing the archive, you will get the following structure:
 ```
 .decision-uta-method
+├── diagrams                            <- directory containing diagrams used
 ├── src                                 <- directory containing Java projects
 │   ├── alternative-criteria            <- directory containing alternative-criteria project
 │   ├── examples                        <- directory containing all of the examples made
@@ -80,6 +81,8 @@ To build the class of this program, you should execute the following command:
 ```bash
 javac -d objs alternative-criteria/*.java utils/*.java
 ```
+
+Once the java class are compiled, you can run the program
 #### on windows
 ```bash
 java -cp objs; com.lamsade.alternativecriteria.Main 
