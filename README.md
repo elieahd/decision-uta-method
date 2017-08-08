@@ -7,7 +7,7 @@ Upon decompressing the archive, you will get the following structure:
 .decision-uta-method
 ├── diagrams                            <- directory containing diagrams used
 ├── src                                 <- directory containing Java projects
-│   ├── alternative-criteria            <- directory containing alternative-criteria project
+│   ├── uta-calculator                  <- directory containing uta-calculator project
 │   ├── examples                        <- directory containing all of the examples made
 │   ├── lib                             <- directory containing libraries and jar files
 │   └── utils                           <- directory containing all utils created
@@ -45,7 +45,7 @@ double targetSum; // default value : 1.0
 For example, if you want to generate 4 numbers that have the sum of 1, all you have to do is execute the following command: 
 #### on windows
 ```bash
-java -cp objs; com.lamsade.alternativecriteria.NumbersGenerator 4 1.0  
+java -cp objs; com.lamsade.utacalculator.NumbersGenerator 4 1.0  
 ```
 
 # Utils - ScaleGenerator
@@ -67,25 +67,20 @@ int cuts; // default value : 4
 For example, if you want to generate the scale of criteria that have a minimum value of 10 and a maximum value of 20 with 4 cuts, all you have to do is execute the following command: 
 #### on windows
 ```bash
-java -cp objs; com.lamsade.alternativecriteria.ScaleGenerator 10.0 20.0 4  
+java -cp objs; com.lamsade.utacalculator.ScaleGenerator 10.0 20.0 4  
 ```
 
-# Alternative - Criteria
-This a the class diagram of this project : 
-<p align="center">
-  <img src="/docs/images/alternative-criteria class diagram.png?raw=true" alt="Alternative Criteria Class Diagram"/>
-</p>
-
+# UTA Calculator - Criteria
 To build the class of this program, you should execute the following command: 
 #### on windows
 ```bash
-javac -d objs alternative-criteria/*.java utils/*.java
+javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar uta-calculator/*.java utils/*.java
 ```
 
 Once the java class are compiled, you can run the program
 #### on windows
 ```bash
-java -cp objs; com.lamsade.alternativecriteria.Main 
+java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.utacalculator.Main 
 ```
 
 # Example of a java class that will solve a Linear Program

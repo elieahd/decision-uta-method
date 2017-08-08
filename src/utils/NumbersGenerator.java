@@ -1,4 +1,4 @@
-package com.lamsade.alternativecriteria;
+package com.lamsade.utacalculator;
 
 import java.util.ArrayList;
 import java.util.List;
