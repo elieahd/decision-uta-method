@@ -22,12 +22,14 @@
 \usepackage[usenames, dvipsnames]{color}
 \usepackage{lipsum}
 \usepackage{fancyhdr}
+\usepackage{pdfpages}
 
 \graphicspath{ {images/} }
 
 \begin{document}
 \selectlanguage{english}
 \pagenumbering{gobble}
+\includepdf{cover-page.pdf}
 
 \begin{titlepage}
 
@@ -39,7 +41,7 @@
 \textsc{\large Internship}\\[0.5cm] 
 
 \HRule \\[0.4cm]
-{ \huge \bfseries Internship Report} 
+{ \huge \bfseries Internship Report - UTA Method} 
 \HRule \\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
@@ -75,29 +77,92 @@ M. Michel \textsc{Zam}
 
 \abstract 
 This report documents the work done during the summer internship at LAMSADE Dauphine, under the supervision of Mr. Olivier Cailloux and Mr. Michel Zam. The report give an overview of the projects completed during the internship.\\
-I have worked mainly on the UTA method which is an ordinal regression method, proposed by E. Jacquete-Lagreze and J. Siskos, which adjust a system of additive utility function.\\
+I have worked mainly on the UTA method which is an ordinal regression method, proposed by E. Jacquete-Lagreze and J. Siskos, which adjust a system of additive utility function.
+\newpage
+{ \huge \bfseries Acknowledgment}\\[0.3cm]
+\\
+
+There are a number of people that I would like to thank them for their help and contribution in the success of my internship at LAMSADE Dauphine.\\
+
+First and foremost, I would like to thank Mr. Olivier Cailloux, a lecturer in computer science and researcher at LAMSADE. His advice and follow ups helped me a lot in establishing my assignments during the internship.\\
+
+I also would like to thank Mr. Michel Zam, the founder of KarmicSoft and an associate professor at Paris Dauphine University, for the opportunity given to me as an intern at Lamsade\\
+
+Doing my internship at LAMSADE with Mr. Cailloux and Mr. Zam was a pleasure, I have learned a lot thanks to them. I would like to them for this opportunity.\\
+
+I would like to thank the internship manager, Mrs Maude Manouvrier, for all her efforts in term of follow-up as well as her availability and patience to answer my questions.\\
+\newpage
 \tableofcontents{}
+\newpage
 \pagenumbering{arabic}
 
 \chapter{Introduction}
-I am currently completing my master's degree at Paris Dauphine University so I had the opportunity to achieve an internship at LAMSADE (Laboratoire d'analyse et modélisation de systèmes pour l'aide à la décision). LAMSADE is a Paris-Dauphine research laboratory specialized in decision theoretic approaches. Decision theory aims at helping individuals who face decision problem by elaborating a study of the reasoning underlying agent's choices. \\
+Currently I'm completing my master's degree in MIAGE at Paris Dauphine University so I had the opportunity to achieve an internship at LAMSADE (Laboratoire d'analyse et modélisation de systèmes pour l'aide à la décision). LAMSADE is a Paris-Dauphine research laboratory specialized in decision theoretic approaches. Decision theory aims at helping individuals who face decision problem by elaborating a study of the reasoning underlying agent's choices. \\
 
-From \formatdate{29}{5}{2017} to \formatdate{1}{9}{2017}, I completed a research internship at LAMSADE at Paris Dauphine University. My internship was made remotely, so I had a meeting with Mr. Cailloux every week to get feedback of the work done. And I communicated with Mr. Zam via mails or calls. \\
+From \formatdate{29}{5}{2017} to \formatdate{1}{9}{2017}, I completed a research internship at LAMSADE at Paris Dauphine University. My internship was made remotely, so I had a weekly meeting with Mr. Cailloux to get feedback of the work done. And I communicated with Mr. Zam via mails or calls. \\
 
-This internship was very important for my professional career because it may be my last internship before I get my Masters's degree in Information systems for finance at Paris Dauphine University. Let's not also forget that this internship will allow me to practice the different courses learned during my academic years.\\
+This internship was very important for my professional career because it may be my last internship before I get my Masters's degree in Information systems for finance at Paris Dauphine University. Let's not also forget that this internship will allow me to practice the different courses learned throughout my academic years.\\
 
-One of the objectives is to propose the UTA method as an open source software component. Another objective is to integrate this open source software into DecisionCloud, a software based on MyDraft a tool developed by KarmicSoft a LAMSADE spin-off. Researching similar literature and research represent an important objective in this internship. \\
+One of the objectives is to propose the UTA method, that solve a multi-criteria problem by building a utility function based on the preferences of the Decision Maker, as an open source software component. Another objective was to integrate this open source software into DecisionCloud, a software based on MyDraft a tool developed by KarmicSoft a LAMSADE spin-off. Researching similar literature and research represent an important objective in this internship. \\
 
-In this report, I will present the context of the internship. It contains an overview of the projects realized: UTA, LinearProgramSolver, Research, DecisionCloud... Writing this report, I will also conclude by reflecting on my learning objects and goals achieved and not achieved.\\
+In this internship report, I will describe the context of the project which contains an overview of the internship. Writing this reports, I will describe the projects made: UTA, LinearProgram Solver, UTA Calculator and the research realized. I will conclude by reflecting on the flow of the internship. \\
 
 \chapter{Context of the projects}
-TODO: To be made during this week, approximately 3-4 pages.
-\section{Lamsade}
-\section{Objectives and Description of the projects}
+\section{Introduction to LAMSADE}
+LAMSADE is a laboratory located in Paris Dauphine university. Lamsade stands for Laboratoire d'analyse et modélisation de systèmes pour l'aide à la décision. The french laboratory has been established in 1974 by Bernard Roy. The main research subjects that this center study are  operational research, decision aid, artificial intelligence (AI) and decision theory. \\
+The activities of LAMSADE are divided into 3 poles: 
+\begin{itemize}
+\item Decision aid 
+\item Combinatorial optimization and algorithmic
+\item Data Science
+\end{itemize}
+LAMSADE is well know for the origin of the multiple-criteria decision analysis (MCDA), and for its approach to the Algorithmic Decision Theory. The laboratory has established himself between the best internationally. \\
+LAMSADE is structured in 2 dimensions:
+\begin{itemize}
+\item Scientific 
+\item Research
+\end{itemize}
+Scientific dimension represent the poles, where there is a community of researches invited to exchange through out meetings and seminary. The research dimension represent the projects assembled by the researches interested in the subject in question. Both of this dimensions are neither fixed neither permanent, they can be submitted to an evaluation by the Laboratory. 
 
+\section{Objectives}
+Through out the internship, I had several objectives to achieve and those objectives changed from when we began the internship. \\
+The following list represent the objectives stated at the beginning of the internship: 
+\begin{itemize}
+\item Propose an open source software component of the UTA method (Main objective)
+\item Integrate the UTA open software component as one of the tools in the Decision Deck community
+\item Document and publish the software and implement a graphical user interface to the UTA by using DecisionCloud, a tool promoted by the Decision Deck
+\end{itemize}
+
+So as stated before, the objectives changes from the beginning of the internship for different reasons. We ended up doing an open source software component of the UTA method and we published on github instead of the DecisionCloud. This gave us the opportunity to develop more the software by doing more functionalities, and allowed us to specify time for research. So the main reason that we weren't being able to make the tools in the Decision Deck community because Mr. Zam wasn't available to assist me. So we took this opportunity to make the software more developed.\\
+So during the internship the objectives were re-stated as follow: 
+\begin{itemize}
+\item Summarize UTA
+\item Propose an open source software component of the UTA method
+\item Generate Random alternatives and criteria
+\item Generate Value Function
+\item Search literature for existing similar studies, and how to generate realistic random alternatives
+\end{itemize}
+
+\section{Conduct of the internship}
+The \formatdate{29}{5}{2017} I started my internship. The first two weeks, was dedicated to get to know the platform MyDraft and create some basic applications. MyDraft is a platform created by KarmicSoft, it specialized in building and running data-driven Web applications. It is a platform for developing business application the easiest way without complexity. During the two weeks, I did all the tutorials available in the site and in addition I created my own project. The project was called \textit{StockApp} where I recreated a project done during the course of \textit{Marché Financier}: Portfolio Management Project. The project consist in collecting stock information and calculating the following information: 
+\begin{itemize}
+\item Weekly Returns of assets by calculating its mean and standard deviation. 
+\item Correlation matrix of the stock returns
+\item Correlation of stock returns with the stock market index
+\item Beta, Sharpe Ratio and Treynor Ratio
+\item Portfolio optimization scheme of Markowitz
+\end{itemize}
+I succeed in doing most of the functionalities of the project but the last point wasn't possible to do in MyDraft since it needed the Macro used in the Excel.\\
+
+After learning about the platform MyDraft, I had a meeting with Mr. Cailloux the \formatdate{15}{6}{2017} where he introduced me a little bit about the UTA method and gave me the book: \textit{Multiple Criteria Decision Analysis}, where the chapter 9 contains an explication about the UTA method. I had to understand this method and make a summary about it, so I took this opportunity to learn about LaTeX to create the summary using LaTeX. Till the end of the month of July, we created the summary of UTA method in Latex, and created my own problem to illustrate the method. Since one of the step of the method was to solve a Linear Program, so we created an independent project to solve a simple Linear Program (LP) by using  the google ortools (Optimization tools) library. During that time I made some research about literature for existing similar studies, and how to generate realistic random alternatives research. During this time we had a weekly meeting with Mr. Cailloux.\\
+
+At the end of the month of July, we had a meeting Mr. Cailloux and me to discuss about the software that will represent the UTA method. We designed the architecture, and I coded the program, I didn't took long because during the month before I had already worked on little components of the software. During the month of august our goal was to finish this document and to make simulation and testing the software.\\  
+
+All of the work done is available as open source on my github repository: \url{ https://github.com/elieahd/decision-uta-method}.\\
+
+So in the next chapter, we will discuss the projects done above, without including the part of MyDraft since we didn't use it in our project due to the change of objectives. 
 
 \chapter{Description of the projects}
-
 \section{UTA}
 \subsection{Introduction of the aid decision}
 In decision theory we elaborate a study of reasoning underlying the agent choices. Two branches can be broken from the decision theory: giving an advice on how to make the best decisions, or how existing agents actually make decisions. \\
@@ -416,11 +481,13 @@ The simulations results indicate that small value of $\delta$  lead to better re
 \item Solution may not be the only one as in any LP we can have different solutions
 \end{enumerate}
 
-\section{Implementation - Alternative Criteria}
+\newpage
+\section{Implementation - UTA Calculator}
 We wanted to implement the UTASTAR method. In order to make it possible we created this java program: AlternativeCriteria. So basically we will generate a decision problem and run the UTASTAR algorithm. \\
 Another objective we were trying to achieve was to generate random alternatives and criteria, so we can generate a decision problem. \\
 After solving the problem our goal was to get the $v^{R}$ and $v^{T}$ and compare them. 
 \subsection{Architecture}
+\subsubsection{Class Diagram}
 \begin{figure}[H]
     	\centering
 	\includegraphics[width=17cm,height=17cm,keepaspectratio]{diagram-uml.png}
@@ -428,14 +495,59 @@ After solving the problem our goal was to get the $v^{R}$ and $v^{T}$ and compar
 \end{figure}
 Other than the external libraries used in the resolution of a LP, no library is needed. \\
 
+\subsubsection{Maven}
+We figured out that we need to configure our project in Maven. Maven has been created to make a standard way to build a project and a way to share JAR files through many projects. Figuring out dependencies for small projects is not hard. But once the dependencies expand it will get out of hand. \\
+
+Since we wanted to create an open source project, following the standards conventions was a must which led us to the use of Maven. Another plus of using Maven is that it provides a quality project information. \\
+
+I personally prefer using the IDE Eclipse Luna to code in Java and I am currently using the version Luna 4.4.2 . So with Maven this won't be a big deal for people who don't use Eclipse, they can use NetBeans or IDEA or any other IDE that supports Maven.  \\
+
+\underline{Configuration of Maven: }
+\begin{itemize}
+\item groupId: io.github.oliviercailloux
+\item artifactId: uta-calculator
+\end{itemize}
+
 \subsection{Functionalities}
+The following list represent the functionalities of the program I worked on:
 \begin{itemize}
 \item Program your own decision problem
 \item Generate a random decision problem
 \item Solve the decision problem by using UTASTAR algorithm
 \item Elaborate a ValueFunction from a decision problem
 \item Generate a ValueFunction
+\item Available as open source
 \end{itemize}
+ 
+\subsection{Utils}
+To make some function  more generic we created a package called utils, where we can find 2 java classes: 
+\begin{itemize}
+\item NumbersGenerator
+\item ScaleGenerator
+\end{itemize}
+
+\subsubsection{NumbersGenerator}
+The goal of this util class is to generate decimals numbers that have a certain sum. For example, If you want to create 3 numbers that have the sum of 1. \\
+To make this possible, the class NumbersGenerator has the method generate that takes the following as parameters: 
+\begin{enumerate}
+\item counter (int)
+\item targetSum (double)
+\end{enumerate} 
+The parameter counter represent the counter of numbers we want to generate, and the parameter targetSum represent the target sum we want. \\
+You can specify the Random value in case you want to have the same result when doing testing. \\
+This method will return a List of number of type double. 
+
+
+\subsubsection{ScaleGenerator}
+The goal of this util class is to generate scale for a criterion, where the interval $[ minValue, maxValue]$ is cut into equal intervals. For example, If you want the scale of criterion that have 10 as minimum value, 20 as maximum value and with 4 cuts, the function should return the following list: $[10.0, 13.333, 16.667, 20.0]$.\\
+To make this possible, the class ScaleGenerator has the method generate that takes the following as parameters: 
+\begin{enumerate}
+\item minValue (double)
+\item maxValue (double)
+\item cuts (int)
+\end{enumerate} 
+The parameter minValue represent the minimum value of a criterion, the parameter maxValue represent the maximum value of a criterion and the parameter cuts represent the numbers of cuts you want to cuts the interval.  \\
+This method will return a List of number of type double. 
 
 \subsection{Simulation and Comparison}
 TODO: To be made after the remarks of the program.
@@ -450,6 +562,10 @@ This program has been done during the 3 month internship. Definitely it didn't t
 TODO: To be continued...
 
 \chapter{Conclusion}
+\section{Difficulties encountered}
+\section{Acquired Skills }
+
+
 TODO: To be made this week...
 
 \begin{thebibliography}{9}
