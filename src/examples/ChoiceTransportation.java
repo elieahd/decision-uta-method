@@ -79,11 +79,11 @@ public class ChoiceTransportation {
     c3.setCoefficient(errors.get("eBUS+"), 1);
     c3.setCoefficient(errors.get("eBUS-"), -1);
 
-    // Delta(BUS,TAXI) = w11 + 0.71 w21 - w22 - w31 - w32 - w33 - eBUS+ + eBUS- + eTAXI+ - eTAXI- >= sigma
+    // Delta(BUS,TAXI) = w11 + 0.71 w12 - w21 - w31 - w32 - w33 - eBUS+ + eBUS- + eTAXI+ - eTAXI- >= sigma
     MPConstraint c4 = solver.makeConstraint(sigma, infinity);
     c4.setCoefficient(variables.get("w11"), 1);
-    c4.setCoefficient(variables.get("w21"), 0.71);
-    c4.setCoefficient(variables.get("w22"), -1);
+    c4.setCoefficient(variables.get("w12"), 0.71);
+    c4.setCoefficient(variables.get("w21"), -1);
     c4.setCoefficient(variables.get("w31"), -1);
     c4.setCoefficient(variables.get("w32"), -1);
     c4.setCoefficient(variables.get("w33"), -1);

@@ -481,6 +481,33 @@ The simulations results indicate that small value of $\delta$  lead to better re
 \item Solution may not be the only one as in any LP we can have different solutions
 \end{enumerate}
 
+\subsection{Experimentation about the variant of UTA, UTASTAR and UTA}
+This experimentation was made by J. SISKOS and D. YANNACOPOULOUS and was written in the paper: \textit{Amelioration de la methode UTA par introduction d'une double fonction d'erreur} which is the Cahier du LAMSADE n49. The goal of this experimentation was to show the advantages that offer the newer version of UTA next the older version. 10 actions has been evaluated randomly over 6 criteria with a scale of $[1,4]$ where 4 is the most preferred value.\\
+
+In order to facilitate the comparison, 2 factors has been used:
+\begin{enumerate}
+\item Iterations necessary to obtain the optimal utility
+\item Objective of the LP : Minimization of $ \sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} $ 
+\end{enumerate}
+
+The first factor was better by $48\%$ than the old version. The second factor was better by $36\%$ than the old version. 
+Comparison table:
+
+\begin{center}
+ \begin{tabular}{| c | c | c | c |} 
+ \hline
+ Factors & UTA & UTASTAR & Result \\
+ \hline
+Iterations & $21.5$ & $11.1$ & drop of 48\% \\ 
+ \hline
+Objective of LP & $0.34$ & $0.53$ & drop of 36\%\\ 
+ \hline
+\end{tabular}
+\end{center}
+
+ 
+
+
 \newpage
 \section{Implementation - UTA Calculator}
 We wanted to implement the UTASTAR method. In order to make it possible we created this java program: AlternativeCriteria. So basically we will generate a decision problem and run the UTASTAR algorithm. \\
@@ -537,9 +564,8 @@ The parameter counter represent the counter of numbers we want to generate, and 
 You can specify the Random value in case you want to have the same result when doing testing. \\
 This method will return a List of number of type double. 
 
-
 \subsubsection{ScaleGenerator}
-The goal of this util class is to generate scale for a criterion, where the interval $[ minValue, maxValue]$ is cut into equal intervals. For example, If you want the scale of criterion that have 10 as minimum value, 20 as maximum value and with 4 cuts, the function should return the following list: $[10.0, 13.333, 16.667, 20.0]$.\\
+The goal of this util class is to generate scale for a criterion, where the interval $[minValue, maxValue]$ is cut into equal intervals. For example, If you want the scale of criterion that have 10 as minimum value, 20 as maximum value and with 4 cuts, the function should return the following list: $[10.0, 13.333, 16.667, 20.0]$.\\
 To make this possible, the class ScaleGenerator has the method generate that takes the following as parameters: 
 \begin{enumerate}
 \item minValue (double)
@@ -556,17 +582,28 @@ TODO: To be made after the remarks of the program.
 This program has been done during the 3 month internship. Definitely it didn't take 3 month to make this program, but to been able to make such a program I had to make a research and learn about the UTA method. Basically we had to some cuts in order of complexity and compromise in some categories to make the implementation easier. And since the program will be available as an open source on GitHub, it has the potential to grow with some improvements. The following list is some of the improvements that could be made:\\
 \begin{enumerate}
 \item In the current version of the program, the criterion evaluation has a minimum value and maximum value, so the evaluation of a action is made in the range $[minValue, maxValue]$ with minValue being the least preferred criterion and maxValue the most preferred. But what if we want to represent a criterion that has maxValue as the least preferred criterion and minValue as the most preferred, like the criterion price. In the current version, this won't be possible. 
-\item In our program, a criterion has a minimum value and maximum value, but what if the criterion is not a quantitative item, not evaluated in numbers. For example, let's say we want to evaluate the comfort, we can have the following values: 0, +, ++, +++ or not comfortable, basic, comfortable, very comfortable. So as an improvement we can expect to be able to design all of the criterion possible.  
+\item In our program, a criterion has a minimum value and maximum value, but what if the criterion is not a quantitative item, not evaluated in numbers. For example, let's say we want to evaluate the comfort, we can have the following values: 0, +, ++, +++ or not comfortable, basic, comfortable, very comfortable. So as an improvement we can expect to be able to design all of the criterion possible. 
+\item The current version doesn't support an graphical interface. A graphical interface can be handy to make the software more user friendly. 
 \end{enumerate} 
-
-TODO: To be continued...
 
 \chapter{Conclusion}
 \section{Difficulties encountered}
-\section{Acquired Skills }
+I didn't had many difficulties, the only main problem I faced was the fact that I was working alone. Working alone and not surrounded by colleagues employees can be a little set back, since you can not interact with your colleagues and ask them questions on the spot. I had to wait for the next meeting or send an email in case I had any questions or problems.\\
 
+\section{Personal benefits}
+During my internship at LAMSADE, I have learned a lot, put in practice many of the subject learned during my academic years, so here the list of my acquired skills: 
+\begin{itemize}
+\item Learning to write documents using LaTeX which help us not to worry on the appearance of documents rather than on the content. 
+\item Learning a new Decision method, the UTA method
+\item Re-doing my project of Portfolio Management was really helpful for me since next year I will specialized in Information System for finance
+\item Learning how to make research of literature on a certain subject 
+\item Making projects using Maven
+\item Making software and project as open source on github
+\item Developing my English skill
+\end{itemize}
 
-TODO: To be made this week...
+The internship has been very rewarding for me on several aspects, being able to put to practice several subject taken during my academic years like the course \textit{Decision}, \textit{Marché Financier} and \textit{Advanced Java}. \\
+To sum-up, this 3-month internship was a really good experience as professionally as personally. I believe that if this experience has been as rewarding for me.
 
 \begin{thebibliography}{9}
 \addcontentsline{toc}{chapter}{Bibliography}

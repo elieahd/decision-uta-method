@@ -11,6 +11,8 @@ public class Main {
 	
 	public static void main(String[] args) {
 		ProblemGenerator p1 = generateBuyingNewCar();
+		//ProblemGenerator p1 = generateRandom();
+		
 		UTASTAR utastar = new UTASTAR(p1.getCriteria(), p1.getAlternatives());
 		ValueFunction vf = utastar.findValueFunction();
 
@@ -18,8 +20,7 @@ public class Main {
 		System.out.println();
 		System.out.println("Displaying the value of the alternatives from the function valueFunction.getValue(alternative) :");
 		for(Alternative alternative : p1.getAlternatives()){
-			vf.getValue(alternative);
-			//System.out.println( alternative.getName() + " : " + vf.getValue(alternative));//0.102
+			System.out.println( alternative.getName() + " : " + vf.getValue(alternative));
 		}
 	}
 
@@ -72,4 +73,5 @@ public class Main {
 		problem.generateAlternatives(5);
 		return problem;
 	}
+
 }

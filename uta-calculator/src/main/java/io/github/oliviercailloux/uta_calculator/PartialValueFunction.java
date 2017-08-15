@@ -35,7 +35,12 @@ public class PartialValueFunction {
 
 	//Methods
 	public double getPartialValue(double x){
-		System.out.println("                   " + getDerivative(x) + " * " +  x + "+" + getStartSegment(x));
+		for(Point point : intervals){
+			if(point.getX() == x){
+				return point.getY();
+			}
+		}
+		//System.out.println("                   " + getDerivative(x) + " * " +  x + "+" + getStartSegment(x));
 		return getDerivative(x) * x + getStartSegment(x); // y = a x + b
 	}
 	public double getDerivative(double x){

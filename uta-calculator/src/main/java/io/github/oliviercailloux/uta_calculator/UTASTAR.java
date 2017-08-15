@@ -92,8 +92,19 @@ public class UTASTAR {
 		System.out.println();
 		System.out.println("Introducing 2 errors functions by writing for each pair of consecutive actions");
 		for (int i = 0; i < alternatives.size() - 1; i++){
-			MPConstraint constraint = solver.makeConstraint(SIGMA, infinity);
+			
+			boolean equal = false;
 			Alternative a1 = alternatives.get(i);
+			if (a1.getName().equals("METRO1")){
+				equal = true;
+			}
+			
+			MPConstraint constraint;
+			if(equal){
+				constraint = solver.makeConstraint(0,0);
+			}else{
+				constraint = solver.makeConstraint(SIGMA, infinity);
+			}
 			Alternative a2 = alternatives.get(i+1);
 			for(Entry<String, Double> e1 : a1.getMarginalValue().entrySet()) {
 				boolean found = false;
@@ -104,7 +115,7 @@ public class UTASTAR {
 					}
 				}
 				if(!found){
-					constraint.setCoefficient(variables.get(e1.getKey()), (e1.getValue()));
+					constraint.setCoefficient(variables.get(e1.getKey()), e1.getValue());
 				}
 			}
 			for(Entry<String, Double> e2 : a2.getMarginalValue().entrySet()) {
@@ -138,8 +149,8 @@ public class UTASTAR {
 		if (!solver.verifySolution(/*tolerance=*/1e-7, /*logErrors=*/true)) {System.err.println("The solution returned by the solver violated the problem constraints by at least 1e-7"); return null;}
 
 		System.out.println("Optimal objective value = " + solver.objective().value());
-
 		System.out.println(model);
+		
 		for (Map.Entry<String, MPVariable> entry : variables.entrySet()){
 			System.out.println(entry.getKey() + " = " + entry.getValue().solutionValue());
 		}
@@ -174,6 +185,7 @@ public class UTASTAR {
 		
 		return valueFunction;
 	}
+	
 	public Map<String, Double> getPartialMarginalValue(Criterion criterion, int value, int criteriaId){
 		List<Double> scale = criterion.getScale();
 		Collections.sort(scale);
