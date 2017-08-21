@@ -96,7 +96,7 @@ During the internship the objectives were finally re-stated as follow:
 \begin{itemize}
 \item Summarize UTA
 \item Propose an open source software component of the UTA method
-\item Generate Random alternatives and criterias
+\item Generate Random alternatives and criteria
 \item Generate Value Function
 \item Search literature for existing similar studies, and how to generate realistic random alternatives
 \end{itemize}
@@ -125,7 +125,7 @@ Another characteristic of MyDraft is the simplicity of coding which reduces the 
 MyDraft proposes a unit testing and the possibility to generate UML model of the application. I couldn't test the last feature because of problems in the server located in United Kingdom.\\
 
 \subsection{Projects - StockApp}
-To practice using the platform MyDraft, I worked on my own application: StockApp. The project consists in collecting stock information and calculating the following informations: 
+To practice using the platform MyDraft, I worked on my own application: StockApp. The project consists in collecting stock information and calculating the following information: 
 \begin{itemize}
 \item Weekly Returns of assets by calculating its mean and standard deviation. 
 \item Correlation matrix of the stock returns
@@ -155,15 +155,28 @@ In the IHM, I defined 3 tabs: list of index, list of stock and list of stock and
 I succeeded in doing most of the functionalities of the project except for the last point, Portfolio optimization scheme of Markowitz, this wasn't possible to do in MyDraft since it needed the Macro used in the Excel.\\
 
 \subsection{Tutorial}
-On the Karmicsoft site, we can find a list of tutorials. The tutorials helped the users know how to use the platform. The following list represents all of the tutorials available on the site: \begin{itemize}
+On the Karmicsoft site, we can find a list of tutorials. The tutorials helped the users know how to use the platform. The following list represents all of the tutorials available on the site: 
+\begin{itemize}
 \item how to create an account on MyDraft 
 \item how to define classes, objects and fragments
 \item how to define state and operations
 \item how to generate a use case diagram
 \end{itemize}
 
-All the before mentioned tutorials were made in French and published to YouTube. So, I took the initiative to create a pdf document in English on how to define classes, object and fragments. I thought that such tutorials would be interesting for non-speaking French and would be beneficial for MyDraft. The tutorials were sent to Mr. Zam.
+All the before mentioned tutorials were made in French and published to YouTube. So, I took the initiative to create a PDF document in English on how to define classes, object and fragments. I thought that such tutorials would be interesting for non-speaking French and would be beneficial for MyDraft. The tutorials were sent to Mr. Zam.
 
+\subsection{My remarks on MyDraft}
+From my experience of using MyDraft, I found this platform very powerful and simple, on the other hand certain categories had some lacks or some bugs. Following is a list representing my remarks and where I think that MyDraft can be improved:
+\begin{itemize}
+\item MyDraft is not consistent with the language, we can find some words in English when the language chosen is French
+\item not many tutorials are available in the tutorials section, and they are only in French
+\item most buttons are not labeled, you only find an icon. So, figuring out what each button do is a bit confusing
+\item there is no community nor documentation to help the users when they face a certain problem or bug
+\item in certain scenarios, we may need to refresh the page so the changes can take place
+\item generating UML model wasn't possible during my internship since there was a bug in the main server located in United Kingdom
+\end{itemize}
+
+But overall my experience with MyDraft was very good. This platform can have a real impact on the programming cycle which can lead to some new technology that can help the user create their own application without the need of a program thus speeding up the process.
 
 \section{UTA}
 \subsection{Introduction of the aid decision}
@@ -203,17 +216,17 @@ Once the global preference is defined, we can start the decision support.\\
 One of the multi-criteria decision analysis methods is the UTA method, which was proposed by E. Jacquet-Lagrèze and J. Siskos in 1982. This method is proposed by the Multi-Attribute Utility Theory (MAUT) that build a utility function based on the DM\footnote{Decision Maker} preferences.\\ 
 
 The UTA method is used to solve a multi-criteria problem by building a utility function based on the preferences of the DM and solving a linear program (LP). It adopts the aggregation-disaggregation principles: where the model is based on a given preferences.\\ The UTASTAR, a variant of the UTA method, has been considered a better algorithm than UTA. Better result was found using the UTASTAR algorithm. So this is why we will focus on this method rather than the UTA method.\\The aim of the UTASTAR method is to estimate a set of additive utility functions which are as consistent as possible with the decision maker's preferences.\\
-At the beginning of the problem, the DM should present the following informations 
+At the beginning of the problem, the DM should present the following information 
 \begin{itemize}
 \item rank of the actions
 \item give the criteria he wants to base his decision on 
 \item evaluate the action compared to the criterion
 \end{itemize}
-Once those informations are presented, the UTASTAR algorithm can be executed. 
+Once those information are presented, the UTASTAR algorithm can be executed. 
 
 \newpage
 \subsection{Principles and Notation}
-Let's call $A={a,b,c,...}$ the set of potential actions and $g_1, g_2, g_3, ..., g_n$ the family of criterias. Where $g_i(a)$ represents the function of an action(alternative)$a$ on the criteria $g_i$ with $a \in A_R$. \\
+Let's call $A={a,b,c,...}$ the set of potential actions and $g_1, g_2, g_3, ..., g_n$ the family of criteria. Where $g_i(a)$ represents the function of an action(alternative)$a$ on the criteria $g_i$ with $a \in A_R$. \\
 
 We define $g_{i*}$ as the least preferred criteria: $g_{i*} = min_{a \in A} g_i (a)$ and $g_i^{*}$ as the most preferred criteria: $g_i^{*} = max_{a \in A} g_i (a)$. So the interval for each criteria $g_i$ is: $[g_{i*} , g_i^{*}]$.\\
 
@@ -283,7 +296,7 @@ So if we have that $\Delta (a_k, a_{k+1} ) = v^{'} [g(a_k)] - v^{'} [g(a_{k+1})]
 \Delta (a_k, a_{k+1} ) = 0 \\
 \end{cases}
 \end{equation}
-The marginal value functions are estimated by means of the Linear Programm with \eqref{eq1}, \eqref{eq2}, \eqref{eq3} as constraints, and an objective function depending on the $ \sigma^{+}$ and $\sigma^{-} $: 
+The marginal value functions are estimated by means of the Linear Program with \eqref{eq1}, \eqref{eq2}, \eqref{eq3} as constraints, and an objective function depending on the $ \sigma^{+}$ and $\sigma^{-} $: 
 $$ [min]z = \sum_{k=1}^{m} [ \sigma ^{+} (a_k) + \sigma ^{-} (a_k)] $$
 subject to: 
 \begin{equation}\label{eq5}
@@ -295,13 +308,13 @@ w_{ij} \geq 0, \quad \sigma^{+}(a_k) \geq 0, \quad \sigma^{-}(a_k) \geq 0, \quad
 \end{equation}
 
 \subsection{Example - Buying New Car}
-The implementation of UTASTAR algorithm is illustrated by an example I made previously: \textbf{buying a new car}. Another example is available in the Appendices, Choice of transportation, taken from the book: Multiple Criteria Decision Analysis.\\ The DM is only interested in the following criterias:
+The implementation of UTASTAR algorithm is illustrated by an example I made previously: \textbf{buying a new car}. Another example is available in the Appendices, Choice of transportation, taken from the book: Multiple Criteria Decision Analysis.\\ The DM is only interested in the following criteria:
 \begin{itemize}
 \item price (in Euro)
 \item comfort ($0$, +, ++, +++) \textit{0 being not comfortable and +++ very comfortable}
 \item safety ($1, 2, 3, 4, 5$) \textit{1 being not safety and 5 safe}
 \end{itemize}
-The evaluation of the previous criterias is presented in the following table: 
+The evaluation of the previous criteria is presented in the following table: 
 \begin{center}
 \begin{tabular}{|c | c c c c|} 
 \hline
@@ -454,7 +467,7 @@ x3 = 0.0\\
 \section{Research}
 One of the most important aspect of this internship is the research. The objective of the research was to find similar studies, how to generate realistic random alternatives and studies made on UTA method.
 \subsection{Comparative analysis of UTA multicriteria methods}
-This paper, written by Michel Beuthe and Giuseppe Scannella, is mainly about the variants of UTA method. As discussed in this paper a method of multi-criteria analysis is chosen depending on the circumstances of the decision making. UTA makes the estimation of a nonlinear additive function possible, which is obtained using a linear program. The only information required from the decision maker is the global preferences between projects. \\
+The paper Comparative analysis of UTA multicriteria methods, written by Michel Beuthe and Giuseppe Scannella, is mainly about the variants of UTA method. As discussed in this paper a method of multi-criteria analysis is chosen depending on the circumstances of the decision making. UTA makes the estimation of a nonlinear additive function possible, which is obtained using a linear program. The only information required from the decision maker is the global preferences between projects. \\
 After the execution of the algorithm, it is possible to evaluate the preference stated by the decision maker.\\
 Another point stated in the paper is that the initial value of $\delta$ must not be given too high. In the basic model, it was noted that the values given to $\delta$ were to some extent arbitrary. 
 \subsubsection{Simulations}
@@ -467,7 +480,7 @@ The simulation is applied to the case of 353 road projects in Belgian Network du
 \item problems of planning and urbanism
 \item wear state of the current road.
 \end{itemize}
-The 29 criterias have been sorted with a scale going from 1 to 5. 
+The 29 criteria have been sorted with a scale going from 1 to 5. 
 
 \subsubsection{Variants of UTA}
 \begin{enumerate}
@@ -484,7 +497,7 @@ The 29 criterias have been sorted with a scale going from 1 to 5.
 
 \subsubsection{Conclusions made}
 When there is no error in the utility function estimation, $ \sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} = 0$, the basic UTA method provides the most practical and efficient method of estimation. \\
-Even when there is interdependence between criterias, the UTA approach provides good results. \\
+Even when there is interdependence between criteria, the UTA approach provides good results. \\
 In the case where the utility function estimation is positive, $ \sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} >0 0$, the UTASTAR appears more reliable.\\
 The simulations results indicate that small value of $\delta$ lead to better results in case of a positive utility function estimation. But in case of no error in the utility function estimation, larger value of $\delta$ can provide better results. The use of UTAMP1 or UTAMP2 may then be used to find the practical upper bound of the values given. 
 
@@ -497,7 +510,7 @@ A step of the UTA is solving a linear program and as we all know linear program 
 \end{enumerate}
 
 \subsection{Experimentation about the variant of UTA, UTASTAR and UTA}
-An experimentation was made by J. SISKOS and D. YANNACOPOULOUS and was written in the paper: \textit{Amélioration de la méthode UTA par introduction d'une double fonction d'erreur} which is the \textit{Cahier du LAMSADE n49}. The goal of this experimentation was to show the advantages offered by the newer version of UTA compared to the older version. Ten actions have been evaluated randomly over six criterias with a scale of $[1,4]$ where four is the most preferred value.\\
+An experimentation was made by J. SISKOS and D. YANNACOPOULOUS and was written in the paper: \textit{Amélioration de la méthode UTA par introduction d'une double fonction d'erreur} which is the \textit{Cahier du LAMSADE n49}. The goal of this experimentation was to show the advantages offered by the newer version of UTA compared to the older version. Ten actions have been evaluated randomly over six criteria with a scale of $[1,4]$ where four is the most preferred value.\\
 
 In order to facilitate the comparison, two factors have been used:
 \begin{enumerate}
@@ -602,7 +615,7 @@ To \textbf{generate a random problem}, you have to specify the following inputs 
 \end{itemize}
 \item numbers of alternatives
 \end{itemize}
-By having the following inputs, the software will create the alternatives and criterias and run the UTASTAR algorithm.\\
+By having the following inputs, the software will create the alternatives and criteria and run the UTASTAR algorithm.\\
 To \textbf{create your own problem} all you have to do is create a list of criterions and a list of alternatives in the code java, and run the algorithm by giving them parameters. The example of \textbf{Buying New Car} is available in the \textit{MainBuyingNewCar} java class. \\
 
 As output, both possibilities will display the results of the UTASTAR algorithm, value function and the value of each alternative.\\
@@ -622,7 +635,6 @@ This program has been done during my three months’ internship. It didn't take 
 During the internship, a lot of tasks has been accomplished. First, I have been able to learn about the platform MyDraft, to make a tutorial and to realize a small application. Secondly, I was able to learn about a new decision method, UTA, where I made a summary about it, and created my own problem, Buying New Car. Before implementing the UTASTAR method, a research was made. The goal of the research was not fully achieved, its objective was to find similar studies made, how to generate realistic random alternatives and studies made on UTA method. I was able to find some literature about similar studies and the UTA method but I couldn't find how to generate realistic random alternatives and criteria since I didn't have a lot of time to search for it. And finally, I was able to implement the UTASTAR method and make a simulation to extract the results from it. \\
 
 During the implementation, we used some external libraries that were given by Mr. Cailloux. The libraries provided by my supervisor were handy and very lightweight. We published the work done and the source code on Github, I believe that this was a great choice since we were aiming to provide an open source software and there is no better way than Github. The code was done in Java which helped us to find some external libraries.\\
-
 
 
 \chapter{Conclusion}

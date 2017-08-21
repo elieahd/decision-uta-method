@@ -24,8 +24,8 @@ public class MainSimulation {
 		System.out.println("Start of Simulation");
 		for(int i = 0; i < 10; i++){
 			double difference = getDifferenceRank(1000,3,10);
-			System.out.println("#" + i + " : " + difference);
 			differenceList.add(difference);
+			System.out.println("#" + i + " : " + difference);
 		}
 		System.out.println("End of Simulation");
 		Statistics stats = new Statistics();
@@ -37,8 +37,9 @@ public class MainSimulation {
 		int numberCuts = 3;
 		double minValue = 10.0;
 		double maxValue = 20.0;
-		
-		ValueFunctionGenerator  vfg = new ValueFunctionGenerator(numberCriteria,numberCuts);
+	
+		//Generating the ValueFunction
+		ValueFunctionGenerator  vfg = new ValueFunctionGenerator(numberCriteria, numberCuts);
 		ValueFunction vR = vfg.generateValueFunction();
 
 		ProblemGenerator problem = new ProblemGenerator();
