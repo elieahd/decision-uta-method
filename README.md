@@ -49,14 +49,10 @@ And finally navigate through the repository and select the folder lib
 To build the class of this program, you should execute the following command: 
 #### on windows
 ```bash
-javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar uta-calculator/*.java utils/*.java
+mvn compile
 ```
 
-Once the java class are compiled, you can run the program
-#### on windows
-```bash
-java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.utacalculator.Main 
-```
+
 
 # Example of a java class that will solve a Linear Program
 An example of a LP problem: 
