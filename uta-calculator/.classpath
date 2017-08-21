@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" output="target/classes" path="src/main/java">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/Elie/git/decision-uta-method/uta-calculator/src/dll"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/Elie/git/decision-uta-method/src/lib"/>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
@@ -28,7 +28,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Elie/git/decision-uta-method/src/lib/com.google.ortools.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elie/git/decision-uta-method/src/lib/protobuf.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
