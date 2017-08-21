@@ -6,11 +6,7 @@ Upon decompressing the archive, you will get the following structure:
 ```
 .decision-uta-method
 ├── diagrams                            <- directory containing diagrams used
-├── src                                 <- directory containing Java projects
-│   ├── uta-calculator                  <- directory containing uta-calculator project
-│   ├── examples                        <- directory containing all of the examples made
-│   ├── lib                             <- directory containing libraries and jar files
-│   └── utils                           <- directory containing all utils created
+├── uta-calculator                      <- directory containing Java projects
 ├── docs                                <- directory containing all of the docs produced
 │   ├── images                          <- directory containing all of the images used in this repo
 │   ├── reports                         <- directory containing all of the reports made
@@ -26,6 +22,64 @@ The UTA method is used to solve a multi-criteria problem. It build a utility fun
 An improved version of the UTA is the UTASTAR. In UTA we used a single error in UTASTAR we use a double positive error function. The updated version has performed better than the regular method. 
 
 In the internship-report, you will find a section that explain the UTA method, illustrated with an example. 
+
+# UTA Calculator - Criteria
+You should install the following jar file: com.google.ortools.jar and protobuf.jar. You can find them in the lib folder and execute the 2 following commands: 
+
+#### on windows
+```bash
+mvn install:install-file -Dfile=uta-calculator\lib\com.google.ortools.jar -DgroupId=com.google.ortools -DartifactId=ortools -Dversion=2015.08 -Dpackaging=jar
+mvn install:install-file -Dfile=uta-calculator\lib\protobuf.jar -DgroupId=protobuf -DartifactId=protobuf -Dversion=3.3.0 -Dpackaging=jar
+```
+
+After installing the 2 libraries, you should specify in the Eclipse the location of the Native Library Location. By going to the properties of the project > Java Build Path > Source Tabulation and Editing the location of Native library like the image below.
+<p align="center">
+  <img src="/docs/images/Capture.PNG?raw=true" alt="step 1"/>
+</p>
+And then specify the location of the library folder by clicking on the External Folder button 
+<p align="center">
+  <img src="/docs/images/Capture2.PNG?raw=true" alt="step 2"/>
+</p>
+And finally navigate through the repository and select the folder lib
+<p align="center">
+  <img src="/docs/images/Capture3.PNG?raw=true" alt="step 3"/>
+</p>
+
+
+To build the class of this program, you should execute the following command: 
+#### on windows
+```bash
+javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar uta-calculator/*.java utils/*.java
+```
+
+Once the java class are compiled, you can run the program
+#### on windows
+```bash
+java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.utacalculator.Main 
+```
+
+# Example of a java class that will solve a Linear Program
+An example of a LP problem: 
+<p align="center">
+  <img src="/docs/images/example-lp.PNG?raw=true" alt="Alternative criteria result"/>
+</p>
+
+Running the examples will involve compiling them, then running them. 
+
+#### on unix
+```bash
+javac -d objs -cp lib/com.google.ortools.jar:lib/protobuf.jar examples/LinearProgramming.java
+java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.lamsade.lp.LinearProgramming
+```
+
+#### on windows
+```bash
+javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/LinearProgramming.java
+java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.LinearProgramming
+```
+
+
+
   
 # Utils - NumbersGenerator
 This class will alow to generate numbers that have a target Sum. 
@@ -68,39 +122,6 @@ For example, if you want to generate the scale of criteria that have a minimum v
 #### on windows
 ```bash
 java -cp objs; com.lamsade.utacalculator.ScaleGenerator 10.0 20.0 4  
-```
-
-# UTA Calculator - Criteria
-To build the class of this program, you should execute the following command: 
-#### on windows
-```bash
-javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar uta-calculator/*.java utils/*.java
-```
-
-Once the java class are compiled, you can run the program
-#### on windows
-```bash
-java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.utacalculator.Main 
-```
-
-# Example of a java class that will solve a Linear Program
-An example of a LP problem: 
-<p align="center">
-  <img src="/docs/images/example-lp.PNG?raw=true" alt="Alternative criteria result"/>
-</p>
-
-Running the examples will involve compiling them, then running them. 
-
-#### on unix
-```bash
-javac -d objs -cp lib/com.google.ortools.jar:lib/protobuf.jar examples/LinearProgramming.java
-java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.lamsade.lp.LinearProgramming
-```
-
-#### on windows
-```bash
-javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/LinearProgramming.java
-java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.LinearProgramming
 ```
 
 # Linear Program for the exercice Choice of Tranportation [UTA]
