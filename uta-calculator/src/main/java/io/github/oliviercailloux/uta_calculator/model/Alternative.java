@@ -1,7 +1,9 @@
 package io.github.oliviercailloux.uta_calculator.model;
 
-import java.util.HashMap;
 import java.util.Map;
+
+import com.google.common.base.MoreObjects;
+import com.google.common.base.MoreObjects.ToStringHelper;
 
 public class Alternative {
 	
@@ -9,14 +11,12 @@ public class Alternative {
 	private int id;
 	private String name;
 	private Map<Criterion, Double> evaluations;
-	private Map<String, Double> marginalValue;
 	
 	//Constructors
 	public Alternative(int id, String name, Map<Criterion,Double> evaluations){
 		this.id = id;
 		this.name = name;
 		this.evaluations = evaluations;
-		this.marginalValue = new HashMap<>();
 	}
 
 	//Getters and Setters
@@ -38,17 +38,12 @@ public class Alternative {
 	public void setEvaluations(Map<Criterion, Double> evaluations) {
 		this.evaluations = evaluations;
 	}
-	public Map<String, Double> getMarginalValue() {
-		return marginalValue;
-	}
-	public void setMarginalValue(Map<String, Double> marginalValue) {
-		this.marginalValue = marginalValue;
-	}
 
 	@Override
 	public String toString() {
-		return getId() + "-" + getName();
+		ToStringHelper stringHelper = MoreObjects.toStringHelper(this);
+		stringHelper.add("id", id).add("name",name).add("evaluations", evaluations);
+		return stringHelper.toString();
 	}
-	
 	
 }

@@ -3,6 +3,9 @@ package io.github.oliviercailloux.uta_calculator.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.MoreObjects;
+import com.google.common.base.MoreObjects.ToStringHelper;
+
 public class PartialValueFunction {
 
 	//Attributes
@@ -107,6 +110,12 @@ public class PartialValueFunction {
 			}
 		}
 		return maxWeight;
+	}
+	
+	public String toString() {
+		ToStringHelper stringHelper = MoreObjects.toStringHelper(this);
+		stringHelper.add("criterion", criterion).add("intervals",intervals);
+		return stringHelper.toString();
 	}
 
 }

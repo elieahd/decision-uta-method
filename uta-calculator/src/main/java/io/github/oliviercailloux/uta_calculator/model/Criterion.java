@@ -2,6 +2,9 @@ package io.github.oliviercailloux.uta_calculator.model;
 
 import java.util.List;
 
+import com.google.common.base.MoreObjects;
+import com.google.common.base.MoreObjects.ToStringHelper;
+
 public class Criterion {
 	
 	//Attributes
@@ -55,6 +58,11 @@ public class Criterion {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+	public String toString() {
+		ToStringHelper stringHelper = MoreObjects.toStringHelper(this);
+		stringHelper.add("id", id).add("name",name).add("scale", scale);
+		return stringHelper.toString();
 	}
 	
 }

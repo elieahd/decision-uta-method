@@ -21,11 +21,13 @@ public class UTASTAR {
 	private List<Alternative> alternatives;//this list should be sorted by the preference of the DM 
 	public static final double SIGMA = 0.05;
 	private boolean print;
+	private Map<Alternative, Map<String, Double>> alternativesMarginalValues;
 	
 	//Constructor
 	public UTASTAR(List<Criterion> criteria, List<Alternative> alternatives){
 		this.criteria = criteria;
 		this.alternatives = alternatives;
+		alternativesMarginalValues = new HashMap<>();
 		print = true;
 	}
 
@@ -48,36 +50,28 @@ public class UTASTAR {
 
 		long start = System.currentTimeMillis();
 		String printStr = "Scale of criterias";
-//		System.out.println("Scale of criterias");
 		for(Criterion criterion : criteria){
 			printStr += "\n" + "	" + criterion.getName() + " --> " + criterion.getScale();
-//			System.out.println("	" + criterion.getName() + " --> " + criterion.getScale());
 		}
 		
 		printStr += "\n \n Expressing the global value of the alternatives in terms of variables wij"; 
-//		System.out.println();
-//		System.out.println("Evaluation");
-//
-//		System.out.println();
-//		System.out.println("Expressing the global value of the alternatives in terms of variables wij");
 		for(Alternative alternative : alternatives){
-			Map<String, Double> map = new HashMap<>();
+			Map<String, Double> marginalValues = new HashMap<>();
 			for (int i = 0; i < criteria.size(); i++){
 				Criterion criterion = criteria.get(i);
 				for(Entry<String, Double> e : getPartialMarginalValue(criterion, alternative.getEvaluations().get(criterion).intValue(), (i+1)).entrySet()) {
 					String val = e.getKey();
 					Double coef = e.getValue();
-					map.put(val, coef);
+					marginalValues.put(val, coef);
 				}				
 			}
-			alternative.setMarginalValue(map);
+			alternativesMarginalValues.put(alternative, marginalValues);
 			String marginalValueStr = "";
-			for(Entry<String, Double> e : alternative.getMarginalValue().entrySet()) {
+			for(Entry<String, Double> e : marginalValues.entrySet()) {
 				if(marginalValueStr.length() > 0) {marginalValueStr += " + ";}
 				marginalValueStr += e.getValue() + " " + e.getKey();
 			}
 			printStr += "\n" + "	" + alternative.getName() + " : " + marginalValueStr;
-//			System.out.println("	" + alternative.getName() + " : " + marginalValueStr);
 		}
 		 
 		MPSolver solver = new MPSolver("UTASTAR - Solver", MPSolver.OptimizationProblemType.valueOf("GLOP_LINEAR_PROGRAMMING"));
@@ -124,9 +118,9 @@ public class UTASTAR {
 				constraint = solver.makeConstraint(SIGMA, infinity);
 			}
 			Alternative a2 = alternatives.get(i+1);
-			for(Entry<String, Double> e1 : a1.getMarginalValue().entrySet()) {
+			for(Entry<String, Double> e1 : alternativesMarginalValues.get(a1).entrySet()) {
 				boolean found = false;
-				for(Entry<String, Double> e2 : a2.getMarginalValue().entrySet()) {
+				for(Entry<String, Double> e2 : alternativesMarginalValues.get(a2).entrySet()) {
 					if(e1.getKey().equals(e2.getKey())){
 						constraint.setCoefficient(variables.get(e1.getKey()), (e1.getValue() - e2.getValue()));
 						found = true; break;
@@ -136,9 +130,9 @@ public class UTASTAR {
 					constraint.setCoefficient(variables.get(e1.getKey()), e1.getValue());
 				}
 			}
-			for(Entry<String, Double> e2 : a2.getMarginalValue().entrySet()) {
+			for(Entry<String, Double> e2 : alternativesMarginalValues.get(a2).entrySet()) {
 				boolean found = false;
-				for(Entry<String, Double> e1 : a1.getMarginalValue().entrySet()) {
+				for(Entry<String, Double> e1 : alternativesMarginalValues.get(a1).entrySet()) {
 					if(e1.getKey().equals(e2.getKey())){
 						found = true;
 						break;

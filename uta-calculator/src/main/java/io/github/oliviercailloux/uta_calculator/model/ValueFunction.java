@@ -3,6 +3,9 @@ package io.github.oliviercailloux.uta_calculator.model;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.base.MoreObjects;
+import com.google.common.base.MoreObjects.ToStringHelper;
+
 public class ValueFunction {
 
 	//Attributes
@@ -22,18 +25,27 @@ public class ValueFunction {
 	}
 
 	//Methods
+	public PartialValueFunction getPartialValueFunction(Criterion criterion){
+		for(PartialValueFunction pvf : partialValueFunctions){
+			if(pvf.getCriterion() == criterion){
+				return pvf;
+			}
+		}
+		throw new IllegalArgumentException();
+	}
 	public double getValue(Alternative alternative){
 		double value = 0.0;
 		for (Map.Entry<Criterion, Double> entry : alternative.getEvaluations().entrySet()){
-			for(PartialValueFunction pvf : partialValueFunctions){
-				if(pvf.getCriterion() == entry.getKey()){
-					double newValue = pvf.getPartialValue(entry.getValue());
-					value += newValue;
-					break;
-				}
-			}
+			PartialValueFunction pvf = getPartialValueFunction(entry.getKey());
+			double newValue = pvf.getPartialValue(entry.getValue());
+			value += newValue;
 		}
 		return value;
+	}	
+	public String toString() {
+		ToStringHelper stringHelper = MoreObjects.toStringHelper(this);
+		stringHelper.add("partialValueFunctions", partialValueFunctions);
+		return stringHelper.toString();
 	}
 
 }
