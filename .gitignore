@@ -6,3 +6,4 @@
 /src/objs/*
 /uta-calculator/target
 /docs/cover-page.pdf
+/uta-calculator/*.log
