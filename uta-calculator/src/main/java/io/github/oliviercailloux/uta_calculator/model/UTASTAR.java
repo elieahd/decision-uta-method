@@ -14,7 +14,7 @@ import com.google.ortools.linearsolver.MPVariable;
 
 public class UTASTAR {
 	
-	static { System.loadLibrary("jniortools"); }
+	//static { }
 
 	//Attibutes
 	private List<Criterion> criteria;
@@ -47,7 +47,7 @@ public class UTASTAR {
 
 	//Methods
 	public ValueFunction findValueFunction(){
-
+		 System.loadLibrary("jniortools");
 		long start = System.currentTimeMillis();
 		String printStr = "Scale of criterias";
 		for(Criterion criterion : criteria){
@@ -154,7 +154,7 @@ public class UTASTAR {
 			constraint.setCoefficient(entry.getValue(), 1);
 		}
 		
-		final MPSolver.ResultStatus resultStatus = solver.solve();
+		MPSolver.ResultStatus resultStatus = solver.solve();
 		
 		String model = solver.exportModelAsLpFormat(false);
 		if (resultStatus != MPSolver.ResultStatus.OPTIMAL) {System.err.println("The problem does not have an optimal solution!"); return null;}

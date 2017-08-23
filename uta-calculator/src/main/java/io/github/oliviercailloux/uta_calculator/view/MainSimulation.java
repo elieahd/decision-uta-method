@@ -25,16 +25,26 @@ public class MainSimulation {
 	}
 
 	private void simulation(){
-		List<Double> differenceList = new ArrayList<>();
-		LOGGER.info("Start of Simulation");
-		for(int i = 0; i < 1000; i++){
-			double difference = getDifferenceRank(20,3,10);
-			differenceList.add(difference);
+		
+		int numAlternative = 50; 
+		for(int criteria = 1; criteria <= 5; criteria++){
+			System.out.println();
+			System.out.println(criteria + " criteria");
+			System.out.println("----------------------------");
+			for(int comparing = 10; comparing <= 45; comparing+= 10){
+				List<Double> differenceList = new ArrayList<>();
+				for(int i = 0; i < 100; i++){
+					double difference = getDifferenceRank(numAlternative,criteria,comparing);
+					differenceList.add(difference);
+				}
+				Statistics stats = new Statistics();
+				System.out.println("getDifferenceRank(" + numAlternative + "," + criteria + "," + comparing + ")" );
+				System.out.println("Mean : " + stats.getMean(differenceList));
+				System.out.println("Std : " + stats.getStd(differenceList));
+			}
 		}
-		LOGGER.info("End of Simulation");
-		Statistics stats = new Statistics();
-		System.out.println("Mean : " + stats.getMean(differenceList));
-		System.out.println("Std : " + stats.getStd(differenceList));
+
+
 	}
 
 	private int getDifferenceRank(int numberAlternatives, int numberCriteria, int numberAlternativesToCompare){
@@ -48,7 +58,7 @@ public class MainSimulation {
 
 		ValueFunctionGenerator  vfg = new ValueFunctionGenerator(problem.getCriteria());
 		ValueFunction vR = vfg.generateValueFunction();
-//		LOGGER.info("ValueFunction R: {}.",vR);
+		//		LOGGER.info("ValueFunction R: {}.",vR);
 
 		List<Alternative> alternatives = problem.getAlternatives();
 		Collections.sort(alternatives, new Comparator<Alternative>() {
@@ -62,31 +72,31 @@ public class MainSimulation {
 		for(int i = 0; i < numberAlternativesToCompare; i++){
 			exampleAlternatives.add(alternatives.get(i));
 		}
-//		LOGGER.info("Examples: {}.",exampleAlternatives);
+		//		LOGGER.info("Examples: {}.",exampleAlternatives);
 
 		List<Alternative> alternativesToCompare = new ArrayList<>();
 		for(int i = numberAlternativesToCompare; i < alternatives.size(); i++){
 			alternativesToCompare.add(alternatives.get(i));
 		}
-//		LOGGER.info("To compare: {}.",alternativesToCompare);
+		//		LOGGER.info("To compare: {}.",alternativesToCompare);
 
 		UTASTAR utastar = new UTASTAR(problem.getCriteria(), exampleAlternatives);
 		utastar.setPrint(false);
 		ValueFunction vT = utastar.findValueFunction();
-//		LOGGER.info("ValueFunction T: {}.",vT);
+		//		LOGGER.info("ValueFunction T: {}.",vT);
 
 		return compare(vR, vT, alternativesToCompare);
 	}
 
 	private int compare(ValueFunction vR, ValueFunction vT, List<Alternative> alternatives) {
 
-		List<Alternative> alternativeR = new ArrayList<>();
-		List<Alternative> alternativeT = new ArrayList<>();
-		for(Alternative alternative : alternatives){
-			alternativeR.add(alternative);
-			alternativeT.add(alternative);
-		}
-		
+		List<Alternative> alternativeR = new ArrayList<>(alternatives);
+		List<Alternative> alternativeT = new ArrayList<>(alternatives);
+//		for(Alternative alternative : alternatives){
+//			alternativeR.add(alternative);
+//			alternativeT.add(alternative);
+//		}
+
 		Collections.sort(alternativeR, new Comparator<Alternative>() {
 			@Override
 			public int compare(final Alternative a1, final Alternative a2) {
@@ -100,20 +110,18 @@ public class MainSimulation {
 				return ((Double)vT.getValue(a1)).compareTo(vT.getValue(a2));
 			}
 		});
-		
+
 		int differenceRank = 0;
 		for(int i = 0;  i < alternatives.size(); i++){
 			if(alternativeR.get(i).getId() != alternativeT.get(i).getId()){
 				for(int j = 0; j < alternativeT.size(); j++){
 					if(alternativeR.get(i).getId() == alternativeT.get(j).getId()){
-						System.out.println(i + " ? " + j);
 						differenceRank += Math.abs(i-j);
 						break;
 					}
 				}
 			}
 		}
-		System.out.println(differenceRank);
 		return differenceRank;
 	} 
 

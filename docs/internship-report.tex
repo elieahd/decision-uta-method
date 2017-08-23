@@ -23,6 +23,29 @@
 \usepackage{lipsum}
 \usepackage{fancyhdr}
 \usepackage{pdfpages}
+\usepackage[T1]{fontenc}
+\usepackage{inconsolata}
+\usepackage{color}
+
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+
+\usepackage{listings}
+\lstset{language=Java,
+  showspaces=false,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  commentstyle=\color{pgreen},
+  keywordstyle=\color{pblue},
+  stringstyle=\color{pred},
+  basicstyle=\ttfamily,
+  moredelim=[il][\textcolor{pgrey}]{$$},
+  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%}
+}
 
 \graphicspath{ {images/} }
 
@@ -33,7 +56,7 @@
 
 \abstract 
 This report represents the work done during the internship at LAMSADE Dauphine, under the supervision of Mr. Olivier Cailloux and Mr. Michel Zam. The report gives an overview of the projects completed during this internship.\\
-I have worked mainly on the UTA method, this procedure is an ordinal regression technique, proposed by E. Jacquete-Lagreze and J. Siskos, which adjust a system of additive utility function.
+I have worked mainly on the UTA method, this procedure is an ordinal regression technique, proposed by E. Jacquete-Lagreze and J. Siskos, which adjust a system of additive value function.
 
 \newpage
 { \huge \bfseries Acknowledgment}\\[0.3cm]
@@ -41,7 +64,7 @@ I have worked mainly on the UTA method, this procedure is an ordinal regression 
 
 There is a few people that I would like to acknowledge for their help and contribution to the success of my internship at LAMSADE Dauphine.\\
 
-First and foremost, I would like to thank Mr. Olivier Cailloux, a lecturer in computer science and researcher at LAMSADE. His advices and follow ups helped me a lot in completing my assignments during this internship.\\
+First and foremost, I would like to thank Mr. Olivier Cailloux, a lecturer in computer science and researcher at LAMSADE. His advice and follow ups helped me a lot in completing my assignments during this internship.\\
 
 I also would like to thank Mr. Michel Zam, the founder of KarmicSoft and an associate professor at Paris Dauphine University, for the opportunity given to me as an intern at LAMSADE\\
 
@@ -61,9 +84,11 @@ From \formatdate{29}{5}{2017} to \formatdate{1}{9}{2017}, I completed a research
 
 This internship is very important for my professional career because it may be my last internship before I get my Master’s degree in Information systems for finance.  In addition, this internship allowed me to practice the different theoretical courses learned throughout my academic years.\\
 
-One of the objectives of this fellowship is to propose the UTA method, that solves a multi-criteria problem by building a utility function based on the preferences of the Decision Maker, as an open source software component. Another objective is  to integrate this open source software into DecisionCloud, a software based on MyDraft which is a tool developed by KarmicSoft a LAMSADE spin-off. The research aspect represents an important objective in this internship. \\
+One of the objectives of this fellowship is to propose the UTA method, that solves a multi-criteria problem by building a value function based on the preferences of the Decision Maker, as an open source software component. Another objective is  to integrate this open source software into DecisionCloud, a software based on MyDraft which is a tool developed by KarmicSoft a LAMSADE spin-off. The research aspect represents an important objective in this internship. \\
 
 In this internship report, I will describe the context of the project which contains an overview of the fellowship. While writing this report, I will describe the projects made: UTA, Linear Program Solver, UTA Calculator and the research realized. Finally I will conclude by reflecting on the flow of my internship. \\
+
+This report was supposed to contain a section called \textit{Organization and Communication}. Since I did do my internship remotely and I had only contact with Mr. Olivier Cailloux and Mr. Michel Zam I didn’t have enough information to develop this section. So, as addressed by my internship manager, Mrs. Manouvrier, we replaced the section \textit{Organization and Communication} by \textit{Context of the project} that illustrates in two pages a quick background of the projects done. \\
 
 \chapter{Context of the projects}
 \section{Introduction to LAMSADE}
@@ -75,12 +100,12 @@ The activities of LAMSADE are divided into 3 poles:
 \item Data Science
 \end{itemize}
 LAMSADE is well known for the origin of the multiple-criteria decision analysis (MCDA), and for its approach of  the Algorithmic Decision Theory. The laboratory has established itself as the best research center internationally in it domain. \\
-LAMSADE is structured in two  dimensions:
+LAMSADE is structured in two dimensions:
 \begin{itemize}
-\item Scientific 
-\item Research
+\item Scientific animation that represents the poles
+\item Research that represents the scientific projects 
 \end{itemize}
-Scientific dimension represents the poles, where there is a community of researches invited to exchange throughout meetings and seminaries. The research dimension represents the projects assembled by the researches interested in the subject in question. Both of those dimensions are neither fixed neither permanent, they can be submitted to an evaluation by the Laboratory. 
+Scientific dimension represents the poles, where there is a community of researches invited to exchange throughout meetings and seminaries. The research dimension represents the scientific projects assembled by the researches interested in the subject in question. Both of those dimensions are neither fixed neither permanent, they can be submitted to an evaluation by the Laboratory. 
 
 \section{Objectives}
 Throughout my  internship, I had several objectives to achieve and those objectives changed from when I began the internship. \\
@@ -91,7 +116,7 @@ The following list represents the objectives stated at the beginning of my fello
 \item Document, publish the software and implement a graphical user interface to the UTA by using DecisionCloud, a tool promoted by the Decision Deck
 \end{itemize}
 
-So as stated before, the objectives changed from the beginning of the internship for many reasons. We ended up doing an open source software component of the UTA method that we published on github instead of the DecisionCloud. This gave us the opportunity to evolve the software by doing more functionalities, and allowed us to grant more time for research. The main reason t we weren't able to make the tools in the Decision Deck community was because Mr. Zam wasn't available to assist me. So, we took this opportunity to make the software more developed.\\
+So as stated before, the objectives changed from the beginning of the internship for many reasons. We ended up doing an open source software component of the UTA method that we published on GitHub instead of the DecisionCloud. This gave us the opportunity to evolve the software by doing more functionalities, and allowed us to grant more time for research. The main reason t we weren't able to make the tools in the Decision Deck community was because Mr. Zam wasn't available to assist me. So, we took this opportunity to make the software more developed.\\
 During the internship the objectives were finally re-stated as follow: 
 \begin{itemize}
 \item Summarize UTA
@@ -102,8 +127,8 @@ During the internship the objectives were finally re-stated as follow:
 \end{itemize}
 
 \section{Sharing of information}
-All along the internship, all the work done was submitted on github so it can be seen by my supervisors. We held a meeting approximately each week, Mr. Cailloux and me, to discuss the conduct of the project and to get a feedback from him. Since I didn't have any colleagues to work with and only two supervisors, the communication was straight forward with my mentors. Only when I was having some serious difficulties that where complicating the work, I discussed with Mr. Cailloux via emails to solve it before the meeting. \\
-Since Mr. Zam wasn't available during this summer at Paris, we shared some email and calls to talk about the progress of the internship. 
+All along the internship, all the work done was submitted on GitHub so it can be seen by my supervisors. We held a meeting approximately each week, Mr. Cailloux and me, to discuss the conduct of the project and to get a feedback from him. Since I didn't have any colleagues to work with and only two supervisors, the communication was straight forward with my mentors. Only when I was having some serious difficulties that where complicating the work, I discussed with Mr. Cailloux via emails to solve it before the meeting. \\
+Since Mr. Zam wasn't available during this summer at Paris, we shared some emails and calls to talk about the progress of the internship and he helped me with MyDraft. 
 
 \section{Conduct of the internship}
 On the \formatdate{29}{5}{2017} I started my internship. The first two weeks, were dedicated to get to know the platform MyDraft and create some basic applications. MyDraft is a platform created by KarmicSoft, and is  specialized in building and running data-driven Web applications. It is a platform for developing business applications the easiest way without complexity. During those two weeks, I did all the tutorials available on the site and in addition I created my own program. The project was called \textit{StockApp} where I recreated a project done during the course of \textit{Marché Financier}: Portfolio Management Project.\\
@@ -112,13 +137,13 @@ After learning about the platform MyDraft, I had my first meeting with Mr. Caill
 
 By the end of the month of July, we had a meeting, Mr. Cailloux and me to discuss the software that will represent the UTA method. We designed the architecture, and I coded the program, it didn't take long because during the previous month I had already worked on little components of the software. For the month of august our goal was to finish this document, to make simulation and test the software.\\ 
 
-All of the work done is available as open source on my github repository: \url{ https://github.com/elieahd/decision-uta-method}.\\
+All of the work done is available as open source on my GitHub repository: \url{ https://github.com/elieahd/decision-uta-method}.\\
 
 Thus, in the next chapter, we will discuss the projects done above.
 
 \chapter{Description of the projects}
 \section{MyDraft}
-\subsection{What is MyDraft}
+\subsection{What is MyDraft?}
 MyDraft is a platform proposed by KarmicSoft. The goal of this platform is to develop a data and business driven application built only by click, without the need of a developer for a simple application. The application can be published in the Cloud and have a history of changes made on the data.\\
 
 Another characteristic of MyDraft is the simplicity of coding which reduces the time required between creating the idea and accomplishing the app. MyDraft goal is to build a cloud-based agile development platform.\\
@@ -216,22 +241,25 @@ Once the global preference is defined, we can start the decision support.\\
 
 One of the multi-criteria decision analysis methods is the UTA method, which was proposed by E. Jacquet-Lagrèze and J. Siskos in 1982. This method is proposed by the Multi-Attribute Utility Theory (MAUT) that build a utility function based on the DM\footnote{Decision Maker} preferences.\\ 
 
-The UTA method is used to solve a multi-criteria problem by building a utility function based on the preferences of the DM and solving a linear program (LP). It adopts the aggregation-disaggregation principles: where the model is based on a given preferences.\\ The UTASTAR, a variant of the UTA method, has been considered a better algorithm than UTA. Better result was found using the UTASTAR algorithm. So this is why we will focus on this method rather than the UTA method.\\The aim of the UTASTAR method is to estimate a set of additive utility functions which are as consistent as possible with the decision maker's preferences.\\
+The UTA method is used to solve a multi-criteria problem by building a value function based on the preferences of the DM and solving a linear program (LP). It adopts the aggregation-disaggregation principles: where the model is based on a given preferences.\\ The UTASTAR, is an improved version of the UTA algorithm. During the internship, we focused on the UTASTAR method rather than the original UTA method.\\The aim of the UTASTAR method is to estimate a set of additive value functions which are as consistent as possible with the decision maker's preferences.\\
+
 At the beginning of the problem, the DM should present the following information 
 \begin{itemize}
 \item rank of the actions
 \item give the criteria he wants to base his decision on 
 \item evaluate the action compared to the criterion
 \end{itemize}
-Once those information are presented, the UTASTAR algorithm can be executed. 
+Once those information are presented, the UTASTAR algorithm can be executed. \\
+
+Through out this document, we designated the term value function instead of utility function for the UTA algorithm.\\
 
 \newpage
 \subsection{Principles and Notation}
-Let's call $A={a,b,c,...}$ the set of potential actions and $g_1, g_2, g_3, ..., g_n$ the family of criteria. Where $g_i(a)$ represents the function of an action(alternative)$a$ on the criteria $g_i$ with $a \in A_R$. \\
+Let's call $A={a,b,c,...}$ the set of potential actions evaluated on a consistent family of criteria G = ${g_1, g_2, g_3, ..., g_n}$. Where $g_i(a)$ represents the evaluation of an action or alternative $a$ on the criterion $g_i$ with $a \in A$. \\
 
-We define $g_{i*}$ as the least preferred criteria: $g_{i*} = min_{a \in A} g_i (a)$ and $g_i^{*}$ as the most preferred criteria: $g_i^{*} = max_{a \in A} g_i (a)$. So the interval for each criteria $g_i$ is: $[g_{i*} , g_i^{*}]$.\\
+We define $g_{i*}$ as the least preferred value of a criterion: $g_{i*} = min_{a \in A} g_i (a)$ and $g_i^{*}$ as the most preferred value of a criterion: $g_i^{*} = max_{a \in A} g_i (a)$. So the interval for each value for a criterion $g_i$ is: $[g_{i*} , g_i^{*}]$.\\
 
-If we want to evaluate two actions, for example $a$ and $b$, on only one criteria $g_i$ we have the following relations: 
+For every $g_i \in G$ and $\forall a, b \in A$ we have the following relations: 
 \begin{equation}
 \begin{cases}
 a \succ b\Leftrightarrow g_i(a) > g_i(b) \quad preference\\
@@ -242,6 +270,7 @@ The criteria aggregation model in UTASTAR has the following form:
 \begin{equation}\label{eq1}
 v(g(a)) = \sum_{i=1}^{n} v_i (g_i (a))
 \end{equation}
+where $v(g(a))$ is the value of an alternative $a$ equal to $v(g(a)) = v(g_1(a), g_2(a),..., g_n(a))$\\
 subject to normalization constraints:\\
 \begin{equation}\label{eq2}
 \begin{cases}
@@ -249,11 +278,12 @@ subject to normalization constraints:\\
 v_i(g_{i*})= v_i(g_i^1) = 0, \forall i = 1, 2, ..., n\\
 \end{cases}
 \end{equation}
-where $ v_i, i = 1,2,...,n$ are non-decreasing real valued function.\\
+where $ v_i $ is a marginal value of a criterion, $ i = 1,2,...,n$ are non-decreasing real valued function.\\
 In UTASTAR we have 
 \begin{equation}
 w_{ij} = v_i(g_i^{j+1}) - v_i(g_i^{j}) \geq 0 \quad \forall i \quad j 
 \end{equation}
+where $w_{ij}$ is a non-negative constraints
 Which will allow us to write: 
 \begin{equation}
 v_i(g_i^j) = \sum_{t=1}^{j-1} w_{it} \quad \forall i = 1,2,...,n \quad and \quad j = 2,3,...,\alpha _i -1 \\
@@ -293,8 +323,8 @@ The set of reference actions $ A_R = a_1, a_2, ... , a_m$ is arranged by what $a
 So if we have that $\Delta (a_k, a_{k+1} ) = v^{'} [g(a_k)] - v^{'} [g(a_{k+1})]$ and $\delta$ is a small positive number we will obtain the following relations: 
 \begin{equation}\label{eq3}
 \begin{cases}
-\Delta (a_k, a_{k+1} ) \geq \delta\\
-\Delta (a_k, a_{k+1} ) = 0 \\
+\Delta (a_k, a_{k+1} ) \geq \delta \quad where\quad a_k \succ a_{k+1}\\
+\Delta (a_k, a_{k+1} ) = 0 \quad where\quad a_k \sim a_{k+1} \\
 \end{cases}
 \end{equation}
 The marginal value functions are estimated by means of the Linear Program with \eqref{eq1}, \eqref{eq2}, \eqref{eq3} as constraints, and an objective function depending on the $ \sigma^{+}$ and $\sigma^{-} $: 
@@ -383,9 +413,8 @@ An optimal solution is $w_{12} = 0.34$, $w_{21} = 0.152$, $w_{32} = 0.51$ with $
 \end{itemize}
 Those utilities are consistent with the DM's preference ranking. \\
 
-The UTA method build a utility function based on the preferences of the DM and consists in solving a linear program (LP) to resolve a multi-criteria problem.\\
+The UTA method build a value function based on the preferences of the DM and consists in solving a linear program (LP) to resolve a multi-criteria problem.\\
 This method will elaborate a model of preferences which is as similar as possible to the DM's preferences.\\
-The improved version of the UTA, UTASTAR, has performed better than the regular method.
 
 \subsection{Value Function}
 The value function of a problem will allow you to calculate the value of each alternative.\\
@@ -400,7 +429,7 @@ So the sum $w_j$ of all the partial value functions represented in the upper fig
 
 \section{Linear Program Solver}
 One of the steps of the UTA algorithm is solving a Linear Program. To complete the UTA algorithm, I created an independent java application that has the objective of solving the LP by finding the optimal solution.\\
-To achieve this goal, I had to use the google ortools (Optimization tools) library. The library is composed of two external jar files: \textit{com.google.ortools.jar} and \textit{protobuf.jar} and of one native class library \textit{jniortools.dll}. You can find these libraries in the github repository under src/libs.
+To achieve this goal, I had to use the google ortools (Optimization tools) library. The library is composed of two external jar files: \textit{com.google.ortools.jar} and \textit{protobuf.jar} and of one native class library \textit{jniortools.dll}. You can find these libraries in the GitHub repository under src/libs.
 \begin{figure}[H]
 \centering
 \includegraphics[width=4cm,height=1.5cm,keepaspectratio]{lp-libs.png}
@@ -424,37 +453,71 @@ x_1 + x_2 + x_3 \leq 100\\
 To solve the LP, we need to create an instance of the solver:
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{lp-solver.png}
+\begin{lstlisting}
+MPSolver solver = new MPSolver("LinearProgrammingExample", MPSolver.OptimizationProblemType.valueOf("GLOP_LINEAR_PROGRAMMING");
+\end{lstlisting}
 \caption{Java code to define the solver}
 \end{figure}
 After that, we define the 3 variables $x_1$, $x_2$ et $x_3 \quad \in \quad [0 ; \infty]$: \\
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm,height=3cm,keepaspectratio]{lp-variables.png}
+\begin{lstlisting}
+	MPVariable x1 = solver.makeNumVar(0.0, infinity, "x1");
+	MPVariable x2 = solver.makeNumVar(0.0, infinity, "x2");
+	MPVariable x3 = solver.makeNumVar(0.0, infinity, "x3");
+\end{lstlisting}
 \caption{Java code to define the variables of the LP}
 \end{figure}
 We define the objective $Maximize \quad 10x_1 + 6x_2 + 4x_3$: \\
 \begin{figure}[H]
 \centering
-\includegraphics[width=8cm,height=2cm,keepaspectratio]{lp-objectif.png}
+\begin{lstlisting}		
+	MPObjective objective = solver.objective();
+	objective.setCoefficient(x1, 10);
+	objective.setCoefficient(x2, 6);
+	objective.setCoefficient(x3, 4);
+	objective.setMaximization();
+\end{lstlisting}
 \caption{Java code to define the objective of LP}
 \end{figure}
+\newpage
 We do the same for the constraints: \\
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm,height=6cm,keepaspectratio]{lp-constraints.png}
+\begin{lstlisting}		
+	MPConstraint c0 = solver.makeConstraint(-infinity, 100.0);
+	c0.setCoefficient(x1, 1);
+	c0.setCoefficient(x2, 1);
+	c0.setCoefficient(x3, 1);
+
+	MPConstraint c1 = solver.makeConstraint(-infinity, 600.0);
+	c1.setCoefficient(x1, 10);
+	c1.setCoefficient(x2, 4);
+	c1.setCoefficient(x3, 5);
+	
+	MPConstraint c2 = solver.makeConstraint(-infinity, 300.0);
+	c2.setCoefficient(x1, 2);
+	c2.setCoefficient(x2, 2);
+	c2.setCoefficient(x3, 6);
+\end{lstlisting}
 \caption{Java code to define the constraints of the LP}
 \end{figure}
 After setting all the constraints and variables we can execute the solver: \\
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm,height=6cm,keepaspectratio]{lp-solve.png}
+\begin{lstlisting}		
+	final MPSolver.ResultStatus resultStatus = solver.solve();
+\end{lstlisting}
 \caption{Java code for running the solver}
 \end{figure}
 After executing the solver, we display the optimal value of the objective and the value of the variables: \\
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{lp-result.png}
+\begin{lstlisting}		
+		System.out.println("x1 = " + x1.solutionValue());
+		System.out.println("x2 = " + x2.solutionValue());
+		System.out.println("x3 = " + x3.solutionValue());
+\end{lstlisting}
 \caption{Java code for displaying the result of the solver}
 \end{figure}
 Once you run the program, you will have the following the result: 
@@ -464,7 +527,7 @@ x1 = 33.33333333336\\
 x2 = 66.66666666666\\
 x3 = 0.0\\
 \end{center}
-
+\newpage
 \section{Research}
 One of the most important aspect of this internship is the research. The objective of the research was to find similar studies, how to generate realistic random alternatives and studies made on UTA method.
 \subsection{Comparative analysis of UTA multicriteria methods}
@@ -497,10 +560,10 @@ The 29 criteria have been sorted with a scale going from 1 to 5.
 \end{enumerate}
 
 \subsubsection{Conclusions made}
-When there is no error in the utility function estimation, $ \sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} = 0$, the basic UTA method provides the most practical and efficient method of estimation. \\
+When there is no error in the value function estimation, $ \sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} = 0$, the basic UTA method provides the most practical and efficient method of estimation. \\
 Even when there is interdependence between criteria, the UTA approach provides good results. \\
-In the case where the utility function estimation is positive, $ \sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} >0 0$, the UTASTAR appears more reliable.\\
-The simulations results indicate that small value of $\delta$ lead to better results in case of a positive utility function estimation. But in case of no error in the utility function estimation, larger value of $\delta$ can provide better results. The use of UTAMP1 or UTAMP2 may then be used to find the practical upper bound of the values given. 
+In the case where the value function estimation is positive, $ \sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} >0 0$, the UTASTAR appears more reliable.\\
+The simulations results indicate that small value of $\delta$ lead to better results in case of a positive value function estimation. But in case of no error in the value function estimation, larger value of $\delta$ can provide better results. The use of UTAMP1 or UTAMP2 may then be used to find the practical upper bound of the values given. 
 
 \subsection{Disadvantages of the UTA method}
 \begin{enumerate}
@@ -515,7 +578,7 @@ An experimentation was made by J. SISKOS and D. YANNACOPOULOUS and was written i
 
 In order to facilitate the comparison, two factors have been used:
 \begin{enumerate}
-\item Iterations necessary to obtain the optimal utility
+\item Iterations necessary to obtain the optimal value
 \item Objective of the LP: Minimization of $ \sum_{a \in A} \sigma _{a}^{+} + \sigma _{a}^{-} $ 
 \end{enumerate}
 
@@ -533,6 +596,8 @@ Objective of LP & $0.34$ & $0.53$ & drop of 36\%\\
 \hline
 \end{tabular}
 \end{center}
+
+Although I couldn't find studies about how to generate realistic random alternatives I was able to find studies about the UTA method. Those studies were stated. Another aspect of the research was the simulation part of the uta-calculator. The simulation study will be discussed in the next section.\\
 
 \newpage
 \section{Implementation - UTA Calculator}
@@ -622,10 +687,100 @@ To \textbf{create your own problem} all you have to do is create a list of crite
 As output, both possibilities will display the results of the UTASTAR algorithm, value function and the value of each alternative.\\
 
 \subsection{Simulation and Comparison}
-In order to calculate the average and the standard deviation I used the external library: Commons Math: The Apache Commons Mathematics Library. This library is lightweight, easy-to-use and can do the statistics formula.
+
+\subsubsection{Simulation}
+We generated a value function called $v^R$, then we ordered a list of 50 alternatives by the value function generated.\\
+Then we took a sub list of alternatives ordered and we called it \textit{exampleAlternatives}. And for the rest of the alternatives we placed them in another list called \textit{alternativesToCompare}.\\
+We generated the value function $v^T$ by running the UTASTAR algorithm on the list \textit{exampleAlternatives}. \\
+Then we took \textit{alternativesToCompare} and ordered them according to the two value functions $v^R$ and $v^T$ and we compared the difference of ranking between the two list.\\
+We repeated the upper process 100 times and then we calculated the mean and the standard deviation. \\
+This following simulation was repeated by varying the number of criteria between $1,2,3,4,5$ and by varying the number of alternatives we wanted to take as example $10, 20, 30, 40$.\\
+The following results were obtained after the simulation:\\
+
+\begin{center}
+\begin{tabular}{ |c||p{3cm}|p{3cm}| }
+ \hline
+ \multicolumn{3}{|c|}{1 criterion} \\
+ \hline
+\\[-1em] Examples of alternatives to generate $v^T$& Mean & Standard Deviation\\
+ \hline
+ 10   & 0.0    &0.0\\
+ 20   & 0.0    &0.0\\
+ 30   & 0.0    &0.0\\
+ 40   & 0.0    &0.0\\
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c||p{3cm}|p{3cm}| }
+ \hline
+ \multicolumn{3}{|c|}{2 criterion} \\
+ \hline
+\\[-1em] Examples of alternatives to generate $v^T$& Mean & Standard Deviation\\
+ \hline
+ 10   & 203.56    &135.27\\
+ 20   & 105.02    &71.24\\
+ 30   & 56.4    &33.87\\
+ 40   & 16.46    &9.69\\
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c||p{3cm}|p{3cm}| }
+ \hline
+ \multicolumn{3}{|c|}{3 criterion} \\
+ \hline
+\\[-1em] Examples of alternatives to generate $v^T$& Mean & Standard Deviation\\
+ \hline
+ 10   & 269.5    &136.54\\
+ 20   & 155.06    &65.67\\
+ 30   & 80.52    &35.53\\
+ 40   &24.88    &9.77\\
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c||p{3cm}|p{3cm}| }
+ \hline
+ \multicolumn{3}{|c|}{4 criterion} \\
+ \hline
+\\[-1em] Examples of alternatives to generate $v^T$& Mean & Standard Deviation\\
+ \hline
+ 10   & 292.76    &128.01\\
+ 20   & 188.24    &69.11\\
+ 30   & 89.42    &39.21\\
+ 40   & 27.96    &8.23\\
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c||p{3cm}|p{3cm}| }
+ \hline
+ \multicolumn{3}{|c|}{5 criterion} \\
+ \hline
+\\[-1em] Examples of alternatives to generate $v^T$& Mean & Standard Deviation\\
+ \hline
+ 10   & 355.12    &143.96\\
+ 20   & 208.36    & 80.07\\
+ 30   & 104.44    & 34.07\\
+ 40   & 28.38      & 9.18\\
+ \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Comparison}
+In the case where we have 1 criterion the two value functions are identical $v^R = v^T$. Thus, we can see that the difference of ranking between the two list is null.\\
+
+The more we added criteria the more the differences grew between the two lists. Each time we added 1 criterion the difference of ranking has augmented between $20-30 \%$\\
+
+The more the \textit{exampleList} augmented the more the difference between the two list minimized, this is due to the fact that the $v^T$ will have more alternatives to generate a more similar value function of $v^R$.
 
 \subsection{Future Improvements}
-This program has been done during my three months’ internship. It didn't take three months to make this program, but in order to make such a program I had to do a research and learn about the UTA method. Basically, we had to compromise on some functionalities in order to make the implementation easier. Since the program will be available as an open source on GitHub, it has the potential to grow with some improvements. The following list is some of the improvements that could be made:\\
+This program has been done during my three months internship. It didn't take three months to make this program, but in order to make such a program I had to do a research and learn about the UTA method. Basically, we had to compromise on some functionalities in order to make the implementation easier. Since the program will be available as an open source on GitHub, it has the potential to grow with some improvements. The following list is some of the improvements that could be made:\\
 \begin{enumerate}
 \item in the current version of the program, the criterion evaluation has a minimum value and a maximum value, so the evaluation of an action is made in the range $[minValue, maxValue]$ with minValue being the least preferred criterion and maxValue the most preferred. But what if we want to represent a criterion that has maxValue as the least preferred criterion and minValue as the most preferred, like the criterion price, in the current version, this won't be possible. 
 \item in our program, a criterion has a minimum value and a maximum value, but what if the criterion is not a quantitative item, not evaluated in numbers. For example, let's say we want to evaluate the comfort, we can have the following values: 0, +, ++, +++ or not comfortable, basic, comfortable, very comfortable. So as an improvement we can expect to be able to design all of the criterions possible. 
@@ -635,20 +790,20 @@ This program has been done during my three months’ internship. It didn't take 
 \section{Conclusion on the projects}
 During the internship, a lot of tasks has been accomplished. First, I have been able to learn about the platform MyDraft, to make a tutorial and to realize a small application. Secondly, I was able to learn about a new decision method, UTA, where I made a summary about it, and created my own problem, Buying New Car. Before implementing the UTASTAR method, a research was made. The goal of the research was not fully achieved, its objective was to find similar studies made, how to generate realistic random alternatives and studies made on UTA method. I was able to find some literature about similar studies and the UTA method but I couldn't find how to generate realistic random alternatives and criteria since I didn't have a lot of time to search for it. And finally, I was able to implement the UTASTAR method and make a simulation to extract the results from it. \\
 
-During the implementation, we used some external libraries that were given by Mr. Cailloux. The libraries provided by my supervisor were handy and very lightweight. We published the work done and the source code on Github, I believe that this was a great choice since we were aiming to provide an open source software and there is no better way than Github. The code was done in Java which helped us to find some external libraries.\\
-
+During the implementation, we used some external libraries that were given by Mr. Cailloux. The libraries provided by my supervisor were handy and very lightweight. We published the work done and the source code on GitHub, I believe that this was a great choice since we were aiming to provide an open source software and there is no better way than GitHub. The code was done in Java which helped us to find some external libraries.\\
 
 \chapter{Conclusion}
+During my three months internship, the main goal was to implement an open source software about the UTA method which is an ordinal regression technique, proposed by E. Jacquete-Lagreze and J. Siskos, that adjusts a system of additive utility function. Under the supervision and the help of Mr. Olivier Cailloux, I created this software and published it to Github under the MIT license.\\
 
 \section{Personal benefits}
-During my internship at LAMSADE, I have learned a lot, put in practice many of the subjects learned during my academic years, so here the list of my new acquired skills: 
+During my internship, I have learned a lot, put in practice many of the subjects learned during my academic years, so here the list of my new acquired skills: 
 \begin{itemize}
 \item Learning to write documents using LaTeX which helped with the appearance of documents to focus more on the content. 
 \item Learning a new Decision method, the UTA method
 \item Re-doing my project of Portfolio Management was helpful for me since next year I will be completing my master’s degree in Information System for finance
 \item Learning how to make research of literature on a certain subject 
 \item Making projects using Maven
-\item Publishing a software on github as open source
+\item Publishing a software on GitHub as open source
 \item Practicing my English skill\\
 \end{itemize}
 
@@ -694,7 +849,7 @@ Olivier Cailloux, Elie Daher\\
 
 \underline{Les tâches à faire} \\
 \begin{itemize}
-	\item Créer un repository sur github
+	\item Créer un repository sur GitHub
 	\item Ecrire un résumé sur la méthode UTA en utilisant LaTeX
 	\item En parallèle, effectuer des recherches sur des littératures existantes\\
 \end{itemize}
@@ -744,7 +899,7 @@ Olivier Cailloux, Elie Daher\\
 \underline{Déroulement de la réunion}\\
 \begin{itemize}
 	\item Présentation du travail effectué
-	\item Citer les remarques et les modifications à réaliser sur le document summary-uta et sur le repository de github (enlever le folder qui contient les *.class)
+	\item Citer les remarques et les modifications à réaliser sur le document summary-uta et sur le repository de GitHub (enlever le folder qui contient les *.class)
 	\item Présentation du travail à effectuer pour la semaine prochaine\\
 \end{itemize}
 
