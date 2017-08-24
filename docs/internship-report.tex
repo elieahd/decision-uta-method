@@ -708,87 +708,86 @@ We generated a value function called $v^R$, then we ordered a list of $10,000$ a
 Then we took a sub list of alternatives ordered and we called it \textit{exampleAlternatives}. And for the rest of the alternatives we placed them in another list called \textit{alternativesToCompare}.\\
 We generated the value function $v^T$ by running the UTASTAR algorithm on the list \textit{exampleAlternatives}. \\
 Then we took \textit{alternativesToCompare} and ordered them according to the two value functions $v^R$ and $v^T$ and we compared the difference of ranking between the two list corresponding to each value function.\\
-We repeated the upper process 100 times and then we calculated the mean, standard deviation and Kendall rank correlation coefficient of the difference of ranking. \\
+We repeated the upper process 500 times and then we calculated the mean of the Kendall rank correlation coefficient of the difference of ranking. \\
 This following simulation was repeated by varying the number of criteria between $1,2,3,4,5$ and by varying the number of alternatives by $10, 25, 50, 75, 100$.\\
 The following results were obtained after the simulation:\\
 
 \begin{center}
-\begin{tabular}{ |c||p{3cm}|p{3cm}| }
+\begin{tabular}{ |c||c| }
  \hline
- \multicolumn{3}{|c|}{1 criterion} \\
+ \multicolumn{2}{|c|}{1 criterion} \\
  \hline
-\\[-1em] Examples of alternatives to generate $v^T$& Mean & Standard Deviation\\
+\\[-1em] Examples of alternatives to generate $v^T$& Mean of the Kendall rank correlation coefficient \\
  \hline
- 10   & 0.0    &0.0\\
- 25   & 0.0    &0.0\\
- 50   & 0.0    &0.0\\
- 75  & 0.0    &0.0\\
- 100   & 0.0    &0.0\\
- \hline
-\end{tabular}
-\end{center}
-
-\begin{center}
-\begin{tabular}{ |c||p{3cm}|p{3cm}| }
- \hline
- \multicolumn{3}{|c|}{2 criterion} \\
- \hline
-\\[-1em] Examples of alternatives to generate $v^T$& Mean & Standard Deviation\\
- \hline
- 10   & 14,562,031   & 8,946,158.30\\
- 25   & 13,852,127   & 8,731,237.33\\
- 50   & 13,616,292   & 8,870,730.34\\
- 75   & 12,191,555   &  8,697,880.76\\
- 100 & 12,814,346   & 8,248,861.53\\
+ 10   & 1.0\\
+ 25   & 1.0\\
+ 50   & 1.0\\
+ 75  & 1.0\\
+ 100   & 1.0\\
  \hline
 \end{tabular}
 \end{center}
 
 \begin{center}
-\begin{tabular}{ |c||p{3cm}|p{3cm}| }
+\begin{tabular}{ |c||c| }
  \hline
- \multicolumn{3}{|c|}{3 criterion} \\
+ \multicolumn{2}{|c|}{2 criterion} \\
  \hline
-\\[-1em] Examples of alternatives to generate $v^T$& Mean & Standard Deviation\\
+\\[-1em] Examples of alternatives to generate $v^T$& Mean of the Kendall rank correlation coefficient\\
  \hline
- 10   & 20,938,217    &7,548,984.32\\
- 25   & 20,436,790    &7,535,900.18\\
- 50   & 19,667,726    &7,677,974.45\\
- 75   & 17,784,905    &8,041,707.91\\
- 100 & 17,303,392   &7,887,375.97\\
- \hline
-\end{tabular}
-\end{center}
-
-\begin{center}
-\begin{tabular}{ |c||p{3cm}|p{3cm}| }
- \hline
- \multicolumn{3}{|c|}{4 criterion} \\
- \hline
-\\[-1em] Examples of alternatives to generate $v^T$& Mean & Standard Deviation\\
- \hline
- 10   & 24,977,653    &6,179,530.91\\
- 25   & 23,846,149    &6,594,864.51\\
- 50   & 21,828,556    &7,383,129.53\\
- 75   & 21,778,539    &7,378,937.00\\
- 100 & 20,494,016    & 8,040,533.01\\
+ 10   & 0.530\\
+ 25   & 0.531\\
+ 50   & 0.546\\
+ 75   & 0.537\\
+ 100 & 0.551\\
  \hline
 \end{tabular}
 \end{center}
 
 \begin{center}
-\begin{tabular}{ |c||p{3cm}|p{3cm}| }
+\begin{tabular}{ |c||c| }
  \hline
- \multicolumn{3}{|c|}{5 criterion} \\
+ \multicolumn{2}{|c|}{3 criterion} \\
  \hline
-\\[-1em] Examples of alternatives to generate $v^T$& Mean & Standard Deviation\\
+\\[-1em] Examples of alternatives to generate $v^T$& Mean of the Kendall rank correlation coefficient\\
  \hline
- 10   & 27,569,773    & 4,685,838.09\\
- 25   & 25,998,202    & 5,565,580.41\\
- 50   & 25,326,138    &6,485,725.19\\
- 75   & 24,196,301    &7,057,989.65\\
- 100 & 23,027,348    &7,486,410.36\\
+ 10   & 0.409 \\
+ 25   & 0.421 \\
+ 50   & 0.473 \\
+ 75   & 0.452 \\
+ 100 & 0.474  \\
+ \hline
+\end{tabular}
+\end{center}
 
+\begin{center}
+\begin{tabular}{ |c||c| }
+ \hline
+ \multicolumn{2}{|c|}{4 criterion} \\
+ \hline
+\\[-1em] Examples of alternatives to generate $v^T$& Mean of the Kendall rank correlation coefficient\\
+ \hline
+ 10   & 0.296 \\
+ 25   & 0.337 \\
+ 50   & 0.362 \\
+ 75   & 0.403 \\
+ 100 & 0.405 \\
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ |c||c| }
+ \hline
+ \multicolumn{2}{|c|}{5 criterion} \\
+ \hline
+\\[-1em] Examples of alternatives to generate $v^T$& Mean of the Kendall rank correlation coefficient\\
+ \hline
+ 10   & 0.220\\
+ 25   & 0.262\\
+ 50   & 0.293\\
+ 75   & 0.308\\
+ 100 & 0.330\\
  \hline
 \end{tabular}
 \end{center}
@@ -801,7 +800,7 @@ The following results were obtained after the simulation:\\
 \includegraphics[keepaspectratio]{graph-01.PNG}
 \caption{Graph - Simulation results with 1 criterion}
 \end{figure}
-In the case where we have 1 criterion the two value functions are identical $v^R = v^T$. Thus, we can see that the difference of ranking between the two list is null.\\
+In the case where we have 1 criterion the two value functions are identical $v^R = v^T$. Thus, we can see that the two list are identical.\\
 
 \item The following graph represents the simulation results where we evaluated $10,000$ alternatives by taking $50$ alternatives as examples and by varying the number of criteria $[1, 2, 3, 4, 5]$ 
 \begin{figure}[H]
@@ -809,7 +808,7 @@ In the case where we have 1 criterion the two value functions are identical $v^R
 \includegraphics[keepaspectratio]{graph-02.PNG}
 \caption{Graph - Simulation results by varying the number of criteria}
 \end{figure}
-The more we added criteria the more the differences grew between the two lists. Each time we added 1 criterion the difference of ranking has augmented\\
+The more we added criteria the more the differences grew between the two lists. Each time we added a criterion the Kendall rank correlation coefficient decreased\\
 \newpage
 \item The following graph represents the simulation results where we evaluated $10,000$ alternatives on 5 criteria by varying the number of alternatives as example by $[10, 25, 50, 75, 100]$ 
 \begin{figure}[H]
@@ -817,7 +816,7 @@ The more we added criteria the more the differences grew between the two lists. 
 \includegraphics[keepaspectratio]{graph-03.PNG}
 \caption{Graph - Simulation results by varying the number of alternatives as example}
 \end{figure}
-The more the \textit{exampleList} augmented the more the difference between the two list minimized, this is due to the fact that the $v^T$ will have more alternatives to generate a more similar value function of $v^R$.
+The more the \textit{exampleList} augmented the more the difference between the two list minimized and the Kendall rank correlation coefficient increase this is due to the fact that the $v^T$ will have more alternatives to generate a more similar value function of $v^R$.
 \end{itemize}
 \section{Conclusion on the projects}
 During the internship, a lot of tasks has been accomplished. First, I have been able to learn about the platform MyDraft, to make a tutorial and to realize a small application. Secondly, I was able to learn about a new decision method, UTA, where I made a summary about it, and created my own problem, Buying New Car. Before implementing the UTASTAR method, a research was made. The goal of the research was to find similar studies made on UTA method. And finally, I was able to implement the UTASTAR method by the software \textit{uta-calculator}. After implementing the software I was able to make a simulation and to elaborate an interpretation of the results obtained. \\

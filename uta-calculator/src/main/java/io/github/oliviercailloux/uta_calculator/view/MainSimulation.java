@@ -33,49 +33,26 @@ public class MainSimulation {
 		comparingList.add(50);
 		comparingList.add(75);
 		comparingList.add(100);
-//		comparingList.add(2500);
-//		comparingList.add(5000);
-//		comparingList.add(7500);
-//		comparingList.add(9000);
 
-		
 		for(int criteria = 2; criteria <= 5; criteria++){
-		for(Integer comparing : comparingList){
-			List<Double> differenceList = new ArrayList<>();
-			for(int i = 0; i < 500; i++){
-				double difference = getDifferenceRank(numAlternative,criteria,comparing);
-				differenceList.add(difference);
+			for(Integer comparing : comparingList){
+				List<Double> differenceList = new ArrayList<>();
+				for(int i = 0; i < 500; i++){
+					double difference = getDifferenceRank(numAlternative,criteria,comparing);
+					differenceList.add(difference);
+				}
+				Statistics stats = new Statistics();
+				System.out.println("getDifferenceRank(" + numAlternative + "," + criteria + "," + comparing + ")" );
+				System.out.println("Mean : " + stats.getMean(differenceList));
+				System.out.println("Std : " + stats.getStd(differenceList));
 			}
-			Statistics stats = new Statistics();
-			System.out.println("getDifferenceRank(" + numAlternative + "," + criteria + "," + comparing + ")" );
-			System.out.println("Mean : " + stats.getMean(differenceList));
-			System.out.println("Std : " + stats.getStd(differenceList));
+			System.out.println();
 		}
-		System.out.println();
-	}
 
-
-		
-		
-		
-//		for(int criteria = 2; criteria <= 5; criteria++){
-//			for(Integer comparing : comparingList){
-//				List<Double> differenceList = new ArrayList<>();
-//				for(int i = 0; i < 100; i++){
-//					double difference = getDifferenceRank(numAlternative,criteria,comparing);
-//					differenceList.add(difference);
-//				}
-//				Statistics stats = new Statistics();
-//				System.out.println("getDifferenceRank(" + numAlternative + "," + criteria + "," + comparing + ")" );
-//				System.out.println("Mean : " + stats.getMean(differenceList));
-//				System.out.println("Std : " + stats.getStd(differenceList));
-//			}
-//			System.out.println();
-//		}
 
 	}
 
-	private int getDifferenceRank(int numberAlternatives, int numberCriteria, int numberAlternativesToCompare){
+	private double getDifferenceRank(int numberAlternatives, int numberCriteria, int numberAlternativesToCompare){
 		int numberCuts = 3;
 		double minValue = 10.0;
 		double maxValue = 20.0;
@@ -116,11 +93,11 @@ public class MainSimulation {
 		return compare(vR, vT, alternativesToCompare);
 	}
 
-	private int compare(ValueFunction vR, ValueFunction vT, List<Alternative> alternatives) {
+	private double compare(ValueFunction vR, ValueFunction vT, List<Alternative> alternatives) {
 
 		List<Alternative> alternativeR = new ArrayList<>(alternatives);
 		List<Alternative> alternativeT = new ArrayList<>(alternatives);
-		
+
 		Collections.sort(alternativeR, new Comparator<Alternative>() {
 			@Override
 			public int compare(final Alternative a1, final Alternative a2) {
@@ -134,19 +111,28 @@ public class MainSimulation {
 				return ((Double)vT.getValue(a1)).compareTo(vT.getValue(a2));
 			}
 		});
-
+		
+		List<Double> a1 = new ArrayList<Double>();
+		List<Double> a2 = new ArrayList<Double>();
 		int differenceRank = 0;
 		for(int i = 0;  i < alternatives.size(); i++){
 			if(alternativeR.get(i).getId() != alternativeT.get(i).getId()){
 				for(int j = 0; j < alternativeT.size(); j++){
 					if(alternativeR.get(i).getId() == alternativeT.get(j).getId()){
 						differenceRank += Math.abs(i-j);
+						a1.add(Double.parseDouble(i+""));
+						a2.add(Double.parseDouble(j+""));
 						break;
+						
 					}
 				}
 			}
 		}
-		return differenceRank;
+		
+		
+		Statistics stats = new Statistics();
+		return stats.getKendalTau(a1, a2);
+		//return differenceRank;
 	} 
 
 }
