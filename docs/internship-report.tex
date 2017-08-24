@@ -208,6 +208,7 @@ From my experience of using MyDraft, I found this platform very powerful and sim
 But overall my experience with MyDraft was very good. This platform can have a real impact on the programming cycle which can lead to some new technology that can help the user to create their own application without the need of a program thus speeding up the process.
 
 \section{UTA}
+The UTA method is a multicrieria method that estimate a value function after solving a linear program. The only information needed by the decision maker is the global preference between the alternatives.\\
 
 \subsection{Introduction of the aid decision}
 In decision theory, we elaborate a study of reasoning underlying the agent choices. Two branches can be deducted from the decision theory: giving an advice on how to make the best decisions and how existing agents make decisions. \\
@@ -815,15 +816,23 @@ The following results were obtained after the simulation:\\
 \includegraphics[keepaspectratio]{graph-01.PNG}
 \caption{Graph - Simulation results with 1 criterion}
 \end{figure}
-In the case where we have 1 criterion the two value functions are identical $v^R = v^T$. Thus, we can see that the two list are identical.\\
+In the case where we have 1 criterion, the two value functions generate two list that have identical ranking.\\
 
-\item The following graph represents the simulation results where we evaluated $10,000$ alternatives by taking $50$ alternatives as examples and by varying the number of criteria $[1, 2, 3, 4, 5]$ 
+\item The following graph represents the simulation results where we evaluated $10,000$ alternatives by taking $200$ alternatives as examples and by varying the number of criteria $[1, 2, 3, 4, 5]$ 
 \begin{figure}[H]
 \centering
 \includegraphics[keepaspectratio]{graph-02.PNG}
 \caption{Graph - Simulation results by varying the number of criteria}
 \end{figure}
 The more we added criteria the more the differences grew between the two lists. Each time we added a criterion the Kendall rank correlation coefficient decreased\\
+
+\item The following graph represents the simulation results where we evaluated $10,000$ alternatives on 2 criteria by varying the number of alternatives as example by $[10, 25, 50, 75, 100, 200, 500, 1000, 2000]$ 
+\begin{figure}[H]
+\centering
+\includegraphics[keepaspectratio]{graph-03.PNG}
+\caption{Graph - Simulation results by varying the number of alternatives as example with 2 criterion}
+\end{figure}
+The more we added criteria the more the differences grew between the two lists. As we can see the more we added alternatives as example the more the Kendall tau get close to 1. \\
 \newpage
 \item The following graph represents the simulation results where we evaluated $10,000$ alternatives on 5 criteria by varying the number of alternatives as example by $[10, 25, 50, 75, 100]$ 
 \begin{figure}[H]

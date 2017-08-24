@@ -28,27 +28,35 @@ public class MainSimulation {
 
 		int numAlternative = 10000;
 		List<Integer> comparingList = new ArrayList<>();
-		comparingList.add(10);
-		comparingList.add(25);
-		comparingList.add(50);
-		comparingList.add(75);
-		comparingList.add(100);
-
-		for(int criteria = 2; criteria <= 5; criteria++){
-			for(Integer comparing : comparingList){
-				List<Double> differenceList = new ArrayList<>();
-				for(int i = 0; i < 500; i++){
-					double difference = getDifferenceRank(numAlternative,criteria,comparing);
-					differenceList.add(difference);
-				}
-				Statistics stats = new Statistics();
-				System.out.println("getDifferenceRank(" + numAlternative + "," + criteria + "," + comparing + ")" );
-				System.out.println("Mean : " + stats.getMean(differenceList));
-				System.out.println("Std : " + stats.getStd(differenceList));
+		//		comparingList.add(10);
+		//		comparingList.add(25);
+		//		comparingList.add(50);
+		//		comparingList.add(75);
+		//		comparingList.add(100);
+//		comparingList.add(200);
+//		comparingList.add(500);
+//		comparingList.add(1000);
+//		comparingList.add(2000);
+		comparingList.add(5000);
+		comparingList.add(7000);
+		
+		//for(int criteria = 2; criteria <= 5; criteria++){
+		int criteria = 2;	
+		for(Integer comparing : comparingList){
+			List<Double> differenceList = new ArrayList<>();
+			for(int i = 0; i < 500; i++){
+				double difference = getDifferenceRank(numAlternative,criteria,comparing);
+				differenceList.add(difference);
 			}
-			System.out.println();
+			Statistics stats = new Statistics();
+			System.out.println("getDifferenceRank(" + numAlternative + "," + criteria + "," + comparing + ")" );
+			System.out.println("Mean : " + stats.getMean(differenceList));
+			System.out.println("Std : " + stats.getStd(differenceList));
 		}
-
+		System.out.println();
+		//}
+		//		}
+		//getDifferenceRank(numAlternative,1,10);
 
 	}
 
@@ -111,7 +119,7 @@ public class MainSimulation {
 				return ((Double)vT.getValue(a1)).compareTo(vT.getValue(a2));
 			}
 		});
-		
+
 		List<Double> a1 = new ArrayList<Double>();
 		List<Double> a2 = new ArrayList<Double>();
 		int differenceRank = 0;
@@ -123,13 +131,12 @@ public class MainSimulation {
 						a1.add(Double.parseDouble(i+""));
 						a2.add(Double.parseDouble(j+""));
 						break;
-						
+
 					}
 				}
 			}
 		}
-		
-		
+
 		Statistics stats = new Statistics();
 		return stats.getKendalTau(a1, a2);
 		//return differenceRank;
