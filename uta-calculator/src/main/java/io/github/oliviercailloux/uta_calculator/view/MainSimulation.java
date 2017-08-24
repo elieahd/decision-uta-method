@@ -28,23 +28,33 @@ public class MainSimulation {
 
 		int numAlternative = 10000;
 		List<Integer> comparingList = new ArrayList<>();
-		comparingList.add(1000);
-		comparingList.add(2500);
-		comparingList.add(5000);
-		comparingList.add(7500);
-		comparingList.add(9000);
+		comparingList.add(10);
+		comparingList.add(25);
+		comparingList.add(50);
+		comparingList.add(75);
+		comparingList.add(100);
+//		comparingList.add(2500);
+//		comparingList.add(5000);
+//		comparingList.add(7500);
+//		comparingList.add(9000);
 
-
-		int criteria = 2;
-		List<Double> differenceList = new ArrayList<>();
-		for(int i = 0; i < 50; i++){
-			double difference = getDifferenceRank(numAlternative,criteria,comparingList.get(4));
-			differenceList.add(difference);
+		
+		for(int criteria = 2; criteria <= 5; criteria++){
+		for(Integer comparing : comparingList){
+			List<Double> differenceList = new ArrayList<>();
+			for(int i = 0; i < 500; i++){
+				double difference = getDifferenceRank(numAlternative,criteria,comparing);
+				differenceList.add(difference);
+			}
+			Statistics stats = new Statistics();
+			System.out.println("getDifferenceRank(" + numAlternative + "," + criteria + "," + comparing + ")" );
+			System.out.println("Mean : " + stats.getMean(differenceList));
+			System.out.println("Std : " + stats.getStd(differenceList));
 		}
-		Statistics stats = new Statistics();
-		System.out.println("getDifferenceRank(" + numAlternative + "," + criteria + "," + comparingList.get(4) + ")" );
-		System.out.println("Mean : " + stats.getMean(differenceList));
-		System.out.println("Std : " + stats.getStd(differenceList));
+		System.out.println();
+	}
+
+
 		
 		
 		
@@ -110,7 +120,7 @@ public class MainSimulation {
 
 		List<Alternative> alternativeR = new ArrayList<>(alternatives);
 		List<Alternative> alternativeT = new ArrayList<>(alternatives);
-
+		
 		Collections.sort(alternativeR, new Comparator<Alternative>() {
 			@Override
 			public int compare(final Alternative a1, final Alternative a2) {
