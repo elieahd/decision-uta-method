@@ -13,8 +13,8 @@ import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
 
 public class UTASTAR {
-	
-	//static { }
+
+	static {System.loadLibrary("jniortools");}
 
 	//Attibutes
 	private List<Criterion> criteria;
@@ -22,7 +22,7 @@ public class UTASTAR {
 	public static final double SIGMA = 0.05;
 	private boolean print;
 	private Map<Alternative, Map<String, Double>> alternativesMarginalValues;
-	
+
 	//Constructor
 	public UTASTAR(List<Criterion> criteria, List<Alternative> alternatives){
 		this.criteria = criteria;
@@ -47,13 +47,13 @@ public class UTASTAR {
 
 	//Methods
 	public ValueFunction findValueFunction(){
-		 System.loadLibrary("jniortools");
+
 		long start = System.currentTimeMillis();
 		String printStr = "Scale of criterias";
 		for(Criterion criterion : criteria){
 			printStr += "\n" + "	" + criterion.getName() + " --> " + criterion.getScale();
 		}
-		
+
 		printStr += "\n \n Expressing the global value of the alternatives in terms of variables wij"; 
 		for(Alternative alternative : alternatives){
 			Map<String, Double> marginalValues = new HashMap<>();
@@ -73,9 +73,9 @@ public class UTASTAR {
 			}
 			printStr += "\n" + "	" + alternative.getName() + " : " + marginalValueStr;
 		}
-		 
+
 		MPSolver solver = new MPSolver("UTASTAR - Solver", MPSolver.OptimizationProblemType.valueOf("GLOP_LINEAR_PROGRAMMING"));
-		
+
 		double infinity = MPSolver.infinity();
 		Map<String, MPVariable> errors = new HashMap<>();		
 		for(Alternative alternative : alternatives){
@@ -91,26 +91,24 @@ public class UTASTAR {
 		}
 		objective.setMinimization();
 		objStr = "Minimization : " + objStr;
-		
+
 		Map<String, MPVariable> variables = new HashMap<>();
 		for (int i = 0; i < criteria.size(); i++){
 			for(int j = 1; j < criteria.get(i).getScale().size(); j++){
 				variables.put("w"+(i+1)+j,solver.makeNumVar(0.0, infinity, "w"+(i+1)+j));
 			}
 		}
-		
+
 		printStr += "\n \n Introducing 2 errors functions by writing for each pair of consecutive actions";
-		
-//		System.out.println();
-//		System.out.println("Introducing 2 errors functions by writing for each pair of consecutive actions");
+
 		for (int i = 0; i < alternatives.size() - 1; i++){
-			
+
 			boolean equal = false;
 			Alternative a1 = alternatives.get(i);
 			if (a1.getName().equals("METRO1")){
 				equal = true;
 			}
-			
+
 			MPConstraint constraint;
 			if(equal){
 				constraint = solver.makeConstraint(0,0);
@@ -148,30 +146,25 @@ public class UTASTAR {
 			constraint.setCoefficient(errors.get("e"+ a2.getName() +"POS"), 1);
 			constraint.setCoefficient(errors.get("e"+ a2.getName() +"NEG"), -1);
 		}
-		
+
 		MPConstraint constraint = solver.makeConstraint(1, 1);
 		for (Map.Entry<String, MPVariable> entry : variables.entrySet()){
 			constraint.setCoefficient(entry.getValue(), 1);
 		}
-		
+
 		MPSolver.ResultStatus resultStatus = solver.solve();
-		
+
 		String model = solver.exportModelAsLpFormat(false);
 		if (resultStatus != MPSolver.ResultStatus.OPTIMAL) {System.err.println("The problem does not have an optimal solution!"); return null;}
 		if (!solver.verifySolution(/*tolerance=*/1e-7, /*logErrors=*/true)) {System.err.println("The solution returned by the solver violated the problem constraints by at least 1e-7"); return null;}
 
 		printStr += "\n" + "Optimal objective value = " + solver.objective().value();
 		printStr += "\n" + model;
-//		System.out.println("Optimal objective value = " + solver.objective().value());
-//		System.out.println(model);
-		
 		for (Map.Entry<String, MPVariable> entry : variables.entrySet()){
 			printStr += "\n" + entry.getKey() + " = " + entry.getValue().solutionValue();
-//			System.out.println(entry.getKey() + " = " + entry.getValue().solutionValue());
 		}
 		for (Map.Entry<String, MPVariable> entry : errors.entrySet()){
 			printStr += "\n" + entry.getKey() + " = " + entry.getValue().solutionValue();
-//			System.out.println(entry.getKey() + " = " + entry.getValue().solutionValue());
 		}
 
 		List<PartialValueFunction> partialValueFunctions = new ArrayList<>();
@@ -194,15 +187,16 @@ public class UTASTAR {
 			}
 			partialValueFunctions.add(partialValueFunction);
 		}
-		
+
 		ValueFunction valueFunction = new ValueFunction(partialValueFunctions); 
 		long time = System.currentTimeMillis() - start;
 		printStr += "\n Problem solved in : " + time + " milliseconds";
-//		System.out.println("Problem solved in : " + time + " milliseconds");
 		if(print){System.out.println(printStr);}
+
+		solver.clear();
 		return valueFunction;
 	}
-	
+
 	public Map<String, Double> getPartialMarginalValue(Criterion criterion, int value, int criteriaId){
 		List<Double> scale = criterion.getScale();
 		Collections.sort(scale);
