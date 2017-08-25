@@ -28,35 +28,26 @@ public class MainSimulation {
 
 		int numAlternative = 10000;
 		List<Integer> comparingList = new ArrayList<>();
-		//		comparingList.add(10);
-		//		comparingList.add(25);
-		//		comparingList.add(50);
-		//		comparingList.add(75);
-		//		comparingList.add(100);
-//		comparingList.add(200);
-//		comparingList.add(500);
-//		comparingList.add(1000);
-//		comparingList.add(2000);
-		comparingList.add(5000);
-		comparingList.add(7000);
-		
-		//for(int criteria = 2; criteria <= 5; criteria++){
-		int criteria = 2;	
-		for(Integer comparing : comparingList){
-			List<Double> differenceList = new ArrayList<>();
-			for(int i = 0; i < 500; i++){
-				double difference = getDifferenceRank(numAlternative,criteria,comparing);
-				differenceList.add(difference);
+		comparingList.add(10);
+		comparingList.add(25);
+		comparingList.add(50);
+		comparingList.add(75);
+		comparingList.add(100);
+
+		for(int criteria = 2; criteria <= 5; criteria++){
+			for(Integer comparing : comparingList){
+				List<Double> differenceList = new ArrayList<>();
+				for(int i = 0; i < 500; i++){
+					double difference = getDifferenceRank(numAlternative,criteria,comparing);
+					differenceList.add(difference);
+				}
+				Statistics stats = new Statistics();
+				System.out.println("getDifferenceRank(" + numAlternative + "," + criteria + "," + comparing + ")" );
+				System.out.println("Mean : " + stats.getMean(differenceList));
+				System.out.println("Std : " + stats.getStd(differenceList));
 			}
-			Statistics stats = new Statistics();
-			System.out.println("getDifferenceRank(" + numAlternative + "," + criteria + "," + comparing + ")" );
-			System.out.println("Mean : " + stats.getMean(differenceList));
-			System.out.println("Std : " + stats.getStd(differenceList));
+			System.out.println();
 		}
-		System.out.println();
-		//}
-		//		}
-		//getDifferenceRank(numAlternative,1,10);
 
 	}
 
@@ -71,7 +62,7 @@ public class MainSimulation {
 
 		ValueFunctionGenerator  vfg = new ValueFunctionGenerator(problem.getCriteria());
 		ValueFunction vR = vfg.generateValueFunction();
-		//		LOGGER.info("ValueFunction R: {}.",vR);
+		LOGGER.debug("ValueFunction R: {}.",vR);
 
 		List<Alternative> alternatives = problem.getAlternatives();
 		Collections.sort(alternatives, new Comparator<Alternative>() {
@@ -85,18 +76,18 @@ public class MainSimulation {
 		for(int i = 0; i < numberAlternativesToCompare; i++){
 			exampleAlternatives.add(alternatives.get(i));
 		}
-		//		LOGGER.info("Examples: {}.",exampleAlternatives);
+		LOGGER.debug("Examples: {}.",exampleAlternatives);
 
 		List<Alternative> alternativesToCompare = new ArrayList<>();
 		for(int i = numberAlternativesToCompare; i < alternatives.size(); i++){
 			alternativesToCompare.add(alternatives.get(i));
 		}
-		//		LOGGER.info("To compare: {}.",alternativesToCompare);
+		LOGGER.debug("To compare: {}.",alternativesToCompare);
 
 		UTASTAR utastar = new UTASTAR(problem.getCriteria(), exampleAlternatives);
 		utastar.setPrint(false);
 		ValueFunction vT = utastar.findValueFunction();
-		//		LOGGER.info("ValueFunction T: {}.",vT);
+		LOGGER.debug("ValueFunction T: {}.",vT);
 
 		return compare(vR, vT, alternativesToCompare);
 	}
@@ -138,8 +129,14 @@ public class MainSimulation {
 		}
 
 		Statistics stats = new Statistics();
-		return stats.getKendalTau(a1, a2);
-		//return differenceRank;
+		double kendallTau = 1.0;
+		if(differenceRank != 0){
+			kendallTau = stats.getKendalTau(a1,a2);
+		}
+		LOGGER.debug("Difference of rank : ",differenceRank);
+		LOGGER.debug("Kendall tau : ",kendallTau);
+		
+		return kendallTau;
 	} 
 
 }

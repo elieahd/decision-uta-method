@@ -86,7 +86,7 @@ This internship is very important for my professional career because it may be m
 
 One of the objectives of this fellowship is to propose the UTA method, that solves a multi-criteria problem by building a value function based on the preferences of the Decision Maker, as an open source software component \textit{uta-calculator} on GitHub. Another major aspect of my internship was the research aspect, using \textit{uta-calculator} we should be able to generate a simulation and make an interpretation of the results found.\\
 
-In this internship report, I will describe the context of the project which contains an overview of the fellowship. While writing this report, I will describe the projects made: MyDraft, UTA, Linear Program Solver, \textit{uta-calculator} and the research realized that is based on the simulations made. Finally I will conclude by reflecting on the flow of my internship. \\
+In this internship report, I will describe the context of the project which contains an overview of the fellowship. While writing this report, I will describe the projects made: MyDraft, UTA, Linear Program Solver, \textit{uta-calculator} and the research realized that is based on the simulations made. Finally, I will conclude by reflecting on the flow of my internship. \\
 
 This report was supposed to contain a section called \textit{Organization and Communication}. Since I did do my internship remotely and I had only contact with Mr. Olivier Cailloux and Mr. Michel Zam I didn’t have enough information to develop this section. So, as addressed by my internship manager, Mrs. Manouvrier, we replaced the section \textit{Organization and Communication} by \textit{Context of the project} that illustrates a quick background of the projects done. \\
 
@@ -142,7 +142,7 @@ By the end of the month of July, we had a meeting, Mr. Cailloux and me to discus
 
 All of the work done is available as open source on my GitHub repository: \url{ https://github.com/elieahd/decision-uta-method}.\\
 
-Thus, in the next chapter, we will discuss the projects done above.
+Thus, in the next chapter, we will discuss the projects stated above.
 
 \chapter{Description of the projects}
 \section{MyDraft}
@@ -208,7 +208,7 @@ From my experience of using MyDraft, I found this platform very powerful and sim
 But overall my experience with MyDraft was very good. This platform can have a real impact on the programming cycle which can lead to some new technology that can help the user to create their own application without the need of a program thus speeding up the process.
 
 \section{UTA}
-The UTA method is a multicrieria method that estimate a value function after solving a linear program. The only information needed by the decision maker is the global preference between the alternatives.\\
+The UTA method is a multicriteria method that estimate a value function after solving a linear program. The only information needed by the decision maker is the global preference between the alternatives. In the following section, I will summarize this method by introducing the decision aid and then by stating the principles and notation of the UTA method. Then a little numerical example will illustrate the method. Finally, I will conclude this section by explaining what the value function really means.\\
 
 \subsection{Introduction of the aid decision}
 In decision theory, we elaborate a study of reasoning underlying the agent choices. Two branches can be deducted from the decision theory: giving an advice on how to make the best decisions and how existing agents make decisions. \\
@@ -235,6 +235,7 @@ Let's say we will base our purchase on the following criteria:
 \item comfort (0, +, ++, +++) \textit{0 being not comfortable and +++ very comfortable}
 \item safety (1, 2, 3, 4, 5) \textit{1 being not safety and 5 safe}
 \end{itemize}
+\newpage
 During the decision process, we will determinate the global preferences of the potential actions:
 \begin{enumerate}
 \item Citroen C4
@@ -705,12 +706,12 @@ Objective of LP & $0.34$ & $0.53$ & drop of 36\%\\
 \subsection{Simulation and Comparison uta-calcultor}
 The following represents the main objective of my research: simulation of the implemented software uta-calculator. 
 \subsubsection{Simulation}
-We generated a value function called $v^R$, then we ordered a list of $10,000$ alternatives by the value function generated.\\
-Then we took a sub list of alternatives ordered and we called it \textit{exampleAlternatives}. And for the rest of the alternatives we placed them in another list called \textit{alternativesToCompare}.\\
+We generated a value function called $v^R$ with a certain number of criteria, then we ordered a list of $10,000$ alternatives by the value function generated.\\
+Then we took a sub list of the alternatives ordered and we called it \textit{exampleAlternatives} (the number of examples will vary during the simulation). And for the rest of the alternatives we placed them in another list called \textit{alternativesToCompare}.\\
 We generated the value function $v^T$ by running the UTASTAR algorithm on the list \textit{exampleAlternatives}. \\
 Then we took \textit{alternativesToCompare} and ordered them according to the two value functions $v^R$ and $v^T$ and we compared the difference of ranking between the two list corresponding to each value function.\\
-We repeated the upper process 500 times and then we calculated the mean of the Kendall rank correlation coefficient of the difference of ranking. The Kendall's tau coefficient of the difference of ranking is a statistic used to measure the ordinal association between two list, the tau correlation returns a value between -1 and 1. The -1 represents that the two list have no relationship. The 1 represent an identical order between the two list\\
-This following simulation was repeated by varying the number of criteria between $1,2,3,4,5$ and by varying the number of alternatives by $10, 25, 50, 75, 100$.\\
+We repeated the upper process 500 times and then we calculated the mean of the Kendall rank correlation coefficient of the difference of ranking. The Kendall's tau coefficient of the difference of ranking is a statistic method used to measure the ordinal association between two list, the tau correlation returns a value between -1 and 1. The Kendall will be high when observations have a similar, or identical when the correlation is equal to 1. The Kendall will be low when observations have a dissimilar rank, or fully different when the correlation is equal to -1.\\
+This following simulation was repeated by varying the number of criteria between $1,2,3,4,5$ and by varying the number of alternatives as example (given to UTASTAR which generate $v^T$) by $10, 25, 50, 75, 100$.\\
 The following results were obtained after the simulation:\\
 
 \begin{figure}[H] 
@@ -816,23 +817,23 @@ The following results were obtained after the simulation:\\
 \includegraphics[keepaspectratio]{graph-01.PNG}
 \caption{Graph - Simulation results with 1 criterion}
 \end{figure}
-In the case where we have 1 criterion, the two value functions generate two list that have identical ranking.\\
+In the case where we have 1 criterion, the two value functions generated two list that have identical ranking.\\
 
-\item The following graph represents the simulation results where we evaluated $10,000$ alternatives by taking $200$ alternatives as examples and by varying the number of criteria $[1, 2, 3, 4, 5]$ 
+\item The following graph represents the simulation results where we evaluated $10,000$ alternatives by taking $200$ alternatives as examples that generate $v^T$ and by varying the number of criteria $[1, 2, 3, 4, 5]$ 
 \begin{figure}[H]
 \centering
 \includegraphics[keepaspectratio]{graph-02.PNG}
 \caption{Graph - Simulation results by varying the number of criteria}
 \end{figure}
-The more we added criteria the more the differences grew between the two lists. Each time we added a criterion the Kendall rank correlation coefficient decreased\\
+The more we added a criterion the more the differences grew between the two lists, which explain the decrease of the Kendall rank correlation coefficient.\\
 
-\item The following graph represents the simulation results where we evaluated $10,000$ alternatives on 2 criteria by varying the number of alternatives as example by $[10, 25, 50, 75, 100, 200, 500, 1000, 2000]$ 
+\item The following graph represents the simulation results where we evaluated $10,000$ alternatives on 2 criteria by varying the number of alternatives as example that generate $v^T$ by $[10, 25, 50, 75, 100, 200, 500, 1000]$ 
 \begin{figure}[H]
 \centering
-\includegraphics[keepaspectratio]{graph-03.PNG}
+\includegraphics[keepaspectratio]{graph-04.PNG}
 \caption{Graph - Simulation results by varying the number of alternatives as example with 2 criterion}
 \end{figure}
-The more we added criteria the more the differences grew between the two lists. As we can see the more we added alternatives as example the more the Kendall tau get close to 1. \\
+The more the number of alternatives as example increased the more the value function $v^T$  rank the list as similiar  as possible than the list generated by $v^R$. Whcih indicate why more the numbers of example increase the more  Kendall tau get close to 1. \\
 \newpage
 \item The following graph represents the simulation results where we evaluated $10,000$ alternatives on 5 criteria by varying the number of alternatives as example by $[10, 25, 50, 75, 100]$ 
 \begin{figure}[H]
