@@ -34,15 +34,15 @@ mvn install:install-file -Dfile=uta-calculator\lib\protobuf.jar -DgroupId=protob
 
 After installing the 2 libraries, you should specify in the Eclipse the location of the Native Library Location. By going to the properties of the project > Java Build Path > Source Tabulation and Editing the location of Native library like the image below.
 <p align="center">
-  <img src="/docs/images/Capture.PNG?raw=true" alt="step 1"/>
+  <img src="/docs/images/readme/Capture.PNG?raw=true" alt="step 1"/>
 </p>
 And then specify the location of the library folder by clicking on the External Folder button 
 <p align="center">
-  <img src="/docs/images/Capture2.PNG?raw=true" alt="step 2"/>
+  <img src="/docs/images/readme/Capture2.PNG?raw=true" alt="step 2"/>
 </p>
 And finally navigate through the repository and select the folder lib
 <p align="center">
-  <img src="/docs/images/Capture3.PNG?raw=true" alt="step 3"/>
+  <img src="/docs/images/readme/Capture3.PNG?raw=true" alt="step 3"/>
 </p>
 
 
@@ -52,12 +52,10 @@ To build the class of this program, you should execute the following command:
 mvn compile
 ```
 
-
-
 # Example of a java class that will solve a Linear Program
 An example of a LP problem: 
 <p align="center">
-  <img src="/docs/images/example-lp.PNG?raw=true" alt="Alternative criteria result"/>
+  <img src="/docs/images/readme/example-lp.PNG?raw=true" alt="Alternative criteria result"/>
 </p>
 
 Running the examples will involve compiling them, then running them. 
@@ -73,9 +71,6 @@ java -Djava.library.path=lib -cp objs:lib/com.google.ortools.jar com.lamsade.lp.
 javac -d objs -cp lib/com.google.ortools.jar;lib/protobuf.jar examples/LinearProgramming.java
 java -Djava.library.path=lib -cp objs;lib/com.google.ortools.jar com.lamsade.lp.LinearProgramming
 ```
-
-
-
   
 # Utils - NumbersGenerator
 This class will alow to generate numbers that have a target Sum. 
