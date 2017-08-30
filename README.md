@@ -28,8 +28,8 @@ You should install the following jar file: com.google.ortools.jar and protobuf.j
 
 #### on windows
 ```bash
-mvn install:install-file -Dfile=uta-calculator\lib\com.google.ortools.jar -DgroupId=com.google.ortools -DartifactId=ortools -Dversion=2015.08 -Dpackaging=jar
-mvn install:install-file -Dfile=uta-calculator\lib\protobuf.jar -DgroupId=protobuf -DartifactId=protobuf -Dversion=3.3.0 -Dpackaging=jar
+mvn install:install-file -Dfile=lib\com.google.ortools.jar -DgroupId=com.google.ortools -DartifactId=ortools -Dversion=2015.08 -Dpackaging=jar
+mvn install:install-file -Dfile=lib\protobuf.jar -DgroupId=protobuf -DartifactId=protobuf -Dversion=3.3.0 -Dpackaging=jar
 ```
 
 After installing the 2 libraries, you should specify in the Eclipse the location of the Native Library Location. By going to the properties of the project > Java Build Path > Source Tabulation and Editing the location of Native library like the image below.

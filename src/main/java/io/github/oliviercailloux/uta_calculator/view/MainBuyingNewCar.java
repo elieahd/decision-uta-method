@@ -9,36 +9,76 @@ import io.github.oliviercailloux.uta_calculator.model.ValueFunction;
 import io.github.oliviercailloux.uta_calculator.utils.ScaleGenerator;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class MainBuyingNewCar {
-	
+
+	private ValueFunction vf; 
+	private ProblemGenerator problem;
+
+	public MainBuyingNewCar(){
+		problem = generateBuyingNewCar();
+		UTASTAR utastar = new UTASTAR(problem.getCriteria(), problem.getAlternatives());
+		vf = utastar.findValueFunction();
+	}
+
 	public static void main(String[] args) {
+
 		MainBuyingNewCar main = new MainBuyingNewCar();
 
-		ProblemGenerator p1 = main.generateBuyingNewCar();
 		System.out.println("Problem");
-		System.out.println(p1);
-		UTASTAR utastar = new UTASTAR(p1.getCriteria(), p1.getAlternatives());
-		System.out.println("Start of UTASTAR Algorithm");
-		ValueFunction vf = utastar.findValueFunction();
-		System.out.println("End of UTASTAR Algorithm");
-		System.out.println();
-		System.out.println("Displaying Value Function");
-		for(PartialValueFunction pvf : vf.getPartialValueFunctions()){
+		System.out.println(main.problem);
+
+		System.out.println("Displaying Partial Value Function");
+		for(PartialValueFunction pvf : main.vf.getPartialValueFunctions()){
 			System.out.println(pvf.getCriterion().getName() + " : {" + pvf.getIntervals() + "}");
 		}
-
 		System.out.println();
+
 		System.out.println("Displaying the value of the alternatives from the function valueFunction.getValue(alternative) :");
-		for(Alternative alternative : p1.getAlternatives()){
-			System.out.println( alternative.getName() + " : " + vf.getValue(alternative));
+		Map<Alternative,Double> alternativeValues = main.getAlternativeValues(main.vf, main.problem.getAlternatives());
+		for(Entry<Alternative, Double> alternativeValue : alternativeValues.entrySet()) {
+			System.out.println(alternativeValue.getKey().getName() + " : " + alternativeValue.getValue());
 		}
+
 	}
-	
-	private ProblemGenerator generateBuyingNewCar() {
+
+	public List<Alternative> getMainAlternatives(){		
+		List<Alternative> alternatives = problem.getAlternatives();
+		Collections.sort(alternatives, new Comparator<Alternative>() {
+			@Override
+			public int compare(final Alternative a1, final Alternative a2) {
+				return ((Integer)a1.getId()).compareTo(a2.getId());
+			}
+		});
+		return alternatives;
+	}
+
+	public List<Alternative> getAlternativeSorted(){
+		List<Alternative> alternatives = problem.getAlternatives();
+		Collections.sort(alternatives, new Comparator<Alternative>() {
+			@Override
+			public int compare(final Alternative a1, final Alternative a2) {
+				return ((Double)vf.getValue(a1)).compareTo(vf.getValue(a2));
+			}
+		});
+		return alternatives;
+	}
+
+	public Map<Alternative,Double> getAlternativeValues(ValueFunction vf, List<Alternative> alternatives){
+		Map<Alternative,Double> result = new HashMap<>();
+		for(Alternative alternative : alternatives){
+			result.put(alternative, vf.getValue(alternative));
+		}
+		return result;
+	}
+
+	public ProblemGenerator generateBuyingNewCar() {
 		ScaleGenerator scaleGenerator = new ScaleGenerator();
 		List<Criterion> criteria = new ArrayList<>();
 		Criterion price = new Criterion(1, "price", scaleGenerator.generate(15000.0, 25000.0, 3));

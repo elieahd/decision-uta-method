@@ -1,0 +1,9 @@
+language: java
+git:
+  depth: 1
+jdk:
+  - oraclejdk8
+dist: trusty
+install:
+  - mvn install:install-file -Dfile=lib\com.google.ortools.jar -DgroupId=com.google.ortools -DartifactId=ortools -Dversion=2015.08 -Dpackaging=jar
+  - mvn install:install-file -Dfile=lib\protobuf.jar -DgroupId=protobuf -DartifactId=protobuf -Dversion=3.3.0 -Dpackaging=jar

@@ -140,8 +140,5 @@ public class MainSimulation {
 		return kendallTau;
 	} 
 
-	public int multiply(int input1, int input2){
-		return input1 + input2;
-	}
 	
 }
