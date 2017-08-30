@@ -1,5 +1,5 @@
 /docs/internship-report.synctex.gz
 /docs/cover-page.pdf
 /docs/*.xlsx
-/uta-calculator/target
-/uta-calculator/*.log
+/target
+/*.log
