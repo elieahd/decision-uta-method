@@ -29,7 +29,6 @@ public class MainSimulation {
 		int numAlternative = 10000;
 		List<Integer> comparingList = new ArrayList<>();
 		comparingList.add(10);
-		comparingList.add(50);
 		comparingList.add(100);
 		comparingList.add(500);
 		comparingList.add(1000);
