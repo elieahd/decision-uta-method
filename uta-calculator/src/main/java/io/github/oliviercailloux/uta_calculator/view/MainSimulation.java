@@ -29,12 +29,16 @@ public class MainSimulation {
 		int numAlternative = 10000;
 		List<Integer> comparingList = new ArrayList<>();
 		comparingList.add(10);
-		comparingList.add(25);
 		comparingList.add(50);
-		comparingList.add(75);
 		comparingList.add(100);
+		comparingList.add(500);
+		comparingList.add(1000);
+		comparingList.add(2500);
+		comparingList.add(5000);
+		comparingList.add(7500);
+		comparingList.add(9000);
 
-		for(int criteria = 2; criteria <= 5; criteria++){
+		for(int criteria = 3; criteria <= 3; criteria++){
 			for(Integer comparing : comparingList){
 				List<Double> differenceList = new ArrayList<>();
 				for(int i = 0; i < 500; i++){
@@ -42,11 +46,9 @@ public class MainSimulation {
 					differenceList.add(difference);
 				}
 				Statistics stats = new Statistics();
-				System.out.println("getDifferenceRank(" + numAlternative + "," + criteria + "," + comparing + ")" );
-				System.out.println("Mean : " + stats.getMean(differenceList));
-				System.out.println("Std : " + stats.getStd(differenceList));
+				String current = "getDifferenceRank(" + numAlternative + "," + criteria + "," + comparing + ") : ";
+				System.out.println(current + " : " + stats.getMean(differenceList));	
 			}
-			System.out.println();
 		}
 
 	}
@@ -139,4 +141,8 @@ public class MainSimulation {
 		return kendallTau;
 	} 
 
+	public int multiply(int input1, int input2){
+		return input1 + input2;
+	}
+	
 }
