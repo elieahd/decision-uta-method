@@ -81,6 +81,4 @@ public class Alternative {
 		return true;
 	}
 	
-	
-	
 }

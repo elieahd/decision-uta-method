@@ -140,5 +140,4 @@ public class MainSimulation {
 		return kendallTau;
 	} 
 
-	
 }

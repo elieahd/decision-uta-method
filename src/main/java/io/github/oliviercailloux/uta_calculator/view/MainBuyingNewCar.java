@@ -20,25 +20,29 @@ public class MainBuyingNewCar {
 
 	private ValueFunction vf; 
 	private ProblemGenerator problem;
+	public UTASTAR utastar;
 
 	public MainBuyingNewCar(){
 		problem = generateBuyingNewCar();
-		UTASTAR utastar = new UTASTAR(problem.getCriteria(), problem.getAlternatives());
+		utastar = new UTASTAR(problem.getCriteria(), problem.getAlternatives());
+		utastar.setPrint(false);
 		vf = utastar.findValueFunction();
 	}
 
 	public static void main(String[] args) {
-
 		MainBuyingNewCar main = new MainBuyingNewCar();
+		
+		if(main.utastar.isPrint()){
+			System.out.println("Information about the problem");
+			System.out.println(main.problem);
 
-		System.out.println("Problem");
-		System.out.println(main.problem);
-
-		System.out.println("Displaying Partial Value Function");
-		for(PartialValueFunction pvf : main.vf.getPartialValueFunctions()){
-			System.out.println(pvf.getCriterion().getName() + " : {" + pvf.getIntervals() + "}");
+			System.out.println("Displaying Partial Value Function");
+			for(PartialValueFunction pvf : main.vf.getPartialValueFunctions()){
+				System.out.println(pvf.getCriterion().getName() + " : {" + pvf.getIntervals() + "}");
+			}
+			System.out.println();
 		}
-		System.out.println();
+
 
 		System.out.println("Displaying the value of the alternatives from the function valueFunction.getValue(alternative) :");
 		Map<Alternative,Double> alternativeValues = main.getAlternativeValues(main.vf, main.problem.getAlternatives());
@@ -80,6 +84,7 @@ public class MainBuyingNewCar {
 
 	public ProblemGenerator generateBuyingNewCar() {
 		ScaleGenerator scaleGenerator = new ScaleGenerator();
+		
 		List<Criterion> criteria = new ArrayList<>();
 		Criterion price = new Criterion(1, "price", scaleGenerator.generate(15000.0, 25000.0, 3));
 		criteria.add(price);
